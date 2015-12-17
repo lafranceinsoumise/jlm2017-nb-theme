@@ -2,7 +2,7 @@
 
   <div class="panel-body">
     <p class="twitter-followings" id="twitter_followings">
-      <img src="{{ "bert-loader-small.gif" | asset_path }}" border="0"> Checking Twitter for people who have joined...
+      <img src="{{ "bert-loader-small.gif" | asset_path }}" border="0"> Recherche sur Twitter de vos ami.e.s membres du site...
       {{ request.current_signup.crawling_twitter_status_url | auto_refresh }}
     </p>
   </div>
@@ -12,16 +12,16 @@
   {% if request.current_signup.followings_count_from_twitter == 0 %}
 
     <div class="panel-body">
-      <p>None of the people you follow on Twitter have joined.</p>
+      <p>Aucune personne que vous suivez sur Twitter n'a rejoint le site pour l'instant.</p>
     </div>
 
   {% else %}
     <div class="panel-body">
-      <p><strong>{{ request.current_signup.followings_count_from_twitter }}</strong> people you follow on Twitter have joined.<br/>
-    You are automatically following them.</p>
+      <p><strong>{{ request.current_signup.followings_count_from_twitter }}</strong> personnes que vous suivez sur Twitter ont rejoint le site.<br/>
+    Vous les suivez automatiquement.</p>
 
       {% if request.current_signup.followings_count_from_twitter > 6 %}
-      <p><span class="supporter-follow-details">Including...</span></p>
+      <p><span class="supporter-follow-details">Quelques unes...</span></p>
       {% endif %}
     </div>
 
@@ -41,15 +41,15 @@
   {% if request.current_signup.followers_count_from_twitter == 0 %}
 
     <div class="panel-body">
-      <p>None of your Twitter followers have joined.</p>
+      <p>Aucune de vos abonné.e.s sur Twitter n'a rejoint le site.</p>
     </div>
 
   {% else %}
     <div class="panel-body">
-      <p><strong>{{ request.current_signup.followers_count_from_twitter }}</strong> of your Twitter followers have already joined.<br/>
-    They are automatically following <em>you</em>.</p>
+      <p><strong>{{ request.current_signup.followers_count_from_twitter }}</strong> de vos abonné.e.s sur Twitter a rejoint le site.<br/>
+    Ils </em>vous</em> suivent automatiquement.</p>
       {% if request.current_signup.followers_count_from_twitter > 6 %}
-      <p><span class="supporter-follow-details">Including...</span></p>
+      <p><span class="supporter-follow-details">Quelques unes...</span></p>
       {% endif %}
     </div>
 

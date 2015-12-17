@@ -7,7 +7,7 @@
 {% if page.has_parent? %}
 
 <ol class="breadcrumb">
-  <li><a href="/">Home</a></li>
+  <li><a href="/">Accueil</a></li>
   {% for ancestor in page.ancestors %}
   {% if ancestor.is_homepage? == false %}
   <li><a href="{{ ancestor.url }}">{{ ancestor.name }}</a></li>

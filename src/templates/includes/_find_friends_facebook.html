@@ -2,7 +2,7 @@
 
   <div class="panel-body">
     <p class="facebook-followings" id="facebook_followings">
-      <img src="{{ "bert-loader-small.gif" | asset_path }}" border="0"> Checking Facebook for people who have joined...
+      <img src="{{ "bert-loader-small.gif" | asset_path }}" border="0"> Recherche sur Facebook de vos ami.e.s membres du site...
       {{ request.current_signup.crawling_facebook_status_url | auto_refresh }}
     </p>
   </div>
@@ -12,16 +12,16 @@
   <div class="panel-body">
     <p>
     {% if request.current_signup.followings_count_from_facebook == 0 %}
-      None of your Facebook friends have joined yet.
+      Aucun de vos ami.e.s Facebook n'a rejoint le site pour l'instant.
     {% else %}
-    <strong>{{ request.current_signup.followings_count_from_facebook }}</strong> of your Facebook friends have joined.<br/>
-    You are automatically following them, and vice versa.
+    <strong>{{ request.current_signup.followings_count_from_facebook }}</strong> de vos ami.e.s Facebook sont membres du site.<br/>
+    Vous les suivez automatiquement, et inversement.
     {% endif %}
     </p>
 
     {% if request.current_signup.followings_count_from_facebook > 6 %}
     <p>
-      <span class="supporter-follow-details">Including...</span>
+      <span class="supporter-follow-details">Incluant...</span>
     </p>
     {% endif %}
   </div>
