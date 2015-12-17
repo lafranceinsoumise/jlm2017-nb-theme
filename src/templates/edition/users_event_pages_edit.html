@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
-  <li><a href="/">Home</a></li>
-  <li><a href="/users/pages">Your pages</a></li>
+  <li><a href="/">Accueil</a></li>
+  <li><a href="/users/pages">Vos pages</a></li>
 </ol>
 
 <h2 class="headline">{{ event_page.page.headline }}</h2>
@@ -16,89 +16,89 @@
 
       <div class="row">
 
-        <div class="col-md-6"><div class="form-group"><label for="event_page_start_at_chronic">When</label>{% text_field "start_at_chronic", class:"text form-control" %}</div></div>
-        <div class="col-md-6"><div class="form-group"><label for="event_page_duration_chronic">Length</label>{% text_field "duration_chronic", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="event_page_start_at_chronic">Quand</label>{% text_field "start_at_chronic", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="event_page_duration_chronic">Durée</label>{% text_field "duration_chronic", class:"text form-control" %}</div></div>
 
       </div>
       <div class="row">
 
         <div class="col-md-6 notranslate"><div class="form-group">
-          <label for="event_page_time_zone">Time zone</label>{% collection_select "time_zone", event_page.time_zones, class:"select form-control" %}</div></div>
-        <div class="col-md-6"><div class="form-group"><label for="event_page_capacity_count">Maximum capacity</label>{% text_field "capacity_count", class:"text form-control" %}</div></div>
+          <label for="event_page_time_zone">Fuseau horaire</label>{% collection_select "time_zone", event_page.time_zones, class:"select form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="event_page_capacity_count">Capacité maximum</label>{% text_field "capacity_count", class:"text form-control" %}</div></div>
 
       </div>
       <div class="row padtopmore">
 
-        <div class="col-md-12"><h4>Contact info</h4></div>
+        <div class="col-md-12"><h4>Informations de contact</h4></div>
 
       </div>
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="event_page_contact_name">Name</label>{% text_field "contact_name", class:"text form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="event_page_contact_name">Nom</label>{% text_field "contact_name", class:"text form-control" %}</div></div>
 
       </div>
       <div class="row">
 
         <div class="col-md-6">
           <div class="form-group"><label for="event_page_contact_email">Email</label>{% text_field "contact_email", class:"text form-control" %}</div>
-          <div class="checkbox"><label for="event_page_is_contact_email_private" class="checkbox">{% check_box "is_contact_email_private", class:"check_box" %} Don't publish email address</label></div>
+          <div class="checkbox"><label for="event_page_is_contact_email_private" class="checkbox">{% check_box "is_contact_email_private", class:"check_box" %} Ne pas rendre publique l'adresse email</label></div>
         </div>
         <div class="col-md-6">
-          <div class="form-group"><label for="event_page_contact_phone_number">Phone</label>{% text_field "contact_phone_number", class:"text form-control" %}</div>
-          <div class="checkbox"><label for="event_page_is_contact_phone_private" class="checkbox">{% check_box "is_contact_phone_private", class:"check_box" %} Don't publish phone number</label></div>
+          <div class="form-group"><label for="event_page_contact_phone_number">Numérp de téléphone</label>{% text_field "contact_phone_number", class:"text form-control" %}</div>
+          <div class="checkbox"><label for="event_page_is_contact_phone_private" class="checkbox">{% check_box "is_contact_phone_private", class:"check_box" %} Ne pas rendre public le numéro de téléphone</label></div>
         </div>
 
       </div>
 
       <div class="row padtopmore">
 
-        <div class="col-md-12"><h4>Location</h4></div>
+        <div class="col-md-12"><h4>Lieu</h4></div>
 
       </div>
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="event_page_venue_name">Venue name</label>{% text_field "venue_name", class:"text form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="event_page_venue_name">Nom du lieu</label>{% text_field "venue_name", class:"text form-control" %}</div></div>
 
       </div>
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="event_page_address1">Address</label>
+        <div class="col-md-12"><div class="form-group"><label for="event_page_address1">Adresse</label>
           {% text_field "venue_address.address1", class:"text form-control" %}
           {% text_field "venue_address.address2", class:"text form-control" %}</div></div>
 
       </div>
       <div class="row">
 
-        <div class="col-md-4"><div class="form-group"><label for="event_page_city">City</label>{% text_field "venue_address.city", class:"text form-control" %}</div></div>
+        <div class="col-md-4"><div class="form-group"><label for="event_page_city">Ville</label>{% text_field "venue_address.city", class:"text form-control" %}</div></div>
         {% if settings.has_states? %}
-        <div class="col-md-4"><div class="form-group"><label for="event_page_state">State</label>{% text_field "venue_address.state", class:"text form-control" %}</div></div>
+        <div class="col-md-4"><div class="form-group"><label for="event_page_state">Département</label>{% text_field "venue_address.state", class:"text form-control" %}</div></div>
         {% endif %}
-        <div class="col-md-4"><div class="form-group"><label for="event_page_zip">Postal code</label>{% text_field "venue_address.zip", class:"text form-control" %}</div></div>
+        <div class="col-md-4"><div class="form-group"><label for="event_page_zip">Code postal</label>{% text_field "venue_address.zip", class:"text form-control" %}</div></div>
 
       </div>
 
       <div class="row padtopmore">
 
         <div class="col-md-12 padbottom">
-          <h4>Ticket price</h4>
-          <small>If free, just leave at 0.00.</small>
+          <h4>Participation aux frais</h4>
+          <small>Si c'est gratuit, laissez simplement&nbsp;: 0.00.</small>
         </div>
 
       </div>
       <div class="row">
 
-        <div class="col-md-2"><div class="form-group"><label for="event_page_user_ticket_price">Amount</label>{% text_field "user_ticket_price", class:"text form-control" %}</div></div>
-        <div class="col-md-10"><div class="form-group"><label for="event_page_user_ticket_currency">Currency</label>{% collection_select "user_ticket_currency", event_page.currencies_available, class:"select form-control" %}</div></div>
+        <div class="col-md-2"><div class="form-group"><label for="event_page_user_ticket_price">Montant</label>{% text_field "user_ticket_price", class:"text form-control" %}</div></div>
+        <div class="col-md-10"><div class="form-group"><label for="event_page_user_ticket_currency">Devise</label>{% collection_select "user_ticket_currency", event_page.currencies_available, class:"select form-control" %}</div></div>
 
       </div>
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="event_page_user_ticket_purchase_url">Ticket purchase URL</label>{% text_field "user_ticket_purchase_url", class:"text form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="event_page_user_ticket_purchase_url">URL pour acheter un ticket d'entrée</label>{% text_field "user_ticket_purchase_url", class:"text form-control" %}</div></div>
 
       </div>
       <div class="row padtopmore">
 
-        <div class="col-md-12"><h4>Description, include directions</h4></div>
+        <div class="col-md-12"><h4>Description, incluant un itinéraire</h4></div>
 
       </div>
       <div class="row">
@@ -109,16 +109,16 @@
       <div class="row padtopmore">
 
         <div class="col-md-12">
-          <div class="checkbox"><label for="event_page_accept_rsvps" class="checkbox">{% check_box "accept_rsvps", class:"check_box" %} Allow people to RSVP</label></div>
-          <div class="checkbox"><label for="event_page_allow_guests" class="checkbox">{% check_box "allow_guests", class:"check_box" %} Allow people to bring guests (+1)</label></div>
-          <div class="checkbox"><label for="event_page_show_guests" class="checkbox">{% check_box "show_guests", class:"check_box" %} Show who is coming</label></div>
-          <div class="checkbox"><label for="event_page_is_private" class="checkbox">{% check_box "is_private", class:"check_box" %} Keep the RSVP page hidden from the rest of the site</label></div>
+          <div class="checkbox"><label for="event_page_accept_rsvps" class="checkbox">{% check_box "accept_rsvps", class:"check_box" %} Autoriser les gens à s'inscrire</label></div>
+          <div class="checkbox"><label for="event_page_allow_guests" class="checkbox">{% check_box "allow_guests", class:"check_box" %}  Autoriser les gens à venir accompagnés (+1)</label></div>
+          <div class="checkbox"><label for="event_page_show_guests" class="checkbox">{% check_box "show_guests", class:"check_box" %} Montrer qui vient</label></div>
+          <div class="checkbox"><label for="event_page_is_private" class="checkbox">{% check_box "is_private", class:"check_box" %} Garder la page des inscrits cachée sur le reste du site</label></div>
         </div>
 
       </div>
 
       <div class="padtop">
-        {% submit_tag "Save and update page", class:"submit-button btn btn-primary" %}
+        {% submit_tag "Sauvegarder et mettre à jour la page", class:"submit-button btn btn-primary" %}
         <div class="form-submit"></div>
       </div>
 

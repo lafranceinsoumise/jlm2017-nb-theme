@@ -1,12 +1,12 @@
-<h2 class="headline">Your pages</h2>
+<h2 class="headline">Vos pages</h2>
 
 <table class="table table-striped content-list" id="content-list">
   <th></th>
-  <th>Page name</th>
-  <th><div class="visible-sm-block visible-md-block visible-lg-block nowrap">Date authored</div></th>
+  <th>Nom de la page</th>
+  <th><div class="visible-sm-block visible-md-block visible-lg-block nowrap">Date de publication</div></th>
 {% for authored_page in current_signup.authored_pages %}
   <tr>
-    <td><a href="{{ authored_page.edit_url }}" class="action-btn">edit</a></td>
+    <td><a href="{{ authored_page.edit_url }}" class="action-btn">modifier</a></td>
     <td>{% if authored_page.has_parent? %}<a href="{{ authored_page.parent.url }}">{{ authored_page.parent.name }}</a> &rarr;{% endif %} <a href="{{ authored_page.url }}">{{ authored_page.name }}</a></td>
     <td><div class="visible-sm-block visible-md-block visible-lg-block nowrap">{{ authored_page.published_at | date_to_string }}</div></td>
   </tr>
@@ -17,4 +17,3 @@
   </tr>
 </tfoot>
 </table>
-
