@@ -11,7 +11,7 @@ gulp.task('styles', function() {
     .pipe(sass().on('error', sass.logError))
     .pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(sourcemaps.write('.'))
-    .pipe(changed('dist/theme'))
+    .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
     .pipe(gulp.dest('dist/theme'))
   ;
 });
@@ -19,7 +19,7 @@ gulp.task('styles', function() {
 gulp.task('templates', function() {
   gulp.src('src/templates/**/*.html')
     .pipe(rename({dirname: ''}))
-    .pipe(changed('dist/theme'))
+    .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
     .pipe(gulp.dest('dist/theme'))
   ;
 });
