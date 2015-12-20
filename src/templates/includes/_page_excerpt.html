@@ -2,9 +2,9 @@
   <h3><a href="{{ page_excerpt.url }}">{{ page_excerpt.headline }}</a></h3>
 
   <div class="byline padtopless">
-    {{ page_excerpt.icon | icon }} Posted
+    {{ page_excerpt.icon | icon }} Publié
     {% if page_excerpt.has_parent? %}
-    on <a href="{{ page_excerpt.parent.url }}">{{ page_excerpt.parent.name }}</a>
+    le <a href="{{ page_excerpt.parent.url }}">{{ page_excerpt.parent.name }}</a>
     {% endif %}
     {% if page_excerpt.has_author? %}
     by {{ page_excerpt.author.published_name_linked }}
@@ -12,7 +12,7 @@
     &middot; {{ page_excerpt.published_at | date: '%B %d, %Y %l:%M %p' }}
     {% if page_excerpt.show_stream? %}
     {% if page_excerpt.public_activities_count > 0 %}
-    &middot; <a href="{{ page_excerpt.url }}#reactions">{{ page_excerpt.public_activities_count }} reaction{% if page_excerpt.public_activities_count > 1 %}s{% endif %}</a>
+    &middot; <a href="{{ page_excerpt.url }}#reactions">{{ page_excerpt.public_activities_count }} réaction{% if page_excerpt.public_activities_count > 1 %}s{% endif %}</a>
     {% endif %}
     {% endif %}
   </div>
@@ -26,7 +26,7 @@
 
     {% when 'ActBlue' %}
 
-    <a class="btn btn-default submit-link" href="{{ page_excerpt.actblue.actblue_page_url_with_tracking }}">Donate on ActBlue</a>
+    <a class="btn btn-default submit-link" href="{{ page_excerpt.actblue.actblue_page_url_with_tracking }}">Donner <em>via</em> ActBlue</a>
 
 
   {% when 'Basic' %}
@@ -38,17 +38,17 @@
   {% for post in page_excerpt.blog.most_recent_blog_posts limit: 3 %}
   <h4><a href="{{ post.url }}">{{ post.headline }}</a></h4>
   <p>
-    Posted by {{ post.author.published_name_linked }} &middot; {{ post.published_at | date: '%B %d, %Y %l:%M %p' }}
+    Publié par {{ post.author.published_name_linked }} &middot; {{ post.published_at | date: '%B %d, %Y %l:%M %p' }}
     {% if post.show_stream? %}
     {% if post.public_activities_count > 0 %}
-    &middot; <a href="{{ post.url }}#reactions">{{ post.public_activities_count }} reaction{% if post.public_activities_count > 1 %}s{% endif %}</a>
+    &middot; <a href="{{ post.url }}#reactions">{{ post.public_activities_count }} réaction{% if post.public_activities_count > 1 %}s{% endif %}</a>
     {% endif %}
     {% endif %}
   </p>
   {% endfor %}
 
   <div class="padbottom">
-    <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">See all posts</a>
+    <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Voir toutes les publications</a>
     {% if page_excerpt.blog.is_posting_public? %}
     or <a href="{{ page_excerpt.url }}">{{ page_excerpt.blog.public_posting_prompt }}</a>
     {% endif %}
@@ -58,7 +58,7 @@
 
   {{ page_excerpt.blog_post.content }}
   {% if page_excerpt.blog_post.is_extended? %}
-    <span class="read-more"><a href='{{ page_excerpt.url }}'>Read more</a></span>
+    <span class="read-more"><a href='{{ page_excerpt.url }}'>Lire la suite</a></span>
   {% endif %}
 
   {% when 'Calendar' %}
@@ -81,9 +81,9 @@
 
   {% endif %}
 
-    <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">See all events</a>
+    <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Voir tous les évènements</a>
     {% if page_excerpt.calendar.allow_user_submitted? %}
-    or <a href="{{ page_excerpt.calendar.new_event_url }}">Host your own</a>
+    ou <a href="{{ page_excerpt.calendar.new_event_url }}">Organiser le vôtre</a>
     {% endif %}
 
   {% when 'Donation' %}
@@ -97,12 +97,12 @@
       {% if page_excerpt.donations_count < 1 %}
       <div class="bar-text">0%</div>
       {% else %}
-      <div class="bar-text">{{ page_excerpt.donations_amount_format }} raised</div>
+      <div class="bar-text">{{ page_excerpt.donations_amount_format }} récoltés</div>
       {% endif %}
     </div>
   </div>
 
-  <div class="bar-goal">GOAL: {{ page_excerpt.donation.amount_goal_format }}</div>
+  <div class="bar-goal">OBJECTIF&nbsp;: {{ page_excerpt.donation.amount_goal_format }}</div>
 
   </div>
 
@@ -114,12 +114,12 @@
           {% if page_excerpt.donations_count < 2 %}
           <div class="bar-text">0</div>
           {% else %}
-          <div class="bar-text">{{ page_excerpt.donations_count }} donors</div>
+          <div class="bar-text">{{ page_excerpt.donations_count }} donateurs</div>
           {% endif %}
       </div>
     </div>
 
-  <div class="bar-goal">{{ page_excerpt.donation.donor_goal }} donors</div>
+  <div class="bar-goal">{{ page_excerpt.donation.donor_goal }} donateurs</div>
 
   </div>
 
@@ -129,7 +129,7 @@
   {{ page_excerpt.donation.content }}
   {% endif %}
 
-    <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Donate</a>
+    <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Faire un don</a>
 
   {% when 'Endorsement' %}
 
@@ -143,7 +143,7 @@
   </div>
   {% endif %}
 
-  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Endorse</a>
+  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Soutenir</a>
 
   {% when 'Event' %}
 
@@ -152,7 +152,7 @@
   {% endif %}
 
   <div class="event-detail">
-    <div class="subhead">WHEN</div>
+    <div class="subhead">QUAND</div>
     <div class="subtext">
       {% if page_excerpt.event.is_multi_day? %}
       {{ page_excerpt.event.local_start_at | event_time }} - {{ page_excerpt.event.local_end_at | event_time }}
@@ -165,7 +165,7 @@
   {% if page_excerpt.event.has_venue? %}
 
   <div class="event-detail">
-    <div class="subhead">WHERE</div>
+    <div class="subhead">OÙ</div>
     <div class="subtext">
       {% if page_excerpt.event.venue_name.size > 0 %}
       {{ page_excerpt.event.venue_name }}<br/>
@@ -174,7 +174,7 @@
       {{ line }}<br/>
       {% endfor %}
       {% if page_excerpt.event.has_venue_address? %}
-      <a href="{{ page_excerpt.event.venue_address.google_map_link }}">Google map and directions</a>
+      <a href="{{ page_excerpt.event.venue_address.google_map_link }}">Carte et itinéraires</a>
       {% endif %}
     </div>
   </div>
@@ -191,14 +191,14 @@
   {% if page_excerpt.event.is_ticket_required? or page_excerpt.event.is_user_ticket_required? %} &middot; {% endif %}
 
   {% if page_excerpt.event.show_guests? and page_excerpt.event.rsvps_count > 0 %}
-  <a href="{{ page_excerpt.url }}">{{ page_excerpt.event.rsvps_count }} rsvp{% if page_excerpt.event.rsvps_count > 1 %}s{% endif %}</a>
+  <a href="{{ page_excerpt.url }}">{{ page_excerpt.event.rsvps_count }} participant.e{% if page_excerpt.event.rsvps_count > 1 %}.s{% endif %}</a>
   {% endif %}
   </div>
 
   {% if page_excerpt.event.is_maximum_capacity? %}
-    <a class="btn btn-danger" href="{{ page_excerpt.url }}">sold out</a>
+    <a class="btn btn-danger" href="{{ page_excerpt.url }}">plus de place</a>
   {% elsif page_excerpt.event.is_past? == false %}
-    <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">rsvp</a>
+    <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Je participe</a>
   {% endif %}
 
   {% when 'FAQ' %}
@@ -291,14 +291,14 @@
 
   {% if page_excerpt.moneybomb.has_start_at? and page_excerpt.moneybomb.is_active? == false and page_excerpt.moneybomb.is_past? == false %}
   <div class="event-detail">
-    <div class="subhead" style="text-transform: uppercase;">COUNTDOWN TO {{ page_excerpt.moneybomb.local_start_at | moneybomb_time }}</div>
+    <div class="subhead" style="text-transform: uppercase;">COMPTE À REBOURS {{ page_excerpt.moneybomb.local_start_at | moneybomb_time }}</div>
     <div class="subtext">
       <div id="pre-countdown-{{ page_excerpt.slug }}" class="countdown"></div>
     </div>
   </div>
   {% elsif page_excerpt.moneybomb.is_active? %}
   <div class="event-detail">
-    <div class="subhead" style="text-transform: uppercase;">TIME LEFT TO DONATE</div>
+    <div class="subhead" style="text-transform: uppercase;">TEMPS RESTANT POUR DONNER</div>
     <div class="subtext">
       <div id="active-countdown-{{ page_excerpt.slug }}" class="countdown"></div>
     </div>
@@ -314,7 +314,7 @@
         {% if page_excerpt.pledges_count < 1 %}
         <div class="bar-text">0</div>
         {% else %}
-        <div class="bar-text">{{ page_excerpt.pledges_amount_format }} pledged</div>
+        <div class="bar-text">{{ page_excerpt.pledges_amount_format }} promis</div>
         {% endif %}
         </div>
        </div>
@@ -331,12 +331,12 @@
         {% if page_excerpt.pledges_count < 2 %}
         <div class="bar-text">0</div>
         {% else %}
-        <div class="bar-text">{{ page_excerpt.pledges_count }} pledgers</div>
+        <div class="bar-text">{{ page_excerpt.pledges_count }} engagé.e.s</div>
         {% endif %}
         </div>
        </div>
 
-      <div class="bar-goal">{{ page_excerpt.moneybomb.pledger_goal }} PLEDGERS</div>
+      <div class="bar-goal">{{ page_excerpt.moneybomb.pledger_goal }} ENGAGÉ.E.S</div>
 
   </div>
 
@@ -361,9 +361,9 @@
   </script>
 
   {% if page_excerpt.moneybomb.is_active? %}
-  <a class="btn btn-default submit-link" href="{{ page_excerpt.moneybomb.donation_page.url }}">Donate now</a>
+  <a class="btn btn-default submit-link" href="{{ page_excerpt.moneybomb.donation_page.url }}">Faire un don dès maintenant</a>
   {% else %}
-  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Pledge now</a>
+  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">S'engager à donner dès maintenant</a>
   {% endif %}
 
   {% when 'Paid Membership' %}
@@ -376,7 +376,7 @@
 
   {% for membership_option in page_excerpt.paid_membership.membership_options %}
 
-  <strong><a href="{{ membership_option.purchase_url }}">{{ membership_option.membership_level_name }}</strong></a>: Purchase for <a href="{{ membership_option.purchase_url }}">{{ membership_option.amount }} every {% if membership_option.num_time_periods > 1 %}{{ membership_option.num_time_periods }}{% endif %} {{ membership_option.time_period_type | downcase }}</a>
+  <strong><a href="{{ membership_option.purchase_url }}">{{ membership_option.membership_level_name }}</strong></a>: Acheter pour <a href="{{ membership_option.purchase_url }}">{{ membership_option.amount }} chaque {% if membership_option.num_time_periods > 1 %}{{ membership_option.num_time_periods }}{% endif %} {{ membership_option.time_period_type | downcase }}</a>
   <br/>
 
   {% endfor %}
@@ -412,7 +412,7 @@
   </div>
   {% endif %}
 
-  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Add {{ page_excerpt.petition.signature_name }}</a>
+  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Ajouter {{ page_excerpt.petition.signature_name }}</a>
 
   {% when 'Political Capital' %}
 
@@ -453,7 +453,7 @@
   {% if page_excerpt.question.answer.size > 0 %}
   <div class="row padbottommore">
     <div class="col-md-12">
-      <div class="answer-wrap panel panel-default"><div class="answer-a panel-heading">Answer</div> <div class="answer panel-body">{{ page_excerpt.question.answer }}</div></div>
+      <div class="answer-wrap panel panel-default"><div class="answer-a panel-heading">Réponse</div> <div class="answer panel-body">{{ page_excerpt.question.answer }}</div></div>
     </div>
   </div>
   {% endif %}
@@ -465,7 +465,7 @@
   {{ page_excerpt.recruiting.content }}
   {% endif %}
 
-  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Start recruiting</a>
+  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Commencer à recruter</a>
 
   {% when 'Redirect' %}
 
@@ -489,7 +489,7 @@
   {{ page_excerpt.signup.content }}
   {% endif %}
 
-  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Sign up</a>
+  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">S'inscrire</a>
 
   {% when 'Suggestion Box' %}
 
@@ -508,7 +508,7 @@
     {% if page_excerpt.suggestion.is_answered? %}
   <div class="answer panel-body">
     <div class="official-response">
-      Official response from {{ page_excerpt.suggestion.answer_author.published_name_linked }}
+      Réponse officielle de {{ page_excerpt.suggestion.answer_author.published_name_linked }}
       {% if page_excerpt.suggestion.is_answer_type? %}
       {{ page_excerpt.suggestion.answer_type_html }}
       {% endif %}
@@ -523,7 +523,7 @@
   {{ page_excerpt.survey.content }}
   {% endif %}
 
-  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Take the survey</a>
+  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Participer au sondage</a>
 
   {% when 'Unsubscribe' %}
 
@@ -535,7 +535,7 @@
     {{ page_excerpt.volunteer_signup.content }}
     {% endif %}
 
-  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Become a volunteer</a>
+  <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Devenir bénévole</a>
 
   {% when 'Vote Pledge' %}
 
@@ -548,7 +548,7 @@
         {% if page_excerpt.vote_pledge.yes_votes_count < 2 %}
         <div class="bar-text">0</div>
         {% else %}
-        <div class="bar-text">{{ page_excerpt.vote_pledge.yes_votes_count | number_with_commas }} VOTES FOUND</div>
+        <div class="bar-text">{{ page_excerpt.vote_pledge.yes_votes_count | number_with_commas }} VOTES TROUVÉS</div>
         {% endif %}
        </div>
      </div>
@@ -565,7 +565,7 @@
   {{ page_excerpt.vote_pledge.content }}
   {% endif %}
 
-    <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Pledge your vote</a>
+    <a class="btn btn-default submit-link" href="{{ page_excerpt.url }}">Engagez-vous à voter</a>
 
   {% when 'Voter Registration' %}
 

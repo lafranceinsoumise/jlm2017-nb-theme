@@ -11,7 +11,7 @@
     {% if site.has_rule_page? %}
     <div class="row">
 
-	    <div class="col-md-12"><div class="form-group"><label for="flag_rule_id">Which rule was violated</label>
+	    <div class="col-md-12"><div class="form-group"><label for="flag_rule_id">Quelle règle a été enfreinte</label>
 	      {% collection_select "rule_id", site.rule_page.rule.rules_collection, class:"select form-control" %}</div></div>
 
   	</div>
@@ -19,16 +19,16 @@
 
     <div class="row">
 
-			<div class="col-md-12"><div class="form-group"><label for="flag_content">Explanation (optional)</label>{% text_area "content", class:"textarea form-control autogrow" %}</div>
+			<div class="col-md-12"><div class="form-group"><label for="flag_content">Explication (optionnel)</label>{% text_area "content", class:"textarea form-control autogrow" %}</div>
 			</div>
 
 		</div>
 
-			{% submit_tag "Flag this comment", class:"submit-button btn btn-primary" %}
+			{% submit_tag "Marquer ce commentaire", class:"submit-button btn btn-primary" %}
 			<div class="form_submit"></div>
 
 		<div class="row padtopmore">
-			<div class="col-md-12">Flagging comment from {{ comment.signup.published_name_linked }}</div>
+			<div class="col-md-12">Commentaire marqué par {{ comment.signup.published_name_linked }}</div>
 		</div>
 
     <div class="text-content">

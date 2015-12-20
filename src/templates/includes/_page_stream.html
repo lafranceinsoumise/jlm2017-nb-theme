@@ -6,15 +6,15 @@
     {% if page.public_activities_count == 1 %}
     <a name="addreaction"></a>
 
-    <h3>Showing 1 reaction</h3>
+    <h3>Une réaction</h3>
     {% elsif page.public_activities_count > 1 %}
     <a name="addreaction"></a>
 
-    <h3>Showing {{ page.public_activities_count }} reactions</h3>
+    <h3>{{ page.public_activities_count }} réactions</h3>
     {% elsif page.is_commentable? %}
     <a name="addreaction"></a>
 
-    <h3>Be the first to comment</h3>
+    <h3>Soyez le premier à commenter</h3>
     {% endif %}
 
 
@@ -34,7 +34,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="tag-page">
-                <strong>How would you tag this suggestion?</strong>
+                <strong>Comment voulez-vous taguer cette suggestion&nbsp;?</strong>
                 {% include "suggestion_tag_list" %}
               </div>
             </div>
@@ -50,15 +50,15 @@
           <div class="row {% if request.logged_in? %}padtopmore{% endif %}">
             <div class="col-md-6">
               {% if request.logged_in? %}
-                {% submit_tag "Post your comment", class:"submit-button btn btn-primary" %}
+                {% submit_tag "Publier votre commentaire, class:"submit-button btn btn-primary" %}
               {% else %}
-                {% submit_tag "Post your comment", class:"submit-button btn btn-default hide" %}
+                {% submit_tag "Publier votre commentaire", class:"submit-button btn btn-default hide" %}
               {% endif %}
             </div>
             <div class="col-md-6">
               {% if request.logged_in? and site.has_rule_page? %}
-              <div class="review-rules padtopless"><a href="{{ site.rule_page.url }}">Review the site rules</a></div>
-              {% endif %}            
+              <div class="review-rules padtopless"><a href="{{ site.rule_page.url }}">Relire les règles du site</a></div>
+              {% endif %}
             </div>
           </div>
 

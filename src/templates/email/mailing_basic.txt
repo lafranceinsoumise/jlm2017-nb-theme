@@ -2,7 +2,7 @@
 
 -=-=-
 {{ settings.official_name }}{% if settings.has_address? %} - {{ settings.address.one_line }} {% endif %}
-This email was sent to {{ recipient.email }}.  To stop receiving emails: {{ settings.site.unsubscribe_url }}
+Cet email a été envoyé à {{ recipient.email }}.  Pour arrêter de recevoir des emails : {{ settings.site.unsubscribe_url }}
 -=-=-
 
-Created with NationBuilder - http://nationbuilder.com/
+Créé avec NationBuilder - http://nationbuilder.com/

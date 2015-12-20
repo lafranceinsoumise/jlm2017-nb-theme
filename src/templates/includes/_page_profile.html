@@ -81,12 +81,12 @@
       {% if page_profile.donations_count < 1 %}
       <div class="bar-text">0%</div>
       {% else %}
-      <div class="bar-text">{{ page_profile.donations_amount_format }} raised</div>
+      <div class="bar-text">{{ page_profile.donations_amount_format }} récoltés</div>
       {% endif %}
     </div>
   </div>
 
-<div class="bar-goal">GOAL: {{ page_profile.donation.amount_goal_format }}</div>
+<div class="bar-goal">OBJECTIF&nbsp;: {{ page_profile.donation.amount_goal_format }}</div>
 
 </div>
 
@@ -98,12 +98,12 @@
         {% if page_profile.donations_count < 2 %}
         <div class="bar-text">0</div>
         {% else %}
-        <div class="bar-text">{{ page_profile.donations_count }} donors</div>
+        <div class="bar-text">{{ page_profile.donations_count }} donateurs</div>
         {% endif %}
     </div>
   </div>
 
-<div class="bar-goal">{{ page_profile.donation.donor_goal }} donors</div>
+<div class="bar-goal">{{ page_profile.donation.donor_goal }} donateurs</div>
 
 </div>
 {% endif %}
@@ -112,7 +112,7 @@
 {{ page_profile.donation.content }}
 {% endif %}
 
-<a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Donate</a>
+<a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Faire un don</a>
 
 {% when 'Endorsement' %}
 
@@ -124,7 +124,7 @@
   {{ page_profile.endorsement.content }}
 {% endif %}
 
-<a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Endorse</a>
+<a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Soutenir</a>
 
 {% when 'Event' %}
 
@@ -133,7 +133,7 @@
 {% endif %}
 
 <div class="event-detail">
-  <div class="subhead">WHEN</div>
+  <div class="subhead">QUAND</div>
   <div class="subtext">
     {% if page_profile.event.is_multi_day? %}
     {{ page_profile.event.local_start_at | event_time }} - {{ page_profile.event.local_end_at | event_time }}
@@ -146,7 +146,7 @@
 {% if page_profile.event.has_venue? %}
 
 <div class="event-detail">
-  <div class="subhead">WHERE</div>
+  <div class="subhead">OÙ</div>
   <div class="subtext">
     {% if page_profile.event.venue_name.size > 0 %}
     {{ page_profile.event.venue_name }}<br/>
@@ -155,7 +155,7 @@
     {{ line }}<br/>
     {% endfor %}
     {% if page_profile.event.has_venue_address? %}
-    <a href="{{ page_profile.event.venue_address.google_map_link }}">Google map and directions</a>
+    <a href="{{ page_profile.event.venue_address.google_map_link }}">Carte et itinéraires</a>
     {% endif %}
   </div>
 </div>
@@ -171,13 +171,13 @@
 {% if page_profile.event.is_ticket_required? or page_profile.event.is_user_ticket_required? %} &middot; {% endif %}
 
 {% if page_profile.event.show_guests? and page_profile.event.rsvps_count > 0 %}
-<a href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">{{ page_profile.event.rsvps_count }} rsvp{% if page_profile.event.rsvps_count > 1 %}s{% endif %}</a>
+<a href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">{{ page_profile.event.rsvps_count }} participant.e{% if page_profile.event.rsvps_count > 1 %}.s{% endif %}</a>
 {% endif %}
 
 {% if page_profile.event.is_maximum_capacity? %}
-  <a class="btn btn-danger" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">sold out</a>
+  <a class="btn btn-danger" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">plus de place</a>
 {% elsif page_profile.event.is_past? == false %}
-  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">rsvp</a>
+  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Je participe</a>
 {% endif %}
 
 {% when 'FAQ' %}
@@ -272,14 +272,14 @@
 
 {% if page_profile.moneybomb.has_start_at? and page_profile.moneybomb.is_active? == false and page_profile.moneybomb.is_past? == false %}
 <div class="event-detail">
-  <div class="subhead" style="text-transform: uppercase;">COUNTDOWN TO {{ page_profile.moneybomb.local_start_at | moneybomb_time }}</div>
+  <div class="subhead" style="text-transform: uppercase;">COMPTE À REBOURS {{ page_profile.moneybomb.local_start_at | moneybomb_time }}</div>
   <div class="subtext">
     <div id="pre_countdown_{{ page_profile.slug }}" class="countdown"></div>
   </div>
 </div>
 {% elsif page_profile.moneybomb.is_active? %}
 <div class="event-detail">
-  <div class="subhead" style="text-transform: uppercase;">TIME LEFT TO DONATE</div>
+  <div class="subhead" style="text-transform: uppercase;">TEMPS RESTANT POUR DONNER</div>
   <div class="subtext">
     <div id="active_countdown_{{ page_profile.slug }}" class="countdown"></div>
   </div>
@@ -295,7 +295,7 @@
       {% if page_profile.pledges_count < 1 %}
       <div class="bar-text">0</div>
       {% else %}
-      <div class="bar-text">{{ page_profile.pledges_amount_format }} pledged</div>
+      <div class="bar-text">{{ page_profile.pledges_amount_format }} promis</div>
       {% endif %}
       </div>
      </div>
@@ -312,12 +312,12 @@
       {% if page_profile.pledges_count < 2 %}
       <div class="bar-text">0</div>
       {% else %}
-      <div class="bar-text">{{ page_profile.pledges_count }} pledgers</div>
+      <div class="bar-text">{{ page_profile.pledges_count }} donateurs</div>
       {% endif %}
       </div>
      </div>
 
-    <div class="bar-goal">{{ page_profile.moneybomb.pledger_goal }} PLEDGERS</div>
+    <div class="bar-goal">{{ page_profile.moneybomb.pledger_goal }} DONATEURS</div>
 
 </div>
 
@@ -342,9 +342,9 @@
 </script>
 
 {% if page_profile.moneybomb.is_active? %}
-  <a class="btn btn-default submit-link" href="{{ page_profile.moneybomb.donation_page.url }}">Donate now</a>
+  <a class="btn btn-default submit-link" href="{{ page_profile.moneybomb.donation_page.url }}">Donner maintenant</a>
 {% else %}
-  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Pledge now</a>
+  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">S'engager à donner maintenant</a>
 {% endif %}
 
 {% when 'Paid Membership' %}
@@ -357,7 +357,7 @@
 
   {% for membership_option in page_profile.paid_membership.membership_options %}
 
-  <strong><a href="{{ membership_option.purchase_url }}">{{ membership_option.membership_level_name }}</strong></a>: Purchase for <a href="{{ membership_option.purchase_url }}">{{ membership_option.amount }} every {% if membership_option.num_time_periods > 1 %}{{ membership_option.num_time_periods }}{% endif %} {{ membership_option.time_period_type | downcase }}</a>
+  <strong><a href="{{ membership_option.purchase_url }}">{{ membership_option.membership_level_name }}</strong></a>: Acheter pour <a href="{{ membership_option.purchase_url }}">{{ membership_option.amount }} chaque {% if membership_option.num_time_periods > 1 %}{{ membership_option.num_time_periods }}{% endif %} {{ membership_option.time_period_type | downcase }}</a>
   <br/>
 
   {% endfor %}
@@ -393,7 +393,7 @@
 </div>
 {% endif %}
 
-  <a class="submit-link submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Add {{ page_profile.petition.signature_name }}</a>
+  <a class="submit-link submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Ajouter {{ page_profile.petition.signature_name }}</a>
 
 {% when 'Political Capital' %}
 
@@ -410,7 +410,7 @@
   <div class="contact">
 
     <div class="contact-name">
-      Contact: {{ page_profile.author.published_name }}
+      Contact&nbsp;: {{ page_profile.author.published_name }}
     </div>
     {% if page_profile.author.has_phone? %}
     <div class="contact-phone">
@@ -437,7 +437,7 @@
 {% if page_profile.question.answer.size > 0 %}
 <div class="row padtopmore">
   <div class="col-md-12">
-    <div class="answer-wrap panel panel-default"><div class="answer-a panel-heading">Answer</div><div class="answer panel-body">{{ page_profile.question.answer }}</div></div>
+    <div class="answer-wrap panel panel-default"><div class="answer-a panel-heading">Réponse</div><div class="answer panel-body">{{ page_profile.question.answer }}</div></div>
   </div>
 </div>
 {% endif %}
@@ -449,7 +449,7 @@
 {{ page_profile.recruiting.content }}
 {% endif %}
 
-  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Start recruiting</a>
+  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Commencer à recruter</a>
 
 {% when 'Redirect' %}
 
@@ -475,7 +475,7 @@
 {{ page_profile.signup.content }}
 {% endif %}
 
-  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Sign up</a>
+  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">S'inscrire</a>
 
 {% when 'Suggestion Box' %}
 
@@ -492,7 +492,7 @@
 
 {% if page_profile.suggestion.is_answered? %}
   <div class="answer clearfix">
-    <strong>Official response from {{ page_profile.suggestion.answer_author.published_name_linked }}</strong>
+    <strong>Réponse officielle de {{ page_profile.suggestion.answer_author.published_name_linked }}</strong>
       {% if page_profile.suggestion.is_answer_type? %}
       {{ page_profile.suggestion.answer_type_html }}
       {% endif %}
@@ -508,7 +508,7 @@
 {{ page_profile.survey.content }}
 {% endif %}
 
-  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Take the survey</a>
+  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Participer au sondage</a>
 
 {% when 'Unsubscribe' %}
 
@@ -520,7 +520,7 @@
   {{ page_profile.volunteer_signup.content }}
   {% endif %}
 
-  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Become a volunteer</a>
+  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Devenir bénévole</a>
 
 {% when 'Vote Pledge' %}
 
@@ -533,7 +533,7 @@
       {% if page_profile.vote_pledge.yes_votes_count < 2 %}
       <div class="bar-text">0</div>
       {% else %}
-      <div class="bar-text">{{ page_profile.vote_pledge.yes_votes_count | number_with_commas }} VOTES FOUND</div>
+      <div class="bar-text">{{ page_profile.vote_pledge.yes_votes_count | number_with_commas }} VOTES TROUVÉS</div>
       {% endif %}
      </div>
    </div>
@@ -549,7 +549,7 @@
 {{ page_profile.vote_pledge.content }}
 {% endif %}
 
-  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Pledge your vote</a>
+  <a class="btn btn-default submit-link" href="{{ page_profile.url | recruiter_url recruiter_id:profile.id }}">Engagez-vous à voter</a>
 
 {% when 'Voter Registration' %}
 

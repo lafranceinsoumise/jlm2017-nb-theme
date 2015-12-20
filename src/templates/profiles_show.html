@@ -29,11 +29,11 @@
       {% endif %}
       {% endif %}
       {% if profile.rule_violations_count == 1 %}
-      <span class=""> {{ "fugue-flag-yellow" | icon }} Warning</span>
+      <span class=""> {{ "fugue-flag-yellow" | icon }} Avertissement</span>
       {% elsif profile.rule_violations_count == 2 %}
-      <span class=""> {{ "fugue-flag" | icon }} 1 violation</span>
+      <span class=""> {{ "fugue-flag" | icon }} 1 infraction</span>
       {% elsif profile.rule_violations_count == 3 %}
-      <span class=""> {{ "fugue-flag-gray" | icon }} 2 violations</span>
+      <span class=""> {{ "fugue-flag-gray" | icon }} 2 infractions</span>
       {% endif %}
       <div class="signup-follow-{{ profile.id }}">
         {% include "signup_follow" with profile %}
@@ -61,7 +61,7 @@
               {% if profile.donations_raised_amount_in_cents == 0 %}
               <div class="bar-text">0%</div>
               {% else %}
-              <div class="bar-text">{{ profile.donations_raised_amount_format }} raised</div>
+              <div class="bar-text">{{ profile.donations_raised_amount_format }} récoltés</div>
               {% endif %}
             </div>
           </div>
@@ -75,7 +75,7 @@
         {% if site.has_button1? %}
         {% if site.button1_page.type_name == 'Donation' %}
         <div class="padbottomless padtopless">
-          <strong>Donate on behalf of {{ profile.published_name }}:</strong>
+          <strong>Donner au nom de {{ profile.published_name }}:</strong>
         </div>
         {% endif %}
         <a class="submit-button btn btn-default" href="{{ site.button1_page.full_url_with_profile_recruiter }}">{{ site.button1_text }}</a>
@@ -96,7 +96,7 @@
 
 {% if profile.most_recent_posts.size > 0 %}
 
-<h4 class="padtopmore">{{ profile.published_name }}'s activity stream</h4>
+<h4 class="padtopmore">Fil d'activité de {{ profile.published_name }}</h4>
 
 <hr/>
 

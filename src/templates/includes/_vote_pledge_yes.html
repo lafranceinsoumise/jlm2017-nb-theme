@@ -1,11 +1,11 @@
 {% form_for vote_pledge %}
 
 <h4>
-  Yes, I will
+  Oui, je vais
   {% if vote_pledge.could_vote? %}
-  vote for
+  voter pour
   {% else %}
-  support
+  soutenir
   {% endif %}
   {{ site.candidate_first_name_or_site_name }}.
 </h4>
@@ -22,8 +22,8 @@
 {% else %}
   {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
   <div class="row">
-    <div class="col-md-6"><div class="form-group"><label for="vote_pledge_first_name">First Name</label>{% text_field "first_name", class:"text form-control" %}</div></div>
-    <div class="col-md-6"><div class="form-group"><label for="vote_pledge_last_name">Last Name</label>{% text_field "last_name", class:"text form-control" %}</div></div>
+    <div class="col-md-6"><div class="form-group"><label for="vote_pledge_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
+    <div class="col-md-6"><div class="form-group"><label for="vote_pledge_last_name">Nom</label>{% text_field "last_name", class:"text form-control" %}</div></div>
   </div>
   {% endif %}
 
@@ -31,14 +31,14 @@
   <div class="row">
     <div class="col-md-6"><div class="form-group"><label for="vote_pledge_email">Email</label>{% email_field "email", class:"text form-control" %}</div></div>
     {% if site.ask_for_mobiles? %}
-    <div class="col-md-6"><div class="form-group"><label for="vote_pledge_mobile_number">Mobile phone (optional)</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
+    <div class="col-md-6"><div class="form-group"><label for="vote_pledge_mobile_number">Numéro de portable (optionnel)</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
     {% endif %}
   </div>
 
   <div class="row">
-    <div class="col-md-6"><div class="checkbox"><label for="vote_pledge_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Send me email updates</label></div></div>
+    <div class="col-md-6"><div class="checkbox"><label for="vote_pledge_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Recevoir des informations par mail</label></div></div>
     {% if site.ask_for_mobiles? %}
-    <div class="col-md-6"><div class="checkbox"><label for="vote_pledge_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Send me text message updates</label></div></div>
+    <div class="col-md-6"><div class="checkbox"><label for="vote_pledge_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Recevoir des informations par SMS</label></div></div>
     {% endif %}
   {% endif %}
   </div>
@@ -46,22 +46,22 @@
 
 {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
 <div class="row">
-  <div class="col-md-12"><div class="form-group"><label for="vote_pledge_submitted_address">Address (Street, City, Postal code) -- to see if you can vote</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
+  <div class="col-md-12"><div class="form-group"><label for="vote_pledge_submitted_address">Adresse (Rue, Ville, Code postal) -- pour voir si vous pouvez voter</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
 </div>
 {% endif %}
 
 {% if (request.sorta_logged_in? == false or request.current_signup.is_volunteer == false) and site.ask_for_volunteers? %}
 <div class="row">
-  <div class="col-md-12"><div class="checkbox"><label for="vote_pledge_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} I want to volunteer</label></div></div>
+  <div class="col-md-12"><div class="checkbox"><label for="vote_pledge_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} Je veux être bénévole</label></div></div>
 </div>
 {% endif %}
 
 <div class="row">
-  <div class="col-md-12"><div class="form-group"><label for="vote_pledge_content">Comments (optional)</label>{% text_area "content", class:"textarea form-control" %}</div></div>
+  <div class="col-md-12"><div class="form-group"><label for="vote_pledge_content">Commentaires (optionnel)</label>{% text_area "content", class:"textarea form-control" %}</div></div>
 </div>
 {% if site.ask_to_publish_to_stream? %}
 <div class="row">
-  <div class="col-md-12"><div class="checkbox"><label for="vote_pledge_is_private">{% check_box "is_private", class:"checkbox" %} Don't publish this on the website</label></div></div>
+  <div class="col-md-12"><div class="checkbox"><label for="vote_pledge_is_private">{% check_box "is_private", class:"checkbox" %} Ne pas rendre cela public sur le site</label></div></div>
 </div>
 {% endif %}
 

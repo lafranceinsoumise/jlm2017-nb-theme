@@ -23,8 +23,8 @@
 
   {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
   <div class="row">
-    <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_first_name">First Name</label>{% text_field "first_name", class:"text form-control" %}</div></div>
-    <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_last_name">Last Name</label>{% text_field "last_name", class:"text form-control" %}</div></div>
+    <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
+    <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_last_name">Nom</label>{% text_field "last_name", class:"text form-control" %}</div></div>
   </div>
   {% endif %}
 
@@ -32,42 +32,42 @@
   <div class="row">
     <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_email">Email</label>{% email_field "email", class:"text form-control" %}</div></div>
     {% if site.ask_for_mobiles? %}
-    <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_mobile_number">Mobile phone (optional)</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
+    <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_mobile_number">Numéro de portable (optionnel)</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
     {% endif %}
   </div>
 
   <div class="row">
-    <div class="col-md-6"><div class="checkbox"><label for="volunteer_signup_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Send me email updates</label></div>
+    <div class="col-md-6"><div class="checkbox"><label for="volunteer_signup_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Recevoir des informations par email</label></div>
     </div>
     {% if site.ask_for_mobiles? %}
-    <div class="col-md-6"><div class="checkbox"><label for="volunteer_signup_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Send me text messages</label></div>
+    <div class="col-md-6"><div class="checkbox"><label for="volunteer_signup_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Recevoir des informations par SMS</label></div>
     </div>
     {% endif %}
   </div>
   {% endif %}
   {% if homepage_excerpt.volunteer_signup.is_phone? %}
   <div class="row">
-    <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_phone_number">Phone</label>{% phone_field "phone_number", class:"text form-control" %}</div></div>
-    <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_phone_time">When is a good time to call?</label>{% text_field "phone_time", class:"text form-control" %}</div></div>
+    <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_phone_number">Téléphone</label>{% phone_field "phone_number", class:"text form-control" %}</div></div>
+    <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_phone_time">À quel moment préférez-vous être appelé.e&nbsp;</label>{% text_field "phone_time", class:"text form-control" %}</div></div>
   </div>
   {% endif %}
 
   {% if homepage_excerpt.volunteer_signup.is_address? %}
   {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
   <div class="row">
-    <div class="col-md-12"><div class="form-group"><label for="volunteer_signup_submitted_address">Address (Street, City, State, Postal code)</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
+    <div class="col-md-12"><div class="form-group"><label for="volunteer_signup_submitted_address">Adresse (Rue, Ville, Département, Code postal)</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
   </div>
   {% endif %}
   {% endif %}
 
   {% if site.ask_to_publish_to_stream? %}
   <div class="row">
-    <div class="col-md-12"><div class="checkbox"><label for="volunteer_signup_is_private">{% check_box "is_private", class:"checkbox" %} Don't publish this on the website</label></div>
+    <div class="col-md-12"><div class="checkbox"><label for="volunteer_signup_is_private">{% check_box "is_private", class:"checkbox" %} Ne pas rendre cela public sur le site</label></div>
     </div>
   </div>
   {% endif %}
 
-  {% submit_tag "Save volunteer info", class:"submit-button btn btn-primary" %}
+  {% submit_tag "Sauvegarder mes infos de bénévole", class:"submit-button btn btn-primary" %}
   <div class="form-submit"></div>
 
   {% endform_for %}

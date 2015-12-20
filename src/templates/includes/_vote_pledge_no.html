@@ -1,11 +1,11 @@
 {% form_for vote_pledge %}
 
   <h4>
-    No, I will not
+    Non, je ne vais pas
     {% if vote_pledge.could_vote? %}
-    vote for
+    voter pour
     {% else %}
-    support
+    soutenir
     {% endif %}
     {{ site.candidate_first_name_or_site_name }}.
   </h4>
@@ -18,13 +18,13 @@
 <div class="form-errors">{% error_messages_for vote_pledge %}</div>
 
 <div class="row">
-  <div class="col-md-12"><div class="checkbox"><label for="vote_pledge_do_not_contact">{% check_box "do_not_contact", class:"checkbox" %} Do not contact me</label></div></div>
+  <div class="col-md-12"><div class="checkbox"><label for="vote_pledge_do_not_contact">{% check_box "do_not_contact", class:"checkbox" %} Ne pas me contacter</label></div></div>
 </div>
 
 {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
 <div class="row">
-  <div class="col-md-6"><div class="form-group"><label for="vote_pledge_first_name">First Name</label>{% text_field "first_name", class:"text form-control" %}</div></div>
-  <div class="col-md-6"><div class="form-group"><label for="vote_pledge_last_name">Last Name</label>{% text_field "last_name", class:"text form-control" %}</div></div>
+  <div class="col-md-6"><div class="form-group"><label for="vote_pledge_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
+  <div class="col-md-6"><div class="form-group"><label for="vote_pledge_last_name">Nom</label>{% text_field "last_name", class:"text form-control" %}</div></div>
 </div>
 {% endif %}
 
@@ -36,11 +36,11 @@
 
 {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
 <div class="row">
-  <div class="col-md-12"><div class="form-group"><label for="vote_pledge_submitted_address">Address (Street, City, Postal code) -- to see if you can vote</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
+  <div class="col-md-12"><div class="form-group"><label for="vote_pledge_submitted_address">Adresse (Rue, Ville, Code postal) -- pour voir si vous pouvez voter</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
 </div>
 {% endif %}
 
-{% submit_tag "Save settings", class:"submit-button btn btn-primary" %}
+{% submit_tag "Sauvegarder les réglages", class:"submit-button btn btn-primary" %}
 <div class="form-submit"></div>
 
 {% endform_for %}
