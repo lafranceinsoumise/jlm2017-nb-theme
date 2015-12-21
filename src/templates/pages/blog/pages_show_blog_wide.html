@@ -22,7 +22,7 @@
               {% text_area "content_editable", class:"textarea form-control textarea-tinymce" %}
             </div>
             <div class="padtop">
-              {% submit_tag "Post", class:"submit-button btn btn-primary" %}
+              {% submit_tag "Publier", class:"submit-button btn btn-primary" %}
               <div class="form-submit"></div>
             </div>
           </div>
@@ -43,13 +43,13 @@
       <h3><a href="{{ post.url }}">{{ post.headline }}</a></h3>
 
       <div class="byline">
-        Posted by {{ post.author.published_name_linked }} &middot; {{ post.published_at | date: '%B %d, %Y %l:%M %p' }}
+        Publié par {{ post.author.published_name_linked }} &middot; {{ post.published_at | date: '%B %d, %Y %l:%M %p' }}
       </div>
 
       <div class="excerpt">
         {{ post.blog_post.content }}
         {% if post.blog_post.is_extended? %}
-        <span class='read-more'><a href='{{ post.url }}'>Read more</a></span>
+        <span class='read-more'><a href='{{ post.url }}'>Lire la suite</a></span>
         {% endif %}
       </div>
 
@@ -58,12 +58,12 @@
         {% if post.public_activities_count > 0 %}
           {{ post.public_activities_count }} reaction{% if post.public_activities_count > 1 %}s{% endif %}
         {% else %}
-          Add your reaction
+          Réagir
         {% endif %}
       </a>
       {% endif %}
 
-      {{ "Share" | share_button page_id: post.id | replace:'button small-button','btn btn-default small-btn' }}
+      {{ "Partager" | share_button page_id: post.id | replace:'button small-button','btn btn-default small-btn' }}
     </div>
 
     <hr/>

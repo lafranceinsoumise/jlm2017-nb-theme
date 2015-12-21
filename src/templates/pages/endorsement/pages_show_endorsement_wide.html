@@ -30,14 +30,14 @@
         {% if page.endorsement.endorsements_count < 2 %}
         <div class="bar-text">0%</div>
         {% else %}
-        <div class="bar-text">{{ page.endorsement.endorsements_count | number_with_commas }} endorsements</div>
+        <div class="bar-text">{{ page.endorsement.endorsements_count | number_with_commas }} soutiens</div>
         {% endif %}
       </div>
     </div>
-    <div class="bar-goal">{{ page.endorsement.goal | number_with_commas }} endorsements</div>
+    <div class="bar-goal">{{ page.endorsement.goal | number_with_commas }} soutiens</div>
   </div>
   {% elsif page.endorsement.endorsements_count > 4 %}
-  <p><strong>{{ page.endorsement.endorsements_count | number_with_commas }} endorsements</strong></p>
+  <p><strong>{{ page.endorsement.endorsements_count | number_with_commas }} soutiens</strong></p>
   {% endif %}
 
   {% if page.endorsement.is_signed? %}
@@ -48,14 +48,14 @@
   <div class="form-wrap">
     <div class="form">
 
-      <h3 class="padbottommore">Thank you for signing!</h3>
+      <h3 class="padbottommore">Merci d'avoir signé&nbsp;!</h3>
 
       <div class="form-errors">{% error_messages_for endorsements %}</div>
 
       {% if page.is_commentable? %}
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="endorsement_content">Change your comment</label>{% text_area "content", class:"textarea form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="endorsement_content">Changer votre commentaire</label>{% text_area "content", class:"textarea form-control" %}</div></div>
 
       </div>
       {% endif %}
@@ -63,7 +63,7 @@
       {% if page.endorsement.is_image? %}
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="endorsement_image">Upload a {% if page.endorsement.require_organization? %}logo{% else %}picture{% endif %} (140x140)</label>{% file_field "image", class:"file" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="endorsement_image">Télécharger {% if page.endorsement.require_organization? %}un logo{% else %}une photo{% endif %} (140x140)</label>{% file_field "image", class:"file" %}</div></div>
 
       </div>
       {% if endorsement.has_image? %}
@@ -77,10 +77,10 @@
       {% endif %}
 
       {% if page.is_commentable? %}
-      {% submit_tag "Update endorsement", class:"btn btn-primary submit-button" %}
+      {% submit_tag "Mettre à jour le soutien", class:"btn btn-primary submit-button" %}
       {% endif %}
 
-      {{ page.endorsement.current_endorsement | delete_link message: "Remove endorsement" class_name: "btn btn-danger" }}
+      {{ page.endorsement.current_endorsement | delete_link message: "Enlever son soutien" class_name: "btn btn-danger" }}
 
       <div class="form-submit"></div>
 
@@ -97,18 +97,18 @@
     <div class="form">
 
       {% if request.sorta_logged_in? %}
-      <h4 class="padbottommore">Hi {{ request.current_signup.name_or_email }}, will {% if page.endorsement.require_organization? %}your organization{% else %}you{% endif %} endorse?</h4>
+      <h4 class="padbottommore">Bonjour {{ request.current_signup.name_or_email }}, {% if page.endorsement.require_organization? %}votre organisation va-t-elle apporter son{% else %}voulez-vous apporter votre{% endif %} soutien&nbsp;?</h4>
 
       {% if request.logged_in? == false %}
       <div class="padbottommore">
-        If you're not {{ request.current_signup.name_or_email }},
-        <a href="{{ request.current_signup.logout_url }}">click here</a>.
+        Si vous n'êtes pas {{ request.current_signup.name_or_email }},
+        <a href="{{ request.current_signup.logout_url }}">cliquez ici</a>.
       </div>
       {% endif %}
 
       {% else %}
 
-      <h4 class="padbottommore">Will {% if page.endorsement.require_organization? %}your organization{% else %}you{% endif %} endorse?</h4>
+      <h4 class="padbottommore">{% if page.endorsement.require_organization? %}Votre organisation va-t-elle apporter son{% else %}Voulez-vous apporter votre{% endif %} soutien&nbsp;?</h4>
 
       {% endif %}
 
@@ -119,14 +119,14 @@
       {% if page.endorsement.is_organization? %}
       <div class="row">
 
-        <div class="col-md-6"><div class="form-group"><label for="endorsement_employer">Organization / Company</label>{% text_field "employer", class:"text form-control" %}</div></div>
-        <div class="col-md-6"><div class="form-group"><label for="endorsement_occupation">Your Title</label>{% text_field "occupation", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="endorsement_employer">Organisation / Entreprise</label>{% text_field "employer", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="endorsement_occupation">Votre titre</label>{% text_field "occupation", class:"text form-control" %}</div></div>
 
       </div>
 
       <div class="row">
 
-        <div class="col-md-12"><div class="checkbox"><label for="endorsement_is_organization">{% check_box "is_organization", class:"checkbox" %} My organization is making the endorsement</label>
+        <div class="col-md-12"><div class="checkbox"><label for="endorsement_is_organization">{% check_box "is_organization", class:"checkbox" %} Mon organisation apporte son soutien</label>
         </div>
 
       </div>
@@ -135,8 +135,8 @@
       {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
       <div class="row">
 
-        <div class="col-md-6"><div class="form-group"><label for="endorsement_first_name">First Name</label>{% text_field "first_name", class:"text form-control" %}</div></div>
-        <div class="col-md-6"><div class="form-group"><label for="endorsement_last_name">Last Name</label>{% text_field "last_name", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="endorsement_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="endorsement_last_name">Nom</label>{% text_field "last_name", class:"text form-control" %}</div></div>
 
       </div>
       {% endif %}
@@ -146,8 +146,8 @@
       {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
       <div class="row">
 
-        <div class="col-md-6"><div class="form-group"><label for="endorsement_first_name">First Name</label>{% text_field "first_name", class:"text form-control" %}</div></div>
-        <div class="col-md-6"><div class="form-group"><label for="endorsement_last_name">Last Name</label>{% text_field "last_name", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="endorsement_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="endorsement_last_name">Nom</label>{% text_field "last_name", class:"text form-control" %}</div></div>
 
       </div>
       {% endif %}
@@ -159,17 +159,17 @@
 
         <div class="col-md-6"><div class="form-group"><label for="endorsement_email">Email</label>{% email_field "email", class:"text form-control" %}</div></div>
         {% if site.ask_for_mobiles? %}
-        <div class="col-md-6"><div class="form-group"><label for="endorsement_mobile_number">Mobile phone (optional)</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="endorsement_mobile_number">Numéro de portable (optionnel)</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
         {% endif %}
 
       </div>
 
       <div class="row">
 
-        <div class="col-md-6"><div class="checkbox"><label for="endorsement_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Send me email updates</label>
+        <div class="col-md-6"><div class="checkbox"><label for="endorsement_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Recevoir des informations par email</label>
         </div>
         {% if site.ask_for_mobiles? %}
-        <div class="col-md-6"><div class="checkbox"><label for="endorsement_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Send me text message updates</label>
+        <div class="col-md-6"><div class="checkbox"><label for="endorsement_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Recevoir des informations par SMS</label>
         </div>
         {% endif %}
 
@@ -179,17 +179,17 @@
       {% if page.endorsement.is_organization? and page.endorsement.require_organization? == false %}
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="endorsement_employer">Organization / Company (optional)</label>{% text_field "employer", class:"text form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="endorsement_employer">Organisation / Entreprise (optionnel)</label>{% text_field "employer", class:"text form-control" %}</div></div>
 
       </div>
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="endorsement_occupation">Your Title (optional)</label>{% text_field "occupation", class:"text form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="endorsement_occupation">Votre titre (optionnel)</label>{% text_field "occupation", class:"text form-control" %}</div></div>
 
       </div>
       <div class="row">
 
-        <div class="col-md-12"><div class="checkbox"><label for="endorsement_is_organization">{% check_box "is_organization", class:"checkbox" %} My organization is making the endorsement</label>
+        <div class="col-md-12"><div class="checkbox"><label for="endorsement_is_organization">{% check_box "is_organization", class:"checkbox" %} Mon organisation apporte son soutien</label>
         </div>
 
       </div>
@@ -198,7 +198,7 @@
       {% if page.endorsement.is_phone? %}
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="endorsement_phone_number">Phone</label>{% phone_field "phone_number", class:"text form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="endorsement_phone_number">Téléphone</label>{% phone_field "phone_number", class:"text form-control" %}</div></div>
 
       </div>
       {% endif %}
@@ -207,7 +207,7 @@
       {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="endorsement_submitted_address">Address (Street, City, State, Postal code)</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="endorsement_submitted_address">Adresse (Rue, Ville, Département, Code postal)</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
 
       </div>
       {% endif %}
@@ -215,7 +215,7 @@
       {% if page.is_commentable? %}
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="endorsement_content">Comments (optional)</label>{% text_area "content", class:"textarea form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="endorsement_content">Commentaires (optionnel)</label>{% text_area "content", class:"textarea form-control" %}</div></div>
 
       </div>
       {% endif %}
@@ -223,7 +223,7 @@
       {% if page.endorsement.is_image? %}
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="endorsement_image">Upload a {% if page.endorsement.require_organization? %}logo{% else %}picture{% endif %} (140x140)</label>{% file_field "image", class:"file" %}
+        <div class="col-md-12"><div class="form-group"><label for="endorsement_image">Télécharger un/e {% if page.endorsement.require_organization? %}logo{% else %}image{% endif %} (140x140)</label>{% file_field "image", class:"file" %}
         </div>
 
       </div>
@@ -233,14 +233,14 @@
       {% if request.sorta_logged_in? == false or request.current_signup.is_volunteer == false %}
       <div class="row">
 
-        <div class="col-md-12"><div class="checkbox"><label for="endorsement_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} I want to volunteer</label>
+        <div class="col-md-12"><div class="checkbox"><label for="endorsement_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} Je veux être bénévole</label>
         </div>
 
       </div>
       {% endif %}
       {% endif %}
 
-      {% submit_tag "Add endorsement", class:"btn btn-primary submit-button" %}
+      {% submit_tag "Ajouter un soutien", class:"btn btn-primary submit-button" %}
       <div class="form-submit"></div>
 
     </div>
@@ -264,14 +264,14 @@
   {% endif %}
 
   <div class="like-page">
-    <strong>Like this to spread the word:</strong>
+    <strong>Aimez cela pour diffuser le message&nbsp;:</strong>
     {% include "like_page" %}
   </div>
 
 
   {% if page.endorsement.featured_endorsements.size > 0 %}
 
-  <div class="padtop"><h4>Featured endorsements</h4></div>
+  <div class="padtop"><h4>Soutiens à la une</h4></div>
 
   {% if page.endorsement.is_image? %}
 
