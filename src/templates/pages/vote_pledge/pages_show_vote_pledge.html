@@ -24,7 +24,7 @@
         {% if page.vote_pledge.yes_votes_count < 2 %}
         <div class="bar-text">0</div>
         {% else %}
-        <div class="bar-text">{{ page.vote_pledge.yes_votes_count | number_with_commas }} VOTES FOUND</div>
+        <div class="bar-text">{{ page.vote_pledge.yes_votes_count | number_with_commas }} VOTES TROUVÉS</div>
         {% endif %}
       </div>
     </div>
@@ -38,25 +38,25 @@
 
   {% if page.vote_pledge.is_pledged? %}
 
-  <h3>You
+  <h3>Vous
     {% if page.vote_pledge.current_vote_pledge.is_no? %}
-    pledged not
+    ne vous êtes pas engagé.e
     {% elsif page.vote_pledge.current_vote_pledge.is_unsure? %}
-    said you were not sure whether
+    avez dit que vous se saviez pas si vous alliez
     {% elsif page.vote_pledge.current_vote_pledge.is_yes? %}
-    pledged
+    vous engager
     {% endif %}
-    to
+    à
     {% if page.vote_pledge.current_vote_pledge.could_vote? %}
-    vote for
+    voter pour
     {% else %}
-    support
+    soutenir
     {% endif %}
     {{ site.candidate_first_name_or_site_name }}.
   </h3>
 
   <div class="padtop">
-    {{ page.vote_pledge.current_vote_pledge | delete_link message: "Remove pledge" class_name: "btn btn-danger" }}
+    {{ page.vote_pledge.current_vote_pledge | delete_link message: "Supprimer l'engagement" class_name: "btn btn-danger" }}
   </div>
 
   {% else %}
@@ -69,20 +69,20 @@
 
         <div class="row">
           <div class="col-md-12">
-            <a href="{{ page.vote_pledge.yes_url }}" class="btn btn-success submit-link get">Yes</a> I support {{ site.candidate_first_name_or_site_name }}.
+            <a href="{{ page.vote_pledge.yes_url }}" class="btn btn-success submit-link get">Oui</a> je soutiens {{ site.candidate_first_name_or_site_name }}.
           </div>
         </div>
 
         <div class="row padtopmore">
           <div class="col-md-12">
-            <a href="{{ page.vote_pledge.unsure_url }}" class="btn btn-warning neutral-link get"> I might</a> support {{ site.candidate_first_name_or_site_name }},
-            <a href="{{ site.full_url}}">tell me more</a>.
+            <a href="{{ page.vote_pledge.unsure_url }}" class="btn btn-warning neutral-link get"> Je pourrais</a> soutenir {{ site.candidate_first_name_or_site_name }},
+            <a href="{{ site.full_url}}">dites-m'en plus</a>.
           </div>
         </div>
 
         <div class="row padtopmore">
           <div class="col-md-12">
-            <a href="{{ page.vote_pledge.no_url }}" class="btn btn-danger get">No</a> I do not support {{ site.candidate_first_name_or_site_name }}.
+            <a href="{{ page.vote_pledge.no_url }}" class="btn btn-danger get">Non</a> je ne soutiens pas {{ site.candidate_first_name_or_site_name }}.
           </div>
         </div>
 
@@ -92,7 +92,7 @@
 
     {% if page.text_keyword_instructions.size > 0 %}
     <div class="padbottom padtopmore">
-      or {{ page.text_keyword_instructions }}
+      ou {{ page.text_keyword_instructions }}
     </div>
     {% endif %}
 
@@ -107,7 +107,7 @@
   {% endif %}
 
   <div class="like-page">
-    <strong>Like this to spread the word</strong>
+    <strong>Aimez cela pour diffuser le message&nbsp;:</strong>
     {% include "like_page" %}
   </div>
 

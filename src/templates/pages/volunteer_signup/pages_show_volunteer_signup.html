@@ -22,25 +22,25 @@
       {% if request.sorta_logged_in? %}
 
       {% if request.current_signup.is_volunteer? %}
-      <h4>Hi {{ request.current_signup.name_or_email }}, we have you down as a volunteer.</h4>
+      <h4>Bonjour {{ request.current_signup.name_or_email }}, nous vous avons enregisté.e comme bénévole.</h4>
 
       <div class="padtop">
-        You can update your info below.
+        Vous pouvez mettre à jour vos informations ci-dessus.
       </div>
       {% else %}
-      <h4>Hi {{ request.current_signup.name_or_email }}, can you volunteer?</h4>
+      <h4>Bonjour {{ request.current_signup.name_or_email }}, pouvez-vous être bénévole&nbsp;?</h4>
       {% endif %}
 
       {% if request.logged_in? == false %}
       <div class="padtop">
-        If you're not {{ request.current_signup.name_or_email }},
-        <a href="{{ request.current_signup.logout_url }}">click here</a>.
+        Si vous n'êtes pas {{ request.current_signup.name_or_email }},
+        <a href="{{ request.current_signup.logout_url }}">cliquez ici</a>.
       </div>
       {% endif %}
 
       {% else %}
 
-      <h4>Will you volunteer?</h4>
+      <h4>Voulez-vous être bénévole&nbsp;?</h4>
 
       {% endif %}
 
@@ -63,8 +63,8 @@
 
       {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
       <div class="row">
-        <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_first_name">First Name</label>{% text_field "first_name", class:"text form-control" %}</div></div>
-        <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_last_name">Last Name</label>{% text_field "last_name", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_last_name">Nom</label>{% text_field "last_name", class:"text form-control" %}</div></div>
       </div>
       {% endif %}
 
@@ -72,51 +72,51 @@
       <div class="row">
         <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_email">Email</label>{% email_field "email", class:"text form-control" %}</div></div>
         {% if site.ask_for_mobiles? %}
-        <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_mobile_number">Mobile phone (optional)</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_mobile_number">Numéro de portable (optionnel)</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
         {% endif %}
       </div>
 
       <div class="row">
-        <div class="col-md-6"><div class="checkbox"><label for="volunteer_signup_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Send me email updates</label></div>
+        <div class="col-md-6"><div class="checkbox"><label for="volunteer_signup_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Recevoir des informations par email</label></div>
         </div>
         {% if site.ask_for_mobiles? %}
-        <div class="col-md-6"><div class="checkbox"><label for="volunteer_signup_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Send me text messages</label></div>
+        <div class="col-md-6"><div class="checkbox"><label for="volunteer_signup_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Recevoir des informations par SMS</label></div>
         </div>
         {% endif %}
       </div>
       {% endif %}
       {% if page.volunteer_signup.is_phone? %}
       <div class="row">
-        <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_phone_number">Phone</label>{% phone_field "phone_number", class:"text form-control" %}</div></div>
-        <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_phone_time">When is a good time to call?</label>{% text_field "phone_time", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_phone_number">Téléphone</label>{% phone_field "phone_number", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="volunteer_signup_phone_time">À quel moment préférez-vous que nous vous appelions&nbsp;?</label>{% text_field "phone_time", class:"text form-control" %}</div></div>
       </div>
       {% endif %}
 
       {% if page.volunteer_signup.is_address? %}
       {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
       <div class="row">
-        <div class="col-md-12"><div class="form-group"><label for="volunteer_signup_submitted_address">Address (Street, City, State, Postal code)</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="volunteer_signup_submitted_address">Adresse (Rue, Ville, Département, Code postal)</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
       </div>
       {% endif %}
       {% endif %}
 
       <div class="row">
-        <div class="col-md-12"><div class="form-group"><label for="volunteer_signup_availability">When are you available? (optional)</label>{% text_field "availability", class:"text form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="volunteer_signup_availability">Quand êtes-vous disponible&nbsp;? (optionnel)</label>{% text_field "availability", class:"text form-control" %}</div></div>
       </div>
 
       <div class="row">
-        <div class="col-md-12"><div class="form-group"><label for="volunteer_signup_content">Comments, other ideas, etc. (optional)</label>{% text_area "content", class:"textarea form-control autogrow" %}</div>
+        <div class="col-md-12"><div class="form-group"><label for="volunteer_signup_content">Commentaires, suggestions, idées, compétences, etc. (optionnel)</label>{% text_area "content", class:"textarea form-control autogrow" %}</div>
         </div>
       </div>
 
       {% if site.ask_to_publish_to_stream? %}
       <div class="row">
-        <div class="col-md-12"><div class="checkbox"><label for="volunteer_signup_is_private">{% check_box "is_private", class:"checkbox" %} Don't publish this on the website</label></div>
+        <div class="col-md-12"><div class="checkbox"><label for="volunteer_signup_is_private">{% check_box "is_private", class:"checkbox" %} Ne pas rendre cela public sur le site</label></div>
         </div>
       </div>
       {% endif %}
 
-      {% submit_tag "Save volunteer info", class:"submit-button btn btn-primary" %}
+      {% submit_tag "Sauvegarder mes informations de bénévole", class:"submit-button btn btn-primary" %}
       <div class="form-submit"></div>
 
       {% endform_for %}
@@ -131,7 +131,7 @@
   {% endif %}
 
   <div class="like-page">
-    <strong>Like this to encourage your friends to volunteer.</strong>
+    <strong>Aimez cela pour encourager vos ami.e.s à devenir bénévoles.</strong>
     {% include "like_page" %}
   </div>
 
