@@ -43,7 +43,7 @@
            <img src="{{ site.header_image_url_1026 }}" class="header-image" border="0" />
           </div>
           {% endif %}
-          
+
           {% if page.features_count > 0 %}
             <div class="container">
              {% include "features" %}
@@ -54,15 +54,15 @@
             <div class="main container clearfix">
 
             	{{ content_for_notifications }}
-    						
+
     					<div class="onecolumn-container clearfix">
                <div class="content-{{ request.template | replace: '_', '-' }}">
                 {% yield %}
 
-                <div align="center" class="padtopmore padbottom"><a class="submit-button btn btn-primary" id="splash-btn" href="/">Continue to {{ site.name }}</a></div>
+                <div align="center" class="padtopmore padbottom"><a class="submit-button btn btn-primary" id="splash-btn" href="/">Continuer vers {{ site.name }}</a></div>
 
                 {% if request.is_intern? and page.is_editing_available? %}
-                  <div align="center" class="padtopmore padbottom"><a class="submit-button btn btn-primary" href="{{ page.admin_edit_url }}">{{ "fugue-edit-signiture" | icon }} Edit this page</a></div>
+                  <div align="center" class="padtopmore padbottom"><a class="submit-button btn btn-primary" href="{{ page.admin_edit_url }}">{{ "fugue-edit-signiture" | icon }} Éditer cette page</a></div>
                 {% endif %}
                </div>
               </div>

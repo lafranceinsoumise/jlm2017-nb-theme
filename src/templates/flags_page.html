@@ -1,5 +1,5 @@
 <div id="flag-content" class="flag-content">
-  <h3 class="headline">Flagging page <a href="{{ page.url }}" target="_top">{{ page.headline }}</a></h3>
+  <h3 class="headline">Page de signalement <a href="{{ page.url }}" target="_top">{{ page.headline }}</a></h3>
 
   {% form_for flag %}
 
@@ -13,18 +13,18 @@
       {% if site.has_rule_page? %}
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="flag_rule_id">Which rule was violated?</label> {% collection_select "rule_id", site.rule_page.rule.rules_collection, class:"select form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="flag_rule_id">Quelle règle a été enfreinte&nbsp;?</label> {% collection_select "rule_id", site.rule_page.rule.rules_collection, class:"select form-control" %}</div></div>
         {% endif %}
 
       </div>
 
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="flag_content">Explanation (optional)</label>{% text_area "content", class:"textarea form-control autogrow" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="flag_content">Explication (optionnel)</label>{% text_area "content", class:"textarea form-control autogrow" %}</div></div>
 
       </div>
 
-      {% submit_tag "Flag this page", class:"btn btn-primary submit-button" %}
+      {% submit_tag "Signaler cette page", class:"btn btn-primary submit-button" %}
       <div class="form-submit"></div>
 
     </div>

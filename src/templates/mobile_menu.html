@@ -10,27 +10,27 @@
               <li class="sub"><div class="content_list_arrow"><a href="{{ child2.url }}">{{ child2.name }}</a></div></li>
             {% endfor %}
     {% endif %}
-  {% endfor %}	
+  {% endfor %}
 	</ul>
-	
+
 	{% if request.logged_in? %}
 	<hr />
-	
-		<div class="supporter_nav_top">	
-			
+
+		<div class="supporter_nav_top">
+
 		<div class="profile_container">
 			<div class="profile_image">{{ request.current_signup.profile_image }}</div>
-			
+
 			<div class="profile_info">
 				<div class="profile_name"><a href="{{ request.current_signup.settings_url }}">{{ request.current_signup.name_or_email }}</a></div>
-			
+
 				{% if site.show_public_profiles? == false %}
 			  {% elsif request.current_signup.is_profile_private? %}
-			    No public profile
+			    Pas de profil public
 			  {% else %}
-					<div class="profile_link"><a href="{{ request.current_signup.profile_url }}">Public profile</a>
+					<div class="profile_link"><a href="{{ request.current_signup.profile_url }}">Profil public</a>
 			  {% endif %}
-					(<a href="{{ request.current_signup.logout_url }}">Sign out</a>)</div>
+					(<a href="{{ request.current_signup.logout_url }}">Se déconnecter</a>)</div>
 			<div class="profile_badge_pc">
 			{% if request.current_signup.has_membership_level_badge %}
 			    {% if site.has_membership_page? %}
@@ -41,28 +41,28 @@
 			  {% endif %}
 			  <span class="label label-default">{{ request.current_signup.capital_amount_format }}</span>
 			  {% if request.current_signup.is_banned? %}
-			    <span class="">Banned</span>
+			    <span class="">Banni</span>
 			  {% elsif request.current_signup.rule_violations_count == 1 %}
-			    <span class=""> {{ "fugue-flag-yellow" | icon }} Warning</span>
+			    <span class=""> {{ "fugue-flag-yellow" | icon }} Avertissement</span>
 			  {% elsif request.current_signup.rule_violations_count == 2 %}
-			    <span class=""> {{ "fugue-flag" | icon }} 1 violation</span>
+			    <span class=""> {{ "fugue-flag" | icon }} 1 infraction</span>
 			  {% elsif request.current_signup.rule_violations_count == 3 %}
-			    <span class=""> {{ "fugue-flag-gray" | icon }} 2 violations</span>
+			    <span class=""> {{ "fugue-flag-gray" | icon }} 2 infractions</span>
 			  {% endif %}
 				</div>
 			</div>
 		</div>
-			
+
 		<div class="clear"></div>
 		</div>
-		
+
 	<ul id="snav">
 		{% for child in site.supporter_pages %}
 				<li><div class="content_list_arrow"><a href="{{ child.url }}">{{ child.icon | icon }} {{ child.name }}</a></div></li>
 	  {% endfor %}
 	</ul>
-		
-		
+
+
 	{% endif %}
 
 </div>

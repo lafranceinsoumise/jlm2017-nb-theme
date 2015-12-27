@@ -6,34 +6,33 @@
 
     {% hidden_field_tag "user_session[email]", request.current_signup.email %}
 
-    <label for="user_session_password">Password</label><br>{% password_field "password", class:"text form-control" %}
+    <label for="user_session_password">Mot de passe</label><br>{% password_field "password", class:"text form-control" %}
 
-    {% submit_tag "Sign in with password", class:"submit-button btn btn-primary" %}
+    {% submit_tag "Se connecter avec son mot de passe", class:"submit-button btn btn-primary" %}
     <div class="form-submit"></div>
 
     <div class="padtopmore">
-      <a href="{{ request.new_password_reset_url }}">Forgot your password?</a>
+      <a href="{{ request.new_password_reset_url }}">Mot de passe oublié&nbsp;?</a>
     </div>
 
     {% if request.current_signup.has_facebook_info? or request.current_signup.has_twitter_info? %}
     <div align="center">
       <div class="padtop padbottom">
         <hr>
-        <div class="orsignin_wrap"><span id="orsignin">Or sign in with {% if request.current_signup.has_facebook_info? %}Facebook{% endif %} {% if request.current_signup.has_twitter_info? %}or Twitter{% endif %}</span>
+        <div class="orsignin_wrap"><span id="orsignin">Ou se connecter avec {% if request.current_signup.has_facebook_info? %}Facebook{% endif %} ou {% if request.current_signup.has_twitter_info? %}Twitter{% endif %}</span>
         </div>
       </div>
       {% if request.current_signup.has_facebook_info? %}
-      <a href="{{ request.facebook_connect_url }}" class="btn btn-default connect-button facebook"><i class="icon-facebook-squared"></i> Sign in with Facebook</a>
+      <a href="{{ request.facebook_connect_url }}" class="btn btn-default connect-button facebook"><i class="icon-facebook-squared"></i> Se connecter avec Facebook</a>
       {% endif %}
       {% if request.current_signup.has_twitter_info? %}
-      <a href="{{ request.twitter_connect_url }}" class="btn btn-default connect-button twitter"><i class="icon-twitter-squared"></i> Sign in with Twitter</a>
+      <a href="{{ request.twitter_connect_url }}" class="btn btn-default connect-button twitter"><i class="icon-twitter-squared"></i> Se connecter avec Twitter</a>
       {% endif %}
     </div>
     {% endif %}
 
     <div align="center" class="padtop">
-      If you're not {{ request.current_signup.name_or_email }}, <a href="{{ request.current_signup.logout_url }}">click
-      here</a>.
+      Si vous n'êtes pas {{ request.current_signup.name_or_email }}, <a href="{{ request.current_signup.logout_url }}">cliquez ici</a>.
     </div>
 
   {% endform_for %}
@@ -48,26 +47,25 @@
   {% hidden_field_tag "account[email]", request.current_signup.email %}
 
   <div class="padtopmore">
-    {% submit_tag "Email account activation instructions" , class:"submit-button btn btn-primary" %}
+    {% submit_tag "Instructions d'activation du compte par email" , class:"submit-button btn btn-primary" %}
     <div class="form-submit"></div>
   </div>
 
   {% endform_for %}
 
   <div class="padtop">
-    If you're not {{ request.current_signup.name_or_email }}, <a href="{{ request.current_signup.logout_url }}">click
-    here</a>.
+    Si vous n'êtes pas {{ request.current_signup.name_or_email }}, <a href="{{ request.current_signup.logout_url }}">cliquez ici</a>.
   </div>
 
 {% else %}
   <div class="row">
     <div class="col-md-4 oauth-links">
-      <h4>Sign in with</h4>
+      <h4>Se connecter avec</h4>
       {% include "oauth_login_links" %}
     </div>
     <div class="col-md-7 sign-in-with-email">
       {% form_for user_session %}
-      <h4>Or sign in with email</h4>
+      <h4>Ou se connecter avec son adresse email</h4>
       <div class="row">
         {% error_messages_for user_session %}
         <div class="col-md-6">
@@ -79,7 +77,7 @@
       </div>
       <div class="row">
         <div class="col-md-12 remember-me clearfix">
-          <div class="checkbox"><label for="user_session_remember_me"> {% check_box "remember_me" %} Remember me</label></div>
+          <div class="checkbox"><label for="user_session_remember_me"> {% check_box "remember_me" %} Rester connecté.e</label></div>
           <input type="hidden" name="ajax" value="true">
           <ul class="errors warning"></ul>
        </div>
@@ -88,15 +86,15 @@
         <div class="col-md-12">
 
           {% if page.suggestion %}
-            {% submit_tag "Post your reaction", class:"submit-button btn btn-primary post-comment" %}
+            {% submit_tag "Publier votre réaction", class:"submit-button btn btn-primary post-comment" %}
           {% else %}
-            {% submit_tag "Post your comment", class:"submit-button btn btn-primary post-comment" %}
+            {% submit_tag "Publier votre commentaire", class:"submit-button btn btn-primary post-comment" %}
           {% endif %}
 
           <span class="or-create-account">
           or
 
-          <a href="#" class="create-account-link">Create an account</a>
+          <a href="#" class="create-account-link">Créer un compte</a>
           </span>
         </div>
         <div class="form-submitting"></div>
@@ -106,19 +104,19 @@
 
     <div class="col-md-7 form sign-up hide">
       {% form_for account %}
-      <h4>Create an account</h4>
+      <h4>Créer un compte</h4>
         {% error_messages_for account %}
           {% email_field "email", class:"text form-control", placeholder:"Email Address" %}
         <input type="hidden" name="ajax" value="true"/>
       <ul class="errors warning"></ul>
       <div class="row">
         <div class="col-md-12">
-          {% submit_tag "Create account", class:"submit-button btn btn-primary post-comment" %}
+          {% submit_tag "Créer un compte", class:"submit-button btn btn-primary post-comment" %}
 
           <span class="email-sign-in">
           or
 
-          <a href="#" class="sign-in-with-email-link">Sign in with email</a>
+          <a href="#" class="sign-in-with-email-link">Se connecter avec son adresse email</a>
           </span>
         </div>
         <div class="form-submitting"></div>
@@ -130,7 +128,7 @@
   <a name="activation"></a>
   <div class="row">
     <div class="col-md-12 activation-message hide">
-        Please check your e-mail for a link to activate your account.
+        Veuillez consulter votre boîte email pour activer votre compte.
     </div>
   </div>
 {% endif %}

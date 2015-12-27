@@ -5,8 +5,8 @@
 <div class="box">
 	Hi <strong>{{ request.current_signup.name_or_email }}.</strong><br/>
 	<div class="social">
-		Sign in with <a href="{{ request.facebook_connect_url }}">Facebook</a>, <a href="{{ request.twitter_connect_url }}">Twitter</a> or <a href="/login">email</a>.<br/>
-		Not {{ request.current_signup.name_or_email }}? <a href="{{ request.current_signup.logout_url }}">click here</a>.
+		Connectez-vous <em>via</em> <a href="{{ request.facebook_connect_url }}">Facebook</a>, <a href="{{ request.twitter_connect_url }}">Twitter</a> ou <a href="/login">email</a>.<br/>
+		Vous n'êtes pas {{ request.current_signup.name_or_email }}? <a href="{{ request.current_signup.logout_url }}">cliquez ici</a>.
 	</div>
 </div>
 
@@ -18,9 +18,9 @@
 
 		<div class="form-group">
 			<div class="input-group">
-				{% email_field "email", class:"text form-control", placeholder:"Email address", required: "required" %}	
+				{% email_field "email", class:"text form-control", placeholder:"Email address", required: "required" %}
 				<span class="input-group-btn">
-					{% submit_tag "Join", class:"submit-button btn btn-primary" %}
+					{% submit_tag "Rejoindre", class:"submit-button btn btn-primary" %}
 				</span>
 			</div>
 		</div>
