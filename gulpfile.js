@@ -24,9 +24,19 @@ gulp.task('templates', function() {
   ;
 });
 
-gulp.task('default', ['styles', 'templates']);
+gulp.task('custom_pages', function() {
+  gulp.src('src/custom_pages/**/*.html')
+    .pipe(rename({dirname: '', prefix: '_custom_'}))
+    .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
+    .pipe(gulp.dest('dist/theme'))
+  ;
+});
+
+
+gulp.task('default', ['styles', 'templates', 'custom_pages']);
 
 gulp.task('watch', ['default'], function() {
   gulp.watch('src/styles/**/*.scss', ['styles']);
   gulp.watch('src/templates/**/*.html', ['templates']);
+  gulp.watch('src/custom_pages/**/*.html', ['custom_pages']);
 });
