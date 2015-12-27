@@ -5,43 +5,43 @@
 {% endif %}
 
 <div id="content">
-  
+
   {% if page.suggestion_box.content.size > 0 %}
   <div id="intro" class="intro">
     {{ page.suggestion_box.content }}
   </div>
   {% endif %}
-  
-  
+
+
   <div>
     <div class="form-wrap">
       <div class="form">
-        
+
           {% form_for suggestion_page %}
-          
+
           <div class="form-errors">{% error_messages_for suggestion_page %}</div>
-          
+
           <div id="suggestion-page-page-headline-input" class="suggestion-headline">
             <div class="row">
-              <div class="col-md-12"><div class="form-group">{% text_field "page_headline", class:"text form-control", placeholder:"Add your suggestion", required: "required" %}</div></div>
+              <div class="col-md-12"><div class="form-group">{% text_field "page_headline", class:"text form-control", placeholder:"Ajouter votre proposition", required: "required" %}</div></div>
             </div>
           </div>
-          
+
           <div id="suggestion-page-form-expanded" class="suggestion-page-form-expanded padbottom">
             <div class="row">
               <div class="col-md-12"><div class="form-group">{% text_area "content_editable", class:"form-control" %}</div></div>
             </div>
-            
+
             {% if page.suggestion_box.is_image? %}
             <div class="row">
-              <div class="col-md-12"><div class="form-group"><label for="suggestion_page_image">Upload a picture ({% if page.suggestion_box.require_image? == false %}optional, {% endif %}600px wide)</label>{% file_field "image", class:"file" %}</div></div>
+              <div class="col-md-12"><div class="form-group"><label for="suggestion_page_image">Télécharger une image ({% if page.suggestion_box.require_image? == false %}optionnel, {% endif %}600px de large)</label>{% file_field "image", class:"file" %}</div></div>
             </div>
             {% endif %}
-            
-            {% submit_tag "Post", class:"submit-button btn btn-primary" %}
+
+            {% submit_tag "Publier", class:"submit-button btn btn-primary" %}
             <div class="form-submit"></div>
           </div>
-          
+
           {% endform_for %}
 
       </div>
@@ -52,13 +52,13 @@
       {% endunless %}
     </div>
   </div>
-  
+
   <ul class="tag-list nav nav-pills padtopmore" role="tablist">
-    <li role="presentation" class="{% if request.url_path == page.url or request.url_path == '/' + page.slug %}active{% endif %}"><a href="{{ page.url }}">Most recent</a></li>
+    <li role="presentation" class="{% if request.url_path == page.url or request.url_path == '/' + page.slug %}active{% endif %}"><a href="{{ page.url }}">Le plus récent</a></li>
     {% capture alphabetical_url %}/{{ page.slug }}/alphabetical{% endcapture %}
-    <li role="presentation" class="{% if request.url_path == alphabetical_url %}active{% endif %}"><a href="{{ alphabetical_url }}">Alphabetical</a></li>
+    <li role="presentation" class="{% if request.url_path == alphabetical_url %}active{% endif %}"><a href="{{ alphabetical_url }}">Par ordre alphabétique</a></li>
     {% for tag_name in page.suggestion_box.tag_names %}
-    {% capture tag_url %}/{{ page.slug }}/tags/{{ tag_name }}{% endcapture %}			  
+    {% capture tag_url %}/{{ page.slug }}/tags/{{ tag_name }}{% endcapture %}
     <li role="presentation" class="{% if request.url_path == tag_url %}active{% endif %}"><a href="{{ tag_url }}">{{ tag_name | capitalize }}</a></li>
     {% endfor %}
   </ul>
@@ -79,10 +79,10 @@
       <h3><a href="{{ post.url }}">{{ post.headline }}</a></h3>
 
       <div class="byline">
-        Posted by {{ post.author.published_name_linked }} &middot; {{ post.published_at | date: '%B %d, %Y %l:%M %p' }}
+        Publié par {{ post.author.published_name_linked }} &middot; {{ post.published_at | date: '%B %d, %Y %l:%M %p' }}
         {% if post.show_stream? %}
         {% if post.public_activities_count > 0 %}
-        &middot; <a href="{{ post.url }}#reactions">{{ post.public_activities_count }} reaction{% if post.public_activities_count > 1 %}s{% endif %}</a>
+        &middot; <a href="{{ post.url }}#reactions">{{ post.public_activities_count }} réaction{% if post.public_activities_count > 1 %}s{% endif %}</a>
         {% endif %}
         {% endif %}
       </div>
@@ -99,7 +99,7 @@
       <div class="answer clearfix">
         <div>
           <strong>
-            Official response from {{ post.suggestion.answer_author.published_name_linked }}
+            Réponse officielle de {{ post.suggestion.answer_author.published_name_linked }}
             {% if post.suggestion.is_answer_type? %}
             {{ post.suggestion.answer_type_html }}
             {% endif %}
@@ -114,12 +114,12 @@
       {% endif %}
 
       {% if post.public_activities_count > 0 %}
-      <a href="{{ post.url }}#addreaction" class="btn btn-default small-btn">{{ post.public_activities_count }} reaction{% if post.public_activities_count > 1 %}s{% endif %}</a>
+      <a href="{{ post.url }}#addreaction" class="btn btn-default small-btn">{{ post.public_activities_count }} réaction{% if post.public_activities_count > 1 %}s{% endif %}</a>
       {% else %}
-      <a href="{{ post.url }}#addreaction" class="btn btn-default small-btn">Add your reaction</a>
+      <a href="{{ post.url }}#addreaction" class="btn btn-default small-btn">Ajouter votre réaction</a>
       {% endif %}
 
-      {{ "Share" | share_button page_id: post.id | replace:'button small-button','btn btn-default small-btn' }}
+      {{ "Partager" | share_button page_id: post.id | replace:'button small-button','btn btn-default small-btn' }}
 
     </div>
 
@@ -138,7 +138,7 @@
   </div>
 
   <div class="like-page">
-    <strong>Like this page to spread the word</strong>
+    <strong>Aimez cela pour diffuser le message&nbsp;:</strong>
     {% include "like_page" %}
   </div>
 

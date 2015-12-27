@@ -22,14 +22,14 @@
 
   {% if page.moneybomb.has_start_at? and page.moneybomb.is_active? == false and page.moneybomb.is_past? == false %}
   <div class="event-detail">
-    <div class="subhead">COUNTDOWN TO {{ page.moneybomb.local_start_at | moneybomb_time }}</div>
+    <div class="subhead">COMPTE À REBOURS POUR {{ page.moneybomb.local_start_at | moneybomb_time }}</div>
     <div class="subtext">
       <div id="pre-countdown" class="countdown"></div>
     </div>
   </div>
   {% elsif page.moneybomb.is_active? %}
   <div class="event-detail">
-    <div class="subhead">TIME LEFT TO DONATE</div>
+    <div class="subhead">TEMPS RESTANT POUR DONNER</div>
     <div class="subtext">
       <div id="active-countdown" class="countdown"></div>
     </div>
@@ -45,7 +45,7 @@
         {% if page.pledges_count < 1 %}
         <div class="bar-text">0</div>
         {% else %}
-        <div class="bar-text">{{ page.pledges_amount_format }} pledged</div>
+        <div class="bar-text">{{ page.pledges_amount_format }} promis</div>
         {% endif %}
       </div>
     </div>
@@ -60,11 +60,11 @@
         {% if page.pledges_count < 2 %}
         <div class="bar-text">0</div>
         {% else %}
-        <div class="bar-text">{{ page.pledges_count }} pledgers</div>
+        <div class="bar-text">{{ page.pledges_count }} donateurs</div>
         {% endif %}
       </div>
     </div>
-    <div class="bar-goal">{{ page.moneybomb.pledger_goal }} PLEDGERS</div>
+    <div class="bar-goal">{{ page.moneybomb.pledger_goal }} DONATEURS</div>
   </div>
 
   {% endif %}
@@ -77,19 +77,19 @@
   <div class="form-wrap">
     <div class="form">
 
-      <h3>Thank you for pledging!</h3>
+      <h3>Merci de vous être engagé.e à donner&nbsp;!</h3>
 
       <div class="form-errors">{% error_messages_for pledges %}</div>
 
-      <label for="pledge_content">Change your pledge amount</label>
+      <label for="pledge_content">Changer les montant de votre promesse de don</label>
       <div class="padtop padbottom">
         <div class="radio-inline">{{ page.moneybomb.form_amount_options }}</div>
       </div>
       {% if page.is_commentable? %}
-      {% submit_tag "Save pledge", class:"submit-button btn btn-primary" %} &nbsp;
+      {% submit_tag "Sauvegarder la promesse de don", class:"submit-button btn btn-primary" %} &nbsp;
       {% endif %}
 
-      {{ page.moneybomb.current_pledge | delete_link message: "Cancel pledge" class_name: "btn btn-danger" }}
+      {{ page.moneybomb.current_pledge | delete_link message: "Annuler la promesse de don" class_name: "btn btn-danger" }}
 
       <div class="form-submit"></div>
 
@@ -105,18 +105,18 @@
     <div class="form">
 
       {% if request.sorta_logged_in? %}
-      <h4>Hi {{ request.current_signup.name_or_email }}, how much will you pledge to donate{% if page.moneybomb.has_start_at? %} on {{ page.moneybomb.local_start_at | moneybomb_time }}{% endif %}?</h4>
+      <h4>Bonjour {{ request.current_signup.name_or_email }}, combien voulez-vous donner{% if page.moneybomb.has_start_at? %} pour {{ page.moneybomb.local_start_at | moneybomb_time }}{% endif %}&nbsp;?</h4>
 
       {% if request.logged_in? == false %}
       <div class="padtop">
-        If you're not {{ request.current_signup.name_or_email }},
-        <a href="{{ request.current_signup.logout_url }}">click here</a>.
+        Si vous n'êtes pas {{ request.current_signup.name_or_email }},
+        <a href="{{ request.current_signup.logout_url }}">cliquez ici</a>.
       </div>
       {% endif %}
 
       {% else %}
 
-      <h4>How much will you pledge to donate{% if page.moneybomb.has_start_at? %} on {{ page.moneybomb.local_start_at | moneybomb_time }}{% endif %}?</h4>
+      <h4>Combien prévoyez-vous de donner{% if page.moneybomb.has_start_at? %} pour {{ page.moneybomb.local_start_at | moneybomb_time }}{% endif %}&nbsp;?</h4>
 
       {% endif %}
 
@@ -128,8 +128,8 @@
 
       {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
       <div class="row">
-        <div class="col-md-6"><div class="form-group"><label for="pledge_first_name">First Name</label>{% text_field "first_name", class:"text form-control" %}</div></div>
-        <div class="col-md-6"><div class="form-group"><label for="pledge_last_name">Last Name</label>{% text_field "last_name", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="pledge_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="pledge_last_name">Nom</label>{% text_field "last_name", class:"text form-control" %}</div></div>
       </div>
       {% endif %}
 
@@ -137,15 +137,15 @@
       <div class="row">
         <div class="col-md-6"><div class="form-group"><label for="pledge_email">Email</label>{% email_field "email", class:"text form-control" %}</div></div>
         {% if site.ask_for_mobiles? %}
-        <div class="col-md-6"><div class="form-group"><label for="pledge_mobile_number">Mobile phone (optional)</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="pledge_mobile_number">Numéro de portable (optionnel)</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
         {% endif %}
       </div>
 
       <div class="row">
-        <div class="col-md-6"><div class="checkbox"><label for="pledge_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Send me email updates</label></div>
+        <div class="col-md-6"><div class="checkbox"><label for="pledge_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Recevoir des informations par email</label></div>
         </div>
         {% if site.ask_for_mobiles? %}
-        <div class="col-md-6"><div class="checkbox"><label for="pledge_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Send me text message updates</label></div>
+        <div class="col-md-6"><div class="checkbox"><label for="pledge_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Recevoir des informations par SMS</label></div>
         </div>
         {% endif %}
       </div>
@@ -154,25 +154,25 @@
 
       {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
       <div class="row">
-        <div class="col-md-12"><div class="form-group"><label for="pledge_submitted_address">Address (Street, City, State, Postal code)</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="pledge_submitted_address">Adresse (Rue, Ville, Département, Code postal)</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
       </div>
       {% endif %}
 
       {% if site.ask_to_publish_to_stream? %}
       <div class="row">
-        <div class="col-md-12"><div class="checkbox"><label for="pledge_is_private">{% check_box "is_private", class:"checkbox" %} Don't publish this on the website</label></div>
+        <div class="col-md-12"><div class="checkbox"><label for="pledge_is_private">{% check_box "is_private", class:"checkbox" %} Ne pas rendre cela public sur le site</label></div>
         </div>
       </div>
       {% endif %}
 
       {% if request.sorta_logged_in? == false or request.current_signup.is_volunteer == false %}
       <div class="row">
-        <div class="col-md-12"><div class="checkbox"><label for="pledge_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} I want to volunteer</label></div>
+        <div class="col-md-12"><div class="checkbox"><label for="pledge_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} Je veux être bénévole</label></div>
         </div>
       </div>
       {% endif %}
 
-      {% submit_tag "Add pledge", class:"submit-button btn btn-primary" %}
+      {% submit_tag "Ajouter un engagement", class:"submit-button btn btn-primary" %}
       <div class="form-submit"></div>
 
       {% endform_for %}
@@ -198,7 +198,7 @@
 
   <div class="like-page">
     <div class="padtop padbottom">
-      <strong>Like this to spread the word:</strong>
+      <strong>Aimez cela pour diffuser le message&nbsp;:</strong>
       {% include "like_page" %}
     </div>
   </div>

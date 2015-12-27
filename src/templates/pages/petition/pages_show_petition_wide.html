@@ -47,19 +47,19 @@
 <div class="form-wrap">
   <div class="form">
 
-    <h3>Thank you for signing!</h3>
+    <h3>Merci d'avoir signé&nbsp;!</h3>
 
     <div class="form-errors">{% error_messages_for petition_signatures %}</div>
 
     {% if page.is_commentable? %}
     <div class="row">
-      <div class="col-md-12"><div class="form-group"><label for="petition_signature_content">Change your comment</label>{% text_area "content", class:"textarea form-control autogrow" %}</div></div>
+      <div class="col-md-12"><div class="form-group"><label for="petition_signature_content">Modifier votre commentaire</label>{% text_area "content", class:"textarea form-control autogrow" %}</div></div>
     </div>
     {% endif %}
 
     {% if page.petition.is_image? %}
     <div class="row">
-      <div class="col-md-12"><div class="form-group"><label for="petition_signature_image">Upload a picture (140x140)</label>{% file_field "image", class:"file" %}</div></div>
+      <div class="col-md-12"><div class="form-group"><label for="petition_signature_image">Télécharger une photo (140x140)</label>{% file_field "image", class:"file" %}</div></div>
     </div>
     {% if petition_signature.has_image? %}
     <p><img src="{{ petition_signature.large_square_image_url }}" width="140" height="140" border="0"/></p>
@@ -67,11 +67,11 @@
     {% endif %}
 
     {% if page.is_commentable? %}
-    {% capture signature_name %}Update {{ page.petition.signature_name }}{% endcapture %}
+    {% capture signature_name %}Mettre à jour {{ page.petition.signature_name }}{% endcapture %}
     {% submit_tag signature_name, class:"submit-button btn btn-primary" %} &nbsp;
     {% endif %}
 
-    {% capture signature_name %}Remove {{ page.petition.signature_name }}{% endcapture %}
+    {% capture signature_name %}Supprimer {{ page.petition.signature_name }}{% endcapture %}
     {{ page.petition.current_signature | delete_link message: signature_name class_name: "btn btn-danger" }}
 
     <div class="form-submit"></div>
@@ -90,18 +90,18 @@
 
     {% if request.sorta_logged_in? %}
     <div class="text-content padbottommore">
-      <h4>Hi {{ request.current_signup.name_or_email }}, will you sign?</h4>
+      <h4>Bonjour {{ request.current_signup.name_or_email }}, voulez-vous signer&nbsp;?</h4>
     </div>
 
     {% if request.logged_in? == false %}
     <div class="padtop text-content">
-      If you're not {{ request.current_signup.name_or_email }}, <a href="{{ request.current_signup.logout_url }}">click here</a>.
+      Si vous n'êtes pas {{ request.current_signup.name_or_email }}, <a href="{{ request.current_signup.logout_url }}">cliquez ici</a>.
     </div>
     {% endif %}
 
     {% else %}
 
-    <h4>Will you sign?</h4>
+    <h4>Voulez-vous&nbsp;?</h4>
 
     {% endif %}
 
@@ -110,8 +110,8 @@
     {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
     <div class="row padtopmore">
 
-      <div class="col-md-6"><div class="form-group"><label for="petition_signature_first_name">First Name</label>{% text_field "first_name", class:"text form-control" %}</div></div>
-      <div class="col-md-6"><div class="form-group"><label for="petition_signature_last_name">Last Name</label>{% text_field "last_name", class:"text form-control" %}</div></div>
+      <div class="col-md-6"><div class="form-group"><label for="petition_signature_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
+      <div class="col-md-6"><div class="form-group"><label for="petition_signature_last_name">Nom</label>{% text_field "last_name", class:"text form-control" %}</div></div>
 
     </div>
     {% endif %}
@@ -121,17 +121,17 @@
 
       <div class="col-md-6"><div class="form-group"><label for="petition_signature_email">Email</label>{% email_field "email", class:"text form-control" %}</div></div>
       {% if site.ask_for_mobiles? %}
-      <div class="col-md-6"><div class="form-group"><label for="petition_signature_mobile_number">Mobile phone</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
+      <div class="col-md-6"><div class="form-group"><label for="petition_signature_mobile_number">Numéro de portable</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
       {% endif %}
 
     </div>
 
     <div class="row">
 
-      <div class="col-md-6"><div class="checkbox"><label for="petition_signature_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Send me email updates</label></div>
+      <div class="col-md-6"><div class="checkbox"><label for="petition_signature_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Recevoir des informations par email</label></div>
       </div>
       {% if site.ask_for_mobiles? %}
-      <div class="col-md-6"><div class="checkbox"><label for="petition_signature_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Send me text message updates</label></div>
+      <div class="col-md-6"><div class="checkbox"><label for="petition_signature_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Recevoir des informations par SMS</label></div>
       </div>
       {% endif %}
 
@@ -141,7 +141,7 @@
     {% if page.petition.is_phone? %}
     <div class="row">
 
-      <div class="col-md-12"><div class="form-group"><label for="petition_signature_phone_number">Phone</label>{% phone_field "phone_number", class:"text form-control" %}</div></div>
+      <div class="col-md-12"><div class="form-group"><label for="petition_signature_phone_number">Téléphone</label>{% phone_field "phone_number", class:"text form-control" %}</div></div>
 
     </div>
     {% endif %}
@@ -150,14 +150,14 @@
     {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
     <div class="row">
 
-      <div class="col-md-12"><div class="form-group"><label for="petition_signature_submitted_address">Address (Street, City, State, Postal code)</label>{% text_field "submitted_address", class:"text form-control", required: "required" %}
+      <div class="col-md-12"><div class="form-group"><label for="petition_signature_submitted_address">Adresse (Rue, Ville, Département, Code postal)</label>{% text_field "submitted_address", class:"text form-control", required: "required" %}
       </div></div>
 
     </div>
 
     <div class="row">
 
-      <div class="col-md-12"><div class="form-group"><label for="petition_signature_country_code">Country</label>
+      <div class="col-md-12"><div class="form-group"><label for="petition_signature_country_code">Pays</label>
         {% collection_select "country_code", page.petition.countries, "code", "name", class:"select form-control" %}</div></div>
 
     </div>
@@ -166,7 +166,7 @@
     {% if page.is_commentable? %}
     <div class="row">
 
-      <div class="col-md-12"><div class="form-group"><label for="petition_signature_content">Comments (optional)</label>{% text_area "content", class:"textarea form-control autogrow" %}</div>
+      <div class="col-md-12"><div class="form-group"><label for="petition_signature_content">Commentaires (optionnel)</label>{% text_area "content", class:"textarea form-control autogrow" %}</div>
       </div>
 
     </div>
@@ -175,7 +175,7 @@
     {% if page.petition.is_image? %}
     <div class="row">
 
-      <div class="col-md-12"><div class="form-group"><label for="petition_signature_image">Upload a picture (140x140)</label>{% file_field "image", class:"file" %}
+      <div class="col-md-12"><div class="form-group"><label for="petition_signature_image">Télécharger une image (140x140)</label>{% file_field "image", class:"file" %}
       </div></div>
 
     </div>
@@ -184,7 +184,7 @@
     {% if site.ask_to_publish_to_stream? %}
     <div class="row">
 
-      <div class="col-md-12"><div class="checkbox"><label for="petition_signature_is_private">{% check_box "is_private", class:"checkbox" %} Don't publish this on the website</label></div>
+      <div class="col-md-12"><div class="checkbox"><label for="petition_signature_is_private">{% check_box "is_private", class:"checkbox" %} Ne pas rendre cela public sur le site</label></div>
       </div>
 
     </div>
@@ -194,14 +194,14 @@
     {% if request.sorta_logged_in? == false or request.current_signup.is_volunteer == false %}
     <div class="row">
 
-      <div class="col-md-12"><div class="checkbox"><label for="petition_signature_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} I want to volunteer</label></div>
+      <div class="col-md-12"><div class="checkbox"><label for="petition_signature_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} Je veux être bénévole</label></div>
       </div>
 
     </div>
     {% endif %}
     {% endif %}
 
-    {% capture signature_name %}Add {{ page.petition.signature_name }}{% endcapture %}
+    {% capture signature_name %}Ajouter {{ page.petition.signature_name }}{% endcapture %}
     {% submit_tag signature_name, class:"submit-button btn btn-primary" %}
     <div class="form-submit"></div>
 
@@ -211,7 +211,7 @@
 
   {% if page.text_keyword_instructions.size > 0 %}
   <div class="padbottom padtopmore">
-    or {{ page.text_keyword_instructions }}
+    ou {{ page.text_keyword_instructions }}
   </div>
   {% endif %}
 
@@ -226,7 +226,7 @@
 {% endif %}
 
 <div class="like-page">
-  <strong>Like this to spread the word:</strong>
+  <strong>Aimez cela pour diffuser le message&nbsp;:</strong>
   {% include "like_page" %}
 </div>
 
