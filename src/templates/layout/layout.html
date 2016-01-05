@@ -20,18 +20,10 @@
   </head>
   <body class="aware-theme v2-theme {{ page.page_class_name }} page-{{ request.template | replace: '_', '-' }} js">
 
-    {% include "nav" %}
-
-    {% if site.has_header_image? and page.features_count == 0 %}
-    <div class="container header-image-container">
-     <img src="{{ site.header_image_url_1026 }}" class="header-image img-responsive" border="0" />
-    </div>
-    {% endif %}
-
-    {% if page.features_count > 0 %}
-      <div class="container">
-       {% include "features" %}
-      </div>
+    {% if request.url_path != '/' %}
+      {% include "nav" %}
+    {% else %}
+      {% include "custom_home_header" %}
     {% endif %}
 
     <div class="main-container" id="middle">

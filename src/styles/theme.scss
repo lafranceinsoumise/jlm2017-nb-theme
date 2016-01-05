@@ -1,6 +1,10 @@
 // Custom styles
 @import "variables";
 @import "navbar";
+@import "cards";
+
+// Custom pages;
+@import "custom_pages/home";
 
 // Bootstrap components
 @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
