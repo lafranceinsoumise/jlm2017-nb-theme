@@ -32,11 +32,19 @@ gulp.task('custom_pages', function() {
   ;
 });
 
+gulp.task('fonts', function() {
+  gulp.src('src/fonts/**')
+    .pipe(rename({dirname: ''}))
+    .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
+    .pipe(gulp.dest('dist/theme'));
+});
 
-gulp.task('default', ['styles', 'templates', 'custom_pages']);
+
+gulp.task('default', ['styles', 'templates', 'custom_pages', 'fonts']);
 
 gulp.task('watch', ['default'], function() {
   gulp.watch('src/styles/**/*.scss', ['styles']);
   gulp.watch('src/templates/**/*.html', ['templates']);
   gulp.watch('src/custom_pages/**/*.html', ['custom_pages']);
+  gulp.watch('src/fonts/**', ['fonts']);
 });
