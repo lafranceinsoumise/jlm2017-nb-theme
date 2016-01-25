@@ -43,7 +43,7 @@
     <footer>
       <div class="container {% if site.has_background_image? %}well well-lg{% endif %}">
 
-        {{ content_for_footer }}
+        {{ content_for_footer | replace: 'en_US', 'fr_FR' }}
 
         {% if site.footer_content.size > 0 %}
         <div class="footer-text">{{ site.footer_content }}</div>
