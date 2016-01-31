@@ -35,6 +35,30 @@
         </li>
         {% endif %}
         {% endfor %}
+		{% if request.logged_in? %}
+        <li class="dropdown">
+		  <a href="{{ request.current_user.profile_url }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+		  <img src="{{ request.current_user.profile_image_url }}" width="48" height="48" />
+		  <span class="caret"></span></a>
+		  <ul class="dropdown-menu" role="menu">
+			{% if request.current_user.is_profile_published? %}
+			<li>
+			  <a href="{{ request.current_user.profile_url }}"><h4 style="margin-bottom:0">{{ request.current_user.published_name }}</h4>
+			  <small>Voir le profil</small></a>
+			</li>
+			<li>
+			  <a href="{{ request.current_user.settings_url }}">Paramètres</a>
+			</li>
+			{% else %}
+			<li>
+			  <a href="{{ request.current_user.settings_url }}"><h4 style="margin-bottom:0">{{ request.current_user.published_name }}</h4>
+			  <small>Modifier le profil</small></a>
+			</li>
+			{% endif %}
+            <li><a href="{{ request.current_user.logout_url }}">Se déconnecter</a></li>
+          </ul>
+		</li>
+		{% endif %}
       </ul>
     </div>
   </div>
