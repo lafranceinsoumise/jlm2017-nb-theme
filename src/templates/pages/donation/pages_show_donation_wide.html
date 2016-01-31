@@ -77,7 +77,7 @@
 
           <div class="row">
 
-            <div class="col-md-6">
+            <div class="col-md-6 well">
               <div class="row">
 
                 <div class="col-md-6"><div class="form-group"><label for="donation_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
@@ -241,7 +241,19 @@
                 {% if page.donation.amount_in_cents != 0 %}
                   <h4 class="padbottomless">{{ page.donation.amount_formatted }}</h4>
                 {% else %}
-                  <div class="radio-inline">{{ page.donation.form_amount_options }}</div>
+                  <div class="donation-amount-radio row" data-toggle="buttons">
+                    <!--{{ page.donation.form_amount_options | replace: 'Other €', 'Autre montant' }}-->
+                    {% for amount in page.donation.amounts %}
+                      <div class="col-xs-3 bottom-margin">
+                        <label class="btn btn-primary" for="donation_amount_{{ amount }}">
+                          <input id="donation_amout_{{ amount }}" type="radio" name="donation[amount_option]" class="donation_amout_option" value="{{ amount }}">
+                          {{ amount }} &euro;
+                        </label>
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <label for="donation_amount_other">Autre montant</label>
+                  <input type="text" id="donation_amount_other" name="donation[amount]" class="text user-success" placeholder="0,00">
                 {% endif %}
                 {% if page.donation.max_installments > 1 %}
                   <label for="num_installments" class="padbottomless">Je veux payer cela en  {% collection_select "num_installments", page.donation.installment_collection, class:"select form-control" %} fois</label>

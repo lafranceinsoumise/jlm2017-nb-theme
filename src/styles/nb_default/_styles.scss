@@ -272,12 +272,6 @@ input.text, .textarea {
 	}
 }
 
-// Donation pages
-[for='donation_amount_other'],#donation_amount_other {
-	margin-left: -20px;
-	margin-top: 10px;
-}
-
 #donation_amount_other {
 	@extend .form-control;
 	width: auto;
