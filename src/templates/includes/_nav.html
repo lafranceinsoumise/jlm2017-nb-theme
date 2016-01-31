@@ -8,7 +8,8 @@
         <span class="icon-bar"></span>
       </button>
       {% if site.has_meta_image? %}
-        <a class="navbar-brand" href="/"><img alt="{{ site.long_name }}" src="{{ site.meta_image_url }}"></a>
+        <a class="navbar-brand" href="/"><img alt="{{ site.long_name }}" src="{{ site.meta_image_medium_url }}"></a>
+        <a class="navbar-brand" href="/">{{ site.long_name }}</a>
       {% else %}
         <a class="navbar-brand" href="/">{{ site.long_name }}</a>
       {% endif %}
