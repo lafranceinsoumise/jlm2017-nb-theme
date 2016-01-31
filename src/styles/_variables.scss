@@ -1,3 +1,12 @@
+//
+// Variables
+// --------------------------------------------------
+
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
 $gray-base:              #000 !default;
 $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
 $gray-dark:              lighten($gray-base, 20%) !default;   // #333
@@ -5,19 +14,43 @@ $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
+$brand-primary:         #27aeca; // blue
+$brand-secondary:       #d0482f; // orange
+$brand-success:         #5cb85c !default;
+$brand-info:            #5bc0de !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #d9534f !default;
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
 //** Background color for `<body>`.
 $body-bg:               #fff !default;
 //** Global text color on `<body>`.
 $text-color: $gray-dark !default;
 
+//** Global textual link color.
+$link-color:            $brand-primary !default;
+//** Link hover color set via `darken()` function.
+$link-hover-color:      darken($link-color, 15%) !default;
+//** Link hover decoration.
+$link-hover-decoration: underline !default;
+
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-base: 'Open Sans', sans-serif;
+$font-family-sans-serif:  'Montserrat', sans-serif;
+$font-family-serif:       'Roboto Slab', serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+$font-family-base: $font-family-serif;
 $font-size-base: 16px;
-$headings-font-family: 'Cooper Five Black', 'Libre Baskerville', serif;;
-$headings-font-weight: 500;
+//** By default, this inherits from the `<body>`.
+$headings-font-family: $font-family-sans-serif;
+$headings-line-height:    1.1 !default;
+$headings-color:          $brand-primary;
+
 
 //== Components
 //
@@ -42,5 +75,41 @@ $border-radius-base:        4px !default;
 $border-radius-large:       6px !default;
 $border-radius-small:       3px !default;
 
-// Custom
-$card-bg: #147FD7;
+
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+$btn-primary-color:              #fff !default;
+$btn-primary-bg:                 $brand-secondary !default;
+$btn-primary-border:             darken($btn-primary-bg, 5%) !default;
+
+// Allows for customizing button radius independently from global border radius
+$btn-border-radius-base:         0px;
+$btn-border-radius-large:        0px;
+$btn-border-radius-small:        0px;
+
+//== Forms
+//
+//##
+
+// TODO: Rename `$input-border-radius` to `$input-border-radius-base` in v4
+//** Default `.form-control` border radius
+// This has no effect on `<select>`s in some browsers, due to the limited stylability of `<select>`s in CSS.
+$input-border-radius:            0px;
+//** Large `.form-control` border radius
+$input-border-radius-large:      0px;
+//** Small `.form-control` border radius
+$input-border-radius-small:      0px;
+
+// Basics of navbar
+$navbar-height: 80px;
+$navbar-default-color: $text-color;
+$navbar-default-bg: $body-bg;
+
+// Navbar links
+$navbar-default-link-color: $text-color;
+$navbar-default-link-hover-color: lighten($navbar-default-link-color, 15%);
+$navbar-default-link-active-bg: transparent;
+
+$rainbow-colors: #e7890b, #34c17d, #e04b35, #4c6de0, #c2306e, #fac43e, #2db3ac;
