@@ -14,3 +14,48 @@
 
 // Nationbuilder default styles
 @import "nb_default/styles";
+
+// Layout
+body {
+  max-width: 1500px;
+  margin: auto;
+}
+
+.bottom-margin {
+  margin-bottom: 20px;
+}
+
+.container-signup {
+  form {
+    @extend .form-horizontal;
+    h3 {
+      font-family: 'Cookie', cursive;
+      font-weight: normal;
+    }
+  }
+}
+
+.text-important {
+  font-weight: bold;
+  color: $brand-secondary;
+}
+
+footer {
+  padding-top: 100px;
+  margin-top: -120px;
+  border-top: 40px solid $brand-secondary;
+}
+
+button, .btn {
+  transition: all 0.3s ease 0s;
+  font-family: $font-family-sans-serif;
+  text-transform: uppercase;
+}
+
+a.alt-color {
+  color: $brand-secondary;
+
+  &:hover, &:active {
+    color: darken($brand-secondary, 15%);
+  }
+}
