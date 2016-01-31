@@ -5,24 +5,35 @@ html, body {
 .home-header {
   min-height: 606px; // can be bigger if signup form rise
   .background {
-    height: 500px; // fixed
-    max-width: 1500px;
+    min-height: 500px; // fixed
+    margin: auto;
     padding-top: 20px;
     margin-bottom: -100px; // for the signup form to rise
     background-color: $gray-lighter;
-    background-image: url("http://melenchon.fr/wp-content/uploads/2015/10/melenchon-bastille-18-mars-6e-republique.jpg");
     background-size: cover;
+    background-position: center;
+    border-bottom: 40px solid $brand-secondary;
+    padding-bottom: 60px;
 
     .container-menu {
       height: 100%;
+      color: #fff;
+      img {
+        display: inline-block;
+      }
+      h1, h2, h3, h4, h5, h6,
+      .h1, .h2, .h3, .h4, .h5, .h6 {
+        color: inherit;
+        font-family: $font-family-serif;
+        text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.6);
+      }
 
       .row {
         height: 100%;
-
         .nav-stacked {
           li {
-            text-align: center;
             a {
+              font-family: $font-family-sans-serif;
               text-transform: uppercase;
               font-weight: bolder;
               color: #fff;
@@ -38,9 +49,5 @@ html, body {
         }
       }
     }
-  }
-
-  .container-signup .row form {
-    @extend .form-horizontal;
   }
 }
