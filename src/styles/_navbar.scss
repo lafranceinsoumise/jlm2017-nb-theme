@@ -1,9 +1,9 @@
-// Basics of navbar
-$navbar-height: 80px;
-$navbar-default-color: $text-color;
-$navbar-default-bg: $body-bg;
-
-// Navbar links
-$navbar-default-link-color: $text-color;
-$navbar-default-link-hover-color: lighten($navbar-default-link-color, 15%);
-$navbar-default-link-active-bg: transparent;
+.navbar-brand {
+  max-height: $navbar-height;
+  padding: 5px;
+  height: 80px;
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
