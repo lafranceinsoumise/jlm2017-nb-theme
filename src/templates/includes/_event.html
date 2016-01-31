@@ -10,7 +10,7 @@
     {% endif %}
     {% if event.event.show_guests? and event.event.rsvps_count > 0 %}
     &middot;
-    <a href="{{ event.url }}">{{ event.event.rsvps_count }} rsvp{% if event.event.rsvps_count > 1 %}s{% endif %}</a>
+    <a href="{{ event.url }}">{{ event.event.rsvps_count }} participant.e{% if event.event.rsvps_count > 1 %}.s{% endif %}</a>
     {% endif %}
   </strong>
   {% if event.event.has_venue? %}
@@ -35,11 +35,11 @@
 {% endif %}
 
 {% if event.event.is_maximum_capacity? %}
-<a class="btn btn-danger" href="{{ event.url }}">Sold out</a>
+<a class="btn btn-danger" href="{{ event.url }}">Complet</a>
 {% elsif event.event.is_past? == false %}
   {% if event.event.is_ticket_required? %}
     <a class="submit-link btn btn-primary" href="{{ event.url }}">Acheter des tickets</a>
   {% elsif event.event.accept_rsvps? %}
-    <a class="submit-link btn btn-primary" href="{{ event.url }}">Réponse attendue s'il vous plaît</a>
+    <a class="submit-link btn btn-primary" href="{{ event.url }}">Je m'inscris</a>
   {% endif %}
 {% endif %}
