@@ -5,6 +5,7 @@ var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
+var inlineCss = require('gulp-inline-css');
 
 gulp.task('styles', function() {
   gulp.src('src/styles/theme.scss')
@@ -48,8 +49,16 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('dist/theme'));
 });
 
+gulp.task('emails', function() {
+  gulp.src('src/emails/**/*.html')
+    .pipe(inlineCss())
+    .pipe(rename({dirname: ''}))
+    .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
+    .pipe(gulp.dest('dist/theme'))
+})
 
-gulp.task('default', ['styles', 'javascripts', 'templates', 'custom_pages', 'fonts']);
+
+gulp.task('default', ['styles', 'javascripts', 'templates', 'emails', 'custom_pages', 'fonts']);
 
 gulp.task('watch', ['default'], function() {
   gulp.watch('src/styles/**/*.scss', ['styles']);
@@ -57,4 +66,5 @@ gulp.task('watch', ['default'], function() {
   gulp.watch('src/templates/**/*.html', ['templates']);
   gulp.watch('src/custom_pages/**/*.html', ['custom_pages']);
   gulp.watch('src/fonts/**', ['fonts']);
+  gulp.watch('src/emails/**/*.html', ['emails']);
 });
