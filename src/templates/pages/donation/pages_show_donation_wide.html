@@ -58,10 +58,6 @@
   <div class="form-wrap">
     <div class="form">
 
-      <div class="form-errors">
-        {% error_messages_for donation %}
-      </div>
-
       {% if page.donation.has_merchant_account? == false %}
       <div class="marginbottommore">
         <span class="text-danger"><strong>Pas de compte en banque&nbsp;:</strong> Cette page ne fonctionnera pas tant que vous n'ajouterez pas de compte bancaire.</span>
