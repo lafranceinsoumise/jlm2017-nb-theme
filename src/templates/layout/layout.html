@@ -91,24 +91,10 @@
         {% endif %}
 
         <div class="row">
-
-          <div class="col-md-6 footer-left">
-            {% if request.logged_in? %}
-              Bonjour <a href="{{ request.current_signup.settings_url }}">{{ request.current_signup.name_or_email }}</a>. Voir
-              {% if site.show_public_profiles? %}
-                <a href="{{ request.current_signup.profile_url }}">votre profil public</a>,
-              {% endif %}
-              <a href="{{ request.current_signup.settings_url }}">les réglages de votre compte</a>, ou
-              <a href="{{ request.current_signup.logout_url }}">vous déconnecter</a>.
-            {% else %}
-              Se connecter avec <a href="{{ request.facebook_connect_url }}">Facebook</a>, <a
-                  href="{{ request.twitter_connect_url }}">Twitter</a> ou <a href="/login">par email</a>.
-            {% endif %}
-          </div>
-          <div class="col-md-6 footer-right text-right">
+          <div class="col-md-6 col-md-offset-6 footer-right text-right">
             <!-- The NationBuilder link below is required. If it is removed, we may add it back ourselves.
                  You can style it or move it in different ways, but please leave it in the footer. -->
-            Créé avec <a href="http://nationbuilder.com/">NationBuilder</a>
+            <small>Créé avec <a href="http://nationbuilder.com/">NationBuilder</a></small>
           </div>
 
         </div>
