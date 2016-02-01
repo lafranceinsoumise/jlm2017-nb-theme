@@ -59,3 +59,7 @@ a.alt-color {
     color: darken($brand-secondary, 15%);
   }
 }
+
+.error-message {
+  @extend .text-danger;
+}
