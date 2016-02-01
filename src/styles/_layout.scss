@@ -1,0 +1,47 @@
+body {
+  max-width: 1500px;
+  margin: auto;
+}
+
+.bottom-margin {
+  margin-bottom: 20px;
+}
+
+.container-signup {
+  form {
+    @extend .form-horizontal;
+    h3 {
+      font-family: 'Cookie', cursive;
+      font-weight: normal;
+    }
+  }
+  margin-bottom: -160px;
+}
+
+.text-important {
+  font-weight: bold;
+  color: $brand-secondary;
+}
+
+footer {
+  padding-top: 100px;
+  border-top: 40px solid $brand-secondary;
+}
+
+button, .btn {
+  transition: all 0.3s ease 0s;
+  font-family: $font-family-sans-serif;
+  text-transform: uppercase;
+}
+
+a.alt-color {
+  color: $brand-secondary;
+
+  &:hover, &:active {
+    color: darken($brand-secondary, 15%);
+  }
+}
+
+.error-message {
+  @extend .text-danger;
+}
