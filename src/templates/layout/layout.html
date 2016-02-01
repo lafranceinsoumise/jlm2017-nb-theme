@@ -41,7 +41,7 @@
     </div>
     <!-- .main-container -->
 
-    <div class="container-fluid">
+    {% unless request.logged_in? or request.sorta_logged_in? %}
       <div class="container container-signup">
         <div class="row">
           <div class="col-md-8 col-md-offset-2 card">
@@ -66,7 +66,7 @@
         </div>
       </div>
       <!-- container-signup -->
-    </div>
+    {% endunless %}
 
     <footer>
       <div class="container {% if site.has_background_image? %}well well-lg{% endif %}">
