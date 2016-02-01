@@ -24,6 +24,7 @@ gulp.task('javascripts', function() {
     .pipe(uglify())
     .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
     .pipe(gulp.dest('dist/theme'))
+  ;
 })
 
 gulp.task('templates', function() {
@@ -35,11 +36,35 @@ gulp.task('templates', function() {
 });
 
 gulp.task('emails', function() {
-  gulp.src('src/emails/**/*.html')
+  gulp.src('src/emails/layout_transactional.html')
     .pipe(inlineCss())
-    .pipe(rename({dirname: ''}))
+    .pipe(rename('layout_autoresponse.html'))
     .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
     .pipe(gulp.dest('dist/theme'))
+    .pipe(rename('layout_notification.html'))
+    .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
+    .pipe(gulp.dest('dist/theme'))
+  ;
+
+  gulp.src('src/emails/layout_transactional.txt')
+    .pipe(rename('layout_autoresponse.txt'))
+    .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
+    .pipe(gulp.dest('dist/theme'))
+    .pipe(rename('layout_notification.txt'))
+    .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
+    .pipe(gulp.dest('dist/theme'))
+  ;
+
+  gulp.src('src/emails/mailing_basic.html')
+    .pipe(inlineCss())
+    .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
+    .pipe(gulp.dest('dist/theme'))
+  ;
+
+  gulp.src('src/emails/mailing_basic.txt')
+    .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
+    .pipe(gulp.dest('dist/theme'))
+  ;
 })
 
 gulp.task('default', ['styles', 'javascripts', 'templates', 'emails']);
