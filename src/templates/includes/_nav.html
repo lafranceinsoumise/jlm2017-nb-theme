@@ -35,30 +35,37 @@
         </li>
         {% endif %}
         {% endfor %}
-		{% if request.logged_in? %}
-        <li class="dropdown">
-		  <a href="{{ request.current_user.profile_url }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-		  <img src="{{ request.current_user.profile_image_url }}" width="48" height="48" />
-		  <span class="caret"></span></a>
-		  <ul class="dropdown-menu" role="menu">
-			{% if request.current_user.is_profile_published? %}
-			<li>
-			  <a href="{{ request.current_user.profile_url }}"><h4 style="margin-bottom:0">{{ request.current_user.published_name }}</h4>
-			  <small>Voir le profil</small></a>
-			</li>
-			<li>
-			  <a href="{{ request.current_user.settings_url }}">Paramètres</a>
-			</li>
-			{% else %}
-			<li>
-			  <a href="{{ request.current_user.settings_url }}"><h4 style="margin-bottom:0">{{ request.current_user.published_name }}</h4>
-			  <small>Modifier le profil</small></a>
-			</li>
-			{% endif %}
-            <li><a href="{{ request.current_user.logout_url }}">Se déconnecter</a></li>
-          </ul>
-		</li>
-		{% endif %}
+        {% if request.logged_in? %}
+          <li class="dropdown">
+            <a href="{{ request.current_user.profile_url }}" class="navbar-img dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <img src="{{ request.current_user.profile_image_url }}" />
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                {% if request.current_user.is_profile_published? %}
+                  <a href="{{ request.current_user.profile_url }}">
+                    <h5>{{ request.current_user.published_name }}</h5>
+                    <small>Voir mon profil public</small>
+                  </a>
+                {% endif %}
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href="{{ request.current_user.settings_url }}">Mon compte</a>
+              </li>
+              <li><a href="{{ request.current_user.logout_url }}">Se déconnecter</a></li>
+              {% if request.current_user.is_intern? %}
+                <li role="separator" class="divider"></li>
+                <li>
+                  <a href="{{ site.admin_dashboard_url }}">Panneau d'administration</a>
+                </li>
+              {% endif %}
+            </ul>
+          </li>
+        {% else %}
+          <a href="/login" class="btn btn-default navbar-btn">Se connecter</a>
+        {% endif %}
       </ul>
     </div>
   </div>

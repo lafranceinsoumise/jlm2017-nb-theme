@@ -7,3 +7,12 @@
     width: auto;
   }
 }
+
+.navbar-nav .navbar-img {
+  padding-top: 20px;
+  padding-bottom: 20px;
+    img {
+      height: $navbar-height - (20px*2);
+      width: auto;
+    }
+}
