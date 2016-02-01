@@ -1,0 +1,9 @@
+.page-pages-show-basic-wide {
+  .one-column {
+    @include make-row();
+    .headline, #content {
+      @include make-md-column(8);
+      @include make-md-column-offset(2);
+    }
+  }
+}

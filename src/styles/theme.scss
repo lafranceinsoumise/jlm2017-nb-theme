@@ -3,6 +3,11 @@
 // Bootstrap components
 @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 
+
+// Template pages
+@import "pages/show_basic_wide";
+@import "pages/show_volunteer_signup_wide";
+
 // Custom components
 @import "navbar";
 @import "card";
