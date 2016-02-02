@@ -42,10 +42,14 @@
               <li>
                 {% if request.current_user.is_profile_published? %}
                   <a href="{{ request.current_user.profile_url }}">
-                    <h5>{{ request.current_user.published_name }}</h5>
-                    <small>Voir mon profil public</small>
-                  </a>
+                {% else %}
+                  <a href="{{ request.current_user.settings_url }}">
                 {% endif %}
+                  <h5>{{ request.current_user.published_name }}</h5>
+                  {% if request.current_user.is_profile_published? %}
+                    <small>Voir mon profil public</small>
+                  {% endif %}
+                </a>
               </li>
               <li role="separator" class="divider"></li>
               <li>
