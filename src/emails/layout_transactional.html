@@ -1,25 +1,118 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<html><head><title></title>
-<style type="text/css">
-body, td, font { font-size: 10pt; }
-td p { margin: 0em; }
-p { margin: 1em 0em; }
-td div p { margin: 1em 0em; }
-</style>
-</head><body marginheight=5 topmargin=5>
-<font face="Arial, Verdana, sans-serif" size=2>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width"/>
 
-{% yield %}
+    <link rel="stylesheet" href="ink.css"> <!-- For testing only -->
 
-<br/><br/>
--=-=-<br/>
-Cet email a été envoyé à {{ recipient.email }}.
-{% if page %}
-	Pour ne plus recevoir de notifications sur cette page, <a href="{{ page.unsubscribe_url }}">cliquez ici</a>.
-{% endif %}
-<br/>
-{{ settings.official_name }}{% if settings.has_address? %} &middot; {{ settings.address.one_line }} {% endif %}
-<br/><br/>
-Créé avec <a href="http://nationbuilder.com/">NationBuilder</a>.
-</font>
-</body></html>
+    <style type="text/css">
+
+      /* Ink styles go here in production */
+
+    </style>
+    <style type="text/css">
+
+      /* Your custom styles go here */
+
+    </style>
+  </head>
+  <body>
+    <table class="body">
+      <tr>
+        <td class="center" align="center" valign="top">
+          <center>
+            <table class="container">
+              <tr>
+                <td>
+                  <!-- header -->
+                  <table class="row">
+                    <tr>
+                      <td class="wrapper last">
+                        <table class="twelve columns">
+                          <tr>
+                            <td class="panel">
+                              Titre
+                            </td>
+                            <td class="expander"></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- content -->
+                  <table class="row">
+                    <tr>
+                      <td class="wrapper last">
+                        <table class="twelve columns">
+                          <tr>
+                            <td>
+                              {% yield %}
+                            </td>
+                            <td class="expander"></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- social networks -->
+                  <table class="row">
+                    <tr>
+                      <td class="wrapper last">
+                        <table class="twelve columns">
+                          <tr>
+                            <td class="panel sub-grid">
+                              <table>
+                                <tr>
+                                  <td class="four sub-columns">
+                                    Facebook
+                                  </td>
+                                  <td class="four sub-columns">
+                                    Twitter
+                                  </td>
+                                  <td class="four sub-columns">
+                                    Youtube
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                            <td class="expander"></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- bottom -->
+                  <table class="row">
+                    <tr>
+                      <td class="wrapper last">
+                        <table class="twelve columns">
+                          <tr>
+                            <td>
+                              Cet email a été envoyé à {{ recipient.email }}.
+                              {% if page %}
+                              	Pour ne plus recevoir de notifications sur cette page, <a href="{{ page.unsubscribe_url }}">cliquez ici</a>.
+                              {% endif %}
+                              <br/>
+                              {{ settings.official_name }}
+                              {% if settings.has_address? %}
+                                &middot; {{ settings.address.one_line }}
+                              {% endif %}
+                              <br/><br/>
+                              Créé avec <a href="http://nationbuilder.com/">NationBuilder</a>.
+                            </td>
+                            <td class="expander"></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
