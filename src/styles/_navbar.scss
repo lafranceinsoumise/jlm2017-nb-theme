@@ -9,4 +9,13 @@
         width: auto;
       }
   }
+
+  .navbar-brand {
+    img {
+      margin-top: -10px;
+      margin-bottom: -10px;
+      height: $navbar-height - (29px*2) + (10px*2);
+      width: auto;
+    }
+  }
 }
