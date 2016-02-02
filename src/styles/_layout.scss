@@ -10,11 +10,11 @@ body {
 .container-signup {
   form {
     @extend .form-horizontal;
-    h3 {
-      font-family: 'Cookie', cursive;
-      font-weight: normal;
-    }
   }
+}
+
+.container-signup-footer {
+  @extend .container-signup;
   margin-bottom: -160px;
 }
 
