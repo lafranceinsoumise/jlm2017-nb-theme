@@ -10,10 +10,10 @@
   <li><a href="/">Accueil</a></li>
   {% for ancestor in page.ancestors %}
   {% if ancestor.is_homepage? == false %}
-  <li><a href="{{ ancestor.url }}">{{ ancestor.name }}</a></li>
+  <li><a href="{{ ancestor.url }}">{{ ancestor.headline }}</a></li>
   {% endif %}
   {% endfor %}
-  <li class="active">{{ page.name }}</li>
+  <li class="active">{{ page.headline }}</li>
 </ol>
 
 {% endif %}
