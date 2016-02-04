@@ -47,6 +47,7 @@
           <div class="col-md-8 col-md-offset-2 col-xs-12 card">
             <h3 class="text-center">J'appuie la candidature<br>de Jean-Luc Mélenchon</h3>
             {% form_for signup %}
+              {% hidden_field_tag "page_id", site.signup_page.id %}
               <div class="form-group">
                 <div class="col-sm-12">
                   {% email_field "email", class:"form-control input-lg", placeholder:"Adresse email", required: "required" %}
