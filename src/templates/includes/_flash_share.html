@@ -1,11 +1,11 @@
-<div class="flash-share panel panel-default">
-  <div class="panel-heading">
-    <h3 class="headline panel-title">{{ flash.message }}</h3>
-  </div>
+<div class="card col-xs-12 bottom-margin">
+  <h3>{{ flash.message }}</h3>
 
-  <div class="share panel-body">
+  <p>
     Merci d'avoir appuyé la candidature de Jean-Luc Mélenchon. Invitez vos contacts à faire de même !
     <small>(<span id="face-tweet-content-charsleft"></span> caractères restants)</small>
+  </p>
+  <div>
     <div class="form padtopless">
       {% form_for face_tweet %}
       {% hidden_field_tag "face_tweet[page_id]", flash.page_id %}
