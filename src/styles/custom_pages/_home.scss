@@ -17,9 +17,7 @@ html, body {
     .container-menu {
       height: 100%;
       color: #fff;
-      img {
-        display: inline-block;
-      }
+
       h1, h2, h3, h4, h5, h6,
       .h1, .h2, .h3, .h4, .h5, .h6 {
         color: inherit;
@@ -27,8 +25,16 @@ html, body {
         text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.6);
       }
 
-      .row {
-        height: 100%;
+      .logo {
+        @include make-xs-column(12);
+        img {
+          height:50px;
+          width:auto;
+        }
+      }
+
+      .menu {
+        @include make-sm-column(3);
         .nav-stacked {
           li {
             a {
@@ -47,6 +53,17 @@ html, body {
           }
         }
       }
+
+      .subheadline {
+        @include make-sm-column(8);
+        @include make-sm-column-offset(1);
+        @include make-md-column(7);
+        @include make-md-column-offset(2);
+        @include make-lg-column(6);
+        @include make-lg-column-offset(3);
+      }
+
+
     }
   }
 }

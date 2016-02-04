@@ -2,10 +2,10 @@
   <div class="background" style="background-image: url('{{ site.header_image_url_980	}}');">
     <div class="container container-menu">
       <div class="row">
-        <div class="col-md-12">
+        <div class="logo">
           <img alt="{{ site.long_name }}" src="logo-blanc.png">
         </div>
-        <div class="col-md-3">
+        <div class="menu">
           <ul class="nav nav-pills nav-stacked">
             {% for child in site.root_nav_pages %}
               {% unless child.is_or_is_ancestor_of_current_page? %}
@@ -30,7 +30,7 @@
             {% endfor %}
           </ul>
         </div>
-        <div class="col-md-6 col-md-offset-3">
+        <div class="subheadline">
           <h1>{{ site.subheadline	}}</h1>
         </div>
       </div>
@@ -38,7 +38,7 @@
   </div>
   <div class="container container-signup">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3 col-xs-12 card">
+      <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 card">
         <h3 class="text-center">J'appuie la candidature de<br>Jean-Luc Mélenchon</h3>
         {% form_for signup %}
           <div class="form-group">
