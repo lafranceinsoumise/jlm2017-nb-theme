@@ -82,7 +82,7 @@
       {% if page.signup.is_volunteers? and site.ask_for_volunteers? %}
       {% if request.sorta_logged_in? == false or request.current_signup.is_volunteer == false %}
       <div class="row">
-        <div class="col-md-12"><div class="checkbox"><label for="signup_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} Je veux être bénévole</label></div></div>
+        <div class="col-md-12"><div class="checkbox"><label for="signup_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} Je veux agir</label></div></div>
       </div>
 
       {% endif %}
