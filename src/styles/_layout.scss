@@ -11,6 +11,10 @@ body {
   form {
     @extend .form-horizontal;
   }
+  h3 {
+    font-family: 'Courgette', cursive;
+    font-size: 40px;
+  }
 }
 
 .container-signup-footer {
