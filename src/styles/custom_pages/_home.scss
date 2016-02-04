@@ -5,15 +5,14 @@ html, body {
 .home-header {
   min-height: 606px; // can be bigger if signup form rise
   .background {
-    min-height: 500px; // fixed
     margin: auto;
     padding-top: 20px;
-    margin-bottom: -100px; // for the signup form to rise
+    margin-bottom: -150px; // for the signup form to rise
     background-color: $gray-lighter;
     background-size: cover;
     background-position: center;
     border-bottom: 40px solid $brand-secondary;
-    padding-bottom: 60px;
+    padding-bottom: 110px;
 
     .container-menu {
       height: 100%;
