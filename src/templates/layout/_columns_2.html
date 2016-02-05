@@ -12,73 +12,15 @@
     <!-- .left_column -->
 
     <div class="col-md-3 sidebar">
-
-      {% if request.logged_in? %}
-
-      {% include "supporter_nav" %}
-
-      {% else %}
-
-      <div class="supporter-nav btn-group-vertical" role="group">
-        <a class="btn btn-default" href="{{ request.facebook_connect_url }}"><i class="icon-facebook-squared"></i> Se connecter <em>via</em> Facebook</a>
-        <a class="btn btn-default" href="{{ request.twitter_connect_url }}"><i class="icon-twitter-squared"></i> Se connecter <em>via</em> Twitter</a>
-        <a class="btn btn-default" href="/login"><i class="icon-user"></i> Se connecter avec son adresse email</a>
-      </div>
-
-      {% if site.has_signup_page? %}
-      {% include "signup_form" with site.signup_page %}
-      {% endif %}
-
-      {% if site.has_button1? or site.has_button2? or site.has_button3? %}
-      <div class="btn-group-vertical" role="group">
-
-        {% if site.has_button1? %}
-        <a class="btn btn-default supporter-nav-btn" href="{{ site.button1_page.full_url_with_profile_recruiter }}">{{ site.button1_text }}</a>
-        {% endif %}
-
-        {% if site.has_button2? %}
-        <a class="btn btn-default supporter-nav-btn" href="{{ site.button2_page.full_url_with_profile_recruiter }}">{{ site.button2_text }}</a>
-        {% endif %}
-
-        {% if site.has_button3? %}
-        <a class="btn btn-default supporter-nav-btn" href="{{ site.button3_page.full_url_with_profile_recruiter }}">{{ site.button3_text }}</a>
-        {% endif %}
-
-      </div>
-      {% endif %}
-
-      <div class="panel panel-default">
-        <div class="panel-body">
-          {% if site.has_facebook_page? %}
-          <div class="fb-page" data-href="{{ site.broadcaster.facebook_page_profile_url }}" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="{{ site.broadcaster.facebook_page_profile_url }}"><a href="{{ site.broadcaster.facebook_page_profile_url }}">{{ site.broadcaster.facebook_page_username }}</a></blockquote></div></div>
-
-          {% else %}
-          <fb:like href="{{ site.full_url }}" colorscheme="{{ site.facebook_colorscheme }}" width="240"></fb:like>
-          {% endif %}
-
-          {% if site.has_twitter? %}
-          <div class="padtop">
-            <a href="{{ site.broadcaster.twitter_profile_url }}" class="twitter-follow-button" data-show-count="false">Suivre @{{ site.broadcaster.twitter_login }} sur Twitter</a>
-          </div>
-          {% endif %}
+      <p align="center">JLM sur Facebook :</p>
+      <div class="fb-page" data-href="https://www.facebook.com/JLMelenchon/" data-tabs="timeline" data-height="600" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+        <div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/JLMelenchon/"><a href="https://www.facebook.com/JLMelenchon/">Jean-Luc Mélenchon</a></blockquote>
         </div>
-        {% if page and page.has_rss? %}
-        <div class="panel-footer">
-           <a href="{{ page.rss_url }}"><i class="icon-rss"></i></a> <a href="{{ page.rss_url }}">Souscrire au flux RSS</a>
-        </div>
-        {% elsif page and page.has_parent? and page.parent.has_rss? %}
-        <div class="panel-footer">
-          <a href="{{ page.parent.rss_url }}"><i class="icon-rss"></i></a>
-          <a href="{{ page.parent.rss_url }}">Souscrire au flux RSS</a>
-        </div>
-        {% endif %}
       </div>
-
-      {% endif %}
-
-    </div>
+      <p align="center">JLM sur Twitter :</p>
+        <a class="twitter-timeline" href="https://twitter.com/JLMelenchon" data-widget-id="695407155457818624">Tweets de @JLMelenchon</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     <!-- .right-column -->
-
+    
   </div>
 
 </div> <!-- .column -->
