@@ -2,6 +2,8 @@
 @import "variables";
 // Bootstrap components
 @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+// Nationbuilder default styles
+@import "nb_default/styles";
 
 @import "layout";
 
@@ -17,6 +19,3 @@
 
 // Custom pages;
 @import "custom_pages/home";
-
-// Nationbuilder default styles
-@import "nb_default/styles";
