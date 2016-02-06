@@ -3,18 +3,14 @@
     @include make-row();
 
     .intro {
-      @include make-md-column(12);
+      @include make-one-main-column();
     }
 
     .form-wrap {
-      @include make-md-column(6);
+      @include make-md-column(12);
       .form {
         @extend .well;
       }
-    }
-
-    .template-content {
-      @include make-md-column(6);
     }
 
     .like-page {
