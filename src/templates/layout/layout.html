@@ -42,7 +42,7 @@
     <!-- .main-container -->
 
     {% unless request.logged_in? or request.sorta_logged_in? %}
-      <div class="container container-signup-footer">
+      <div class="container container-signup-footer hidden-print">
         <div class="row">
           <div class="col-md-8 col-md-offset-2 col-xs-12 card">
             <h3 class="text-center">J'appuie la candidature<br>de Jean-Luc Mélenchon</h3>
@@ -69,7 +69,7 @@
       <!-- container-signup -->
     {% endunless %}
 
-    <footer>
+    <footer class="hidden-print">
       <div class="container {% if site.has_background_image? %}well well-lg{% endif %}">
 
         <div class="row text-center bottom-margin">
