@@ -18,87 +18,75 @@
 
   <div class="form-wrap">
     <div class="form">
-
-      {% form_for signup %}
-
-      {% if request.sorta_logged_in? %}
-      <h4>Bonjour {{ request.current_signup.name_or_email }}, merci de nous avoir rejoints&nbsp;!</h4>
-
-      {% if request.logged_in? == false %}
-      <div class="padbottommore"><small>Si vous n'êtes pas {{ request.current_signup.name_or_email }}, <a href="{{ request.current_signup.logout_url }}">cliquez ici pour vous inscrire</a>.</small></div>
-      {% endif %}
-
-      {% endif %}
-
-      <div class="form-errors">{% error_messages_for signup %}</div>
-
-      {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
       <div class="row">
-        <div class="col-md-6"><div class="form-group"><label for="signup_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
-        <div class="col-md-6"><div class="form-group"><label for="signup_last_name">Nom</label>{% text_field "last_name", class:"text form-control" %}</div></div>
+        {% form_for signup %}
+          <div class="col-sm-6">
+
+          {% if request.sorta_logged_in? %}
+
+          {% if request.logged_in? == false %}
+          <div class="padbottommore"><small>Si vous n'êtes pas {{ request.current_signup.name_or_email }}, <a href="{{ request.current_signup.logout_url }}">cliquez ici pour vous inscrire</a>.</small></div>
+          {% endif %}
+
+          {% endif %}
+
+          {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
+          <div class="row">
+            <div class="col-md-6"><div class="form-group"><label for="signup_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
+            <div class="col-md-6"><div class="form-group"><label for="signup_last_name">Nom</label>{% text_field "last_name", class:"text form-control" %}</div></div>
+          </div>
+          {% endif %}
+
+          <div class="row">
+            <div class="col-md-12"><div class="form-group"><label for="signup_born_at_chronic">Date de naissance</label>{% text_field "born_at_chronic", class:"text form-control" %}</div></div>
+            {% if page.signup.is_address? %}
+            {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
+            <div class="col-md-12"><div class="form-group"><label for="signup_home_address_address1">Adresse</label>{% text_field "home_address.address1", class:"text form-control" %}</div></div>
+            <div class="col-md-12"><div class="form-group"><label for="signup_home_address_address2">Adresse (Ligne 2)</label>{% text_field "home_address.address2", class:"text form-control" %}</div></div>
+            <div class="col-md-6"><div class="form-group"><label for="signup_home_address_zip">Code postal</label>{% text_field "home_address.zip", class:"form-control", placeholder:"Code postal", required: "required" %}</div></div>
+            <div class="col-md-6"><div class="form-group"><label for="signup_home_address_city">Ville</label>{% text_field "home_address.city", class:"form-control", required: "required" %}</div></div>
+            {% endif %}
+            {% endif %}
+            <div class="col-md-6"><div class="form-group"><label for="signup_mobile_number">Numéro de portable</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
+            <div class="col-md-6"><div class="form-group"><label for="signup_occupation">Métier</label>{% text_field "occupation", class:"form-control", required: "required" %}</div></div>
+          </div>
+          <div class="row">
+            <div class="col-md-12"><p>
+              Si vous avez des engagements associatifs, syndicaux ou autres, merci de les indiquer ici :
+            </p></div>
+            <div class="col-md-6"><div class="form-group"><label for="signup_custom_values_associations_custom">Associations</label>{% text_field "custom_values.associations", class:"form-control" %}</div></div>
+            <div class="col-md-6"><div class="form-group"><label for="signup_custom_values_syndicat_custom">Syndicats</label>{% text_field "custom_values.syndicat", class:"form-control", required: "required" %}</div></div>
+            <div class="col-md-6"><div class="form-group"><label for="signup_custom_values_autres_engagements_custom">Autres</label>{% text_field "custom_values.autres_engagements", class:"form-control", required: "required" %}</div></div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label>Savoir-faire&nbsp;:</label>
+          {% if page.signup.has_labeled_tags? %}
+            {% include "labeled_tags" %}
+          {% endif %}
+
+          {% if page.signup.is_volunteers? and site.ask_for_volunteers? %}
+          {% if request.sorta_logged_in? == false or request.current_signup.is_volunteer == false %}
+          <div class="row">
+            <div class="col-md-12"><div class="checkbox"><label for="signup_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} Je veux être bénévole</label></div></div>
+          </div>
+
+          {% endif %}
+          {% endif %}
+
+          {% if page.signup.is_all_info_collected? == false %}
+          {% if request.sorta_logged_in? %}
+          {% submit_tag "Mettre à jour", class:"submit-button btn btn-primary" %}
+          {% else %}
+          {% submit_tag "S'inscrire", class:"submit-button btn btn-primary" %}
+          {% endif %}
+          {% endif %}
+          <div class="form-submit"></div>
+        </div>
+
+        {% endform_for %}
       </div>
-      {% endif %}
-
-      {% if request.sorta_logged_in? == false or request.current_signup.has_mobile? == false %}
-      <div class="row">
-        <div class="col-md-6"><div class="form-group"><label for="signup_email">Email</label>{% email_field "email", class:"text form-control" %}</div></div>
-        {% if site.ask_for_mobiles? %}
-        <div class="col-md-6"><div class="form-group"><label for="signup_mobile_number">Numéro de portable</label>{% phone_field "mobile_number", class:"text form-control" %}</div></div>
-        {% endif %}
-      </div>
-
-
-      <div class="row">
-        <div class="col-md-6"><div class="checkbox"><label for="signup_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Recevoir des informations par email</label></div></div>
-        {% if site.ask_for_mobiles? %}
-        <div class="col-md-6"><div class="checkbox"><label for="signup_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Recevoir des informations par SMS</label></div></div>
-        {% endif %}
-      </div>
-      {% endif %}
-
-      {% if page.signup.is_phone? %}
-      <div class="row">
-        <div class="col-md-12"><div class="form-group"><label for="signup_phone_number">Téléphone</label>{% phone_field "phone_number", class:"text form-control" %}</div></div>
-      </div>
-      {% endif %}
-
-      {% if page.signup.is_address? %}
-
-      {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
-      <div class="row">
-        <div class="col-md-12"><div class="form-group"><label for="signup_submitted_address">Adresse (Rue, Ville, Département, Code postal)</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
-      </div>
-      {% endif %}
-
-      {% endif %}
-
-      {% if page.signup.has_labeled_tags? %}
-        {% include "labeled_tags" %}
-      {% endif %}
-
-      {% if page.signup.is_volunteers? and site.ask_for_volunteers? %}
-      {% if request.sorta_logged_in? == false or request.current_signup.is_volunteer == false %}
-      <div class="row">
-        <div class="col-md-12"><div class="checkbox"><label for="signup_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} Je veux être bénévole</label></div></div>
-      </div>
-
-      {% endif %}
-      {% endif %}
-
-      <div class="row">
-        <div class="col-md-12"><div class="checkbox"><label for="signup_activity_is_private">{% check_box "activity_is_private", class:"checkbox" %} Ne pas rendre cela public sur le site</label></div></div>
-      </div>
-
-      {% if page.signup.is_all_info_collected? == false %}
-      {% if request.sorta_logged_in? %}
-      {% submit_tag "Mettre à jour", class:"submit-button btn btn-primary" %}
-      {% else %}
-      {% submit_tag "S'inscrire", class:"submit-button btn btn-primary" %}
-      {% endif %}
-      {% endif %}
-      <div class="form-submit"></div>
-
-      {% endform_for %}
 
       {% if page.text_keyword_instructions.size > 0 %}
       <div class="row padbottom padtopmore">
