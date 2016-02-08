@@ -2,6 +2,11 @@
 <div id="headline">
   <h2>Votre compte {{ site.name }}</h2>
 </div>
+
+<p>
+  Ceci est votre compte personnel sur le site jlm2017. Vous pouvez ici modifier ou actualiser vos informations. <b>Notez que seules les informations de votre « profil public » sont publiques et que tous les champs sont facultatifs</b> (vous pouvez donc par exemple mettre votre prénom et pas votre nom de famille). Pensez à cocher la case « Ne pas rendre public mon profil sur le site » si vous ne souhaitez rendre publique aucune information.
+</p>
+<hr />
 {% endunless %}
 
 {% form_for signup %}
@@ -9,17 +14,28 @@
 
 <div class="form padbottomore">
 
-  <h4>Profil public</h4>
+  <h3>Profil public</h3>
 
   <div class="form-errors">{% error_messages_for signup %}</div>
 
   <div class="padtopmore padbottommore">
-    <div class="checkbox"><label for="signup_is_profile_private">{% check_box "is_profile_private", class:"checkbox" %} Ne pas publier <a href="{{ signup.profile_url }}">mon profil</a> sur le site</label></div>
+    <div class="checkbox">
+      <label for="signup_is_profile_private">
+        {% check_box "is_profile_private", class:"checkbox" %}
+        Ne pas rendre public
+        {% if request.current_user.is_profile_published? %}
+        <a href="{{ signup.profile_url }}">mon profil</a>
+        {% else %}
+        mon profil
+        {% endif %}
+        sur le site
+      </label>
+    </div>
   </div>
 
   <div class="row">
   	<div class="col-md-6"><div class="form-group"><label for="signup_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
-    <div class="col-md-6"><div class="form-group"><label for="signup_last_name">Nom</label>{% text_field "last_name", class:"text form-control" %}</div></div>
+    <div class="col-md-6"><div class="form-group"><label for="signup_last_name">Nom (facultatif)</label>{% text_field "last_name", class:"text form-control" %}</div></div>
   </div>
 
   <div class="row">
@@ -31,41 +47,23 @@
   </div>
 
   <div class="row">
-  	<div class="col-md-12"><div class="form-group"><label for="signup_bio">Courte biographie</label>{% text_field "bio", class:"text form-control" %}</div></div>
+  	<div class="col-md-12"><div class="form-group"><label for="signup_bio">Bio (décrivez-vous en quelques mots)</label>{% text_field "bio", class:"text form-control" %}</div></div>
   </div>
 
   <div class="row">
-  	<div class="col-md-12"><div class="form-group"><label for="signup_website">Site internet</label>{% text_field "website", class:"text form-control" %}</div></div>
-  </div>
-
-  <div class="row">
-  	<div class="col-md-12"><div class="form-group"><label for="signup_profile_headline">Sous-titre de votre profil</label>{% text_field "profile_headline", class:"text form-control" %}</div></div>
+  	<div class="col-md-12"><div class="form-group"><label for="signup_website">Blog ou site internet</label>{% text_field "website", class:"text form-control" %}</div></div>
   </div>
 
   <div class="row">
   	<div class="col-md-12"><div class="form-group">
-      <label for="signup_profile_content_editable">Pourquoi soutenez-vous {{ site.name }} ?</label>
+      <label for="signup_profile_content_editable">Pourquoi appuyez-vous la proposition de candidature de Jean-Luc Mélenchon&nbsp;?</label>
  	    <div class="so_ie_does_not_put_this_in_the_footer">{% text_area "profile_content_editable", class:"textarea form-control textarea-tinymce" %}</div>
     </div></div>
   </div>
 
-	{% if settings.is_donor? %}
-	<div class="row padtopmore">
-		<div class="col-md-12"><div class="form-group"><label for="signup_donations_to_raise_amount">Je m'engage à faire un don :</label>{% text_field "donations_to_raise_amount", class:"text form-control" %}</div></div>
-	</div>
-	{% endif %}
-
-	<div class="row">
-		<div class="col-md-12">
-      <div class="checkbox"><label for="signup_is_survey_question_private">{% check_box "is_survey_question_private", class:"checkbox" %} Ne pas publier mes réponses au sondage sur le site</label></div>
-      <div class="checkbox"><label for="signup_is_profile_searchable">{% check_box "is_profile_searchable", class:"checkbox" %} Autoriser les moteurs de recherche à indexer <a href="{{ signup.profile_url }}">mon profil</a></label></div>
-      <div class="checkbox"><label for="signup_is_leaderboardable">{% check_box "is_leaderboardable", class:"checkbox" %} M'inclure dans les classements</label></div>
-    </div>
-	</div>
-
 	<div class="row">
 		<div class="col-md-12 padtop">
-		  {% submit_tag "Enregistrer mes paramètres publics", class:"submit-button btn btn-primary" %}
+		  {% submit_tag "Enregistrer mes informations publiques", class:"submit-button btn btn-primary" %}
 		  <div class="form-submit"></div>
 		</div>
 	</div>
@@ -76,7 +74,7 @@
 
 <div class="form">
 
-  <h4>Paramètres privés</h4>
+  <h3>Paramètres privés</h3>
 
   <div class="row padtopmore">
   	<div class="col-md-6">
@@ -101,7 +99,7 @@
 
   <div class="row">
   	<div class="col-md-12 padtop">
-    {% submit_tag "Enregistrer mes paramètres privés", class:"submit-button btn btn-primary" %}
+    {% submit_tag "Enregistrer mes informations privées", class:"submit-button btn btn-primary" %}
     <div class="form-submit"></div>
   	</div>
   </div>
