@@ -98,7 +98,7 @@
       {% if page.volunteer_signup.is_address? %}
       {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
       <div class="row">
-        <div class="col-md-12"><div class="form-group"><label for="volunteer_signup_submitted_address">Adresse (Rue, Ville, Département, Code postal)</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="volunteer_signup_submitted_address">Adresse (Rue, Code postal, Ville)</label>{% text_field "submitted_address", class:"text form-control" %}</div></div>
       </div>
       {% endif %}
       {% endif %}
