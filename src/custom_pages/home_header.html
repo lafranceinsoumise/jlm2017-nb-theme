@@ -5,6 +5,11 @@
         <div class="logo">
           <img alt="{{ site.long_name }}" src="logo-orange-bleu.png">
         </div>
+        <div class="login_button">
+          <a href="/login" class="btn btn-default btn-block">Se connecter</a>
+        </div>
+      </div>
+      <div class="row row-menu">
         <div class="menu">
           <ul class="nav nav-pills nav-stacked">
             {% for child in site.root_nav_pages %}
@@ -31,7 +36,7 @@
           </ul>
         </div>
         <div class="subheadline">
-          <h1>{{ site.subheadline	}}</h1>
+          {{ site.subheadline	}}
         </div>
       </div>
     </div>
