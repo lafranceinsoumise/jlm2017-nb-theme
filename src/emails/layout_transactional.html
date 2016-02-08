@@ -15,7 +15,6 @@
     .header {
       background-color: #c9462c;
       border: 0px;
-      text-align: center;
     }
 
     .header img {
@@ -26,6 +25,10 @@
       margin-top: 15px;
     }
 
+    .sub-columns center {
+      min-width: none !important;
+    }
+
     </style>
   </head>
   <body>
@@ -33,6 +36,7 @@
       <tr>
         <td class="center" align="center" valign="top">
           <center>
+            <!-- mail content -->
             <table class="container">
               <tr>
                 <td>
@@ -42,7 +46,7 @@
                       <td class="wrapper last">
                         <table class="twelve columns">
                           <tr>
-                            <td class="header" align="center">
+                            <td class="header center">
                               <center>
                                 <img src="logo-blanc.png" height="100"/>
                               </center>
@@ -61,6 +65,7 @@
                           <tr>
                             <td>
                               {% yield %}
+                              <hr />
                             </td>
                             <td class="expander"></td>
                           </tr>
@@ -74,20 +79,29 @@
                       <td class="wrapper last">
                         <table class="twelve columns">
                           <tr>
-                            <td class="panel sub-grid">
-                              <table>
-                                <tr>
-                                  <td class="four sub-columns">
-                                    Facebook
-                                  </td>
-                                  <td class="four sub-columns">
-                                    Twitter
-                                  </td>
-                                  <td class="four sub-columns">
-                                    Youtube
-                                  </td>
-                                </tr>
-                              </table>
+                            <td class="four sub-columns center">
+                              <center>
+                                <img src="logo-twitter.png" class="center" />
+                                <a href="https://twitter.com/JLMelenchon" target="_blank">
+                                  Twitter
+                                </a>
+                              </center>
+                            </td>
+                            <td class="four sub-columns center">
+                              <center>
+                                <img src="logo-facebook.png" class="center" />
+                                <a href="https://www.facebook.com/JLMelenchon" target="_blank">
+                                  Facebook
+                                </a>
+                              </center>
+                            </td>
+                            <td class="four sub-columns last center">
+                              <center>
+                                <img src="logo-youtube.png" class="center" />
+                                <a href="https://www.youtube.com/user/PlaceauPeuple" target="_blank">
+                                  Youtube
+                                </a>
+                              </center>
                             </td>
                             <td class="expander"></td>
                           </tr>
@@ -111,7 +125,7 @@
                               {% if settings.has_address? %}
                                 &middot; {{ settings.address.one_line }}
                               {% endif %}
-                              <br/><br/>
+                              -
                               Créé avec <a href="http://nationbuilder.com/">NationBuilder</a>.
                             </td>
                             <td class="expander"></td>
