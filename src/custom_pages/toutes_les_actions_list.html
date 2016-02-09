@@ -1,0 +1,69 @@
+<h3>Les indispensables</h3>
+
+<div class="btn-cloud">
+  {% for child_page in page.children %}
+    {% for tag in child_page.tags %}
+      {% if "les_indispensables" == tag.slug %}
+        <a class="btn btn-primary" href="{{ child_page.url }}">
+          {{ child_page.name }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</div>
+
+<h3>Agir près de chez soi</h3>
+
+<div class="btn-cloud">
+  {% for child_page in page.children %}
+    {% for tag in child_page.tags %}
+      {% if "agir_pr_s_de_chez_soi" == tag.slug %}
+        <a class="btn btn-primary" href="{{ child_page.url }}">
+          {{ child_page.name }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</div>
+
+<h3>Agir sur Internet</h3>
+
+<div class="btn-cloud">
+  {% for child_page in page.children %}
+    {% for tag in child_page.tags %}
+      {% if "agir_sur_internet" == tag.slug %}
+        <a class="btn btn-primary" href="{{ child_page.url }}">
+          {{ child_page.name }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</div>
+
+<h3>Agir sur Facebook</h3>
+
+<div class="btn-cloud">
+  {% for child_page in page.children %}
+    {% for tag in child_page.tags %}
+      {% if "agir_sur_facebook" == tag.slug %}
+        <a class="btn btn-primary" href="{{ child_page.url }}">
+          {{ child_page.name }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</div>
+
+<h3>Agir sur Twitter</h3>
+
+<div class="btn-cloud">
+  {% for child_page in page.children %}
+    {% for tag in child_page.tags %}
+      {% if "agir_sur_twitter" == tag.slug %}
+        <a class="btn btn-primary" href="{{ child_page.url }}">
+          {{ child_page.name }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</div>

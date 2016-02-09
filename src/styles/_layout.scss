@@ -47,6 +47,12 @@ button, .btn {
   text-transform: uppercase;
 }
 
+.btn-cloud {
+    .btn {
+      margin: 5px;
+    }
+}
+
 a.alt-color {
   color: $brand-secondary;
 
