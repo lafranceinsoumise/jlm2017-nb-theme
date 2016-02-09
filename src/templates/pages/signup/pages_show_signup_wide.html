@@ -38,7 +38,17 @@
           {% endif %}
 
           <div class="row">
-            <div class="col-md-12"><div class="form-group"><label for="signup_born_at_chronic">Date de naissance</label>{% text_field "born_at_chronic", class:"text form-control" %}</div></div>
+            <div class="col-sm-6"><div class="form-group">
+              <label for="signup_sex">Genre</label>
+              {% comment %}TODO: find the correct way to do it{% endcomment %}
+              <select id="signup_sex" class="form-control" name="signup[sex]">
+                <option disabled selected> -- Choisir -- </option>
+                <option value="F">Femme</option>
+                <option value="H">Homme</option>
+                <option value="A">Autre / Non défini</option>
+              </select>
+            </div></div>
+            <div class="col-sm-6"><div class="form-group"><label for="signup_born_at_chronic">Date de naissance</label>{% text_field "born_at_chronic", class:"date form-control", type="date" %}</div></div>
             {% if page.signup.is_address? %}
             {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
             <div class="col-md-12"><div class="form-group"><label for="signup_home_address_address1">Adresse</label>{% text_field "home_address.address1", class:"text form-control" %}</div></div>
