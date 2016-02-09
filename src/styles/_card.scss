@@ -12,6 +12,16 @@
     color: inherit;
   }
 
+  a {
+    color: #fff;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      color: darken(#fff, 15%);
+    }
+  }
+  p.lead
   input {
     border-color: $brand-primary;
   }

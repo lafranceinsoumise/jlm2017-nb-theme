@@ -19,8 +19,11 @@
   </head>
   <body class="aware-theme v2-theme {{ page.page_class_name }} page-{{ request.template | replace: '_', '-' }} js">
 
-    {% if request.url_path != '/' or request.logged_in?	or request.sorta_logged_in? %}
+    {% if request.url_path != '/' %}
       {% include "nav" %}
+      {% if request.logged_in? %}
+        {% include "supporter_nav" %}
+      {% endif %}
     {% else %}
       {% include "custom_home_header" %}
     {% endif %}

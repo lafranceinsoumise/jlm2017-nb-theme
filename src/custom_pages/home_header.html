@@ -6,7 +6,11 @@
           <img alt="{{ site.long_name }}" src="logo-orange-bleu.png">
         </div>
         <div class="login_button">
+          {% if request.logged_in? %}
+          <a href="{{ request.current_signup.logout_url }}" class="btn btn-default btn-block">Se déconnecter</a>
+          {% else %}
           <a href="/login" class="btn btn-default btn-block">Se connecter</a>
+          {% endif %}
         </div>
       </div>
       <div class="row row-menu">
@@ -44,6 +48,12 @@
   <div class="container container-signup">
     <div class="row">
       <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 card">
+        {% if request.sorta_logged_in? %}
+        <h1>Bonjour {{ request.current_signup.name_or_email }}, merci d'avoir apporté votre appui.</h1>
+
+        <p class="lead">Pour faire signer quelqu'un d'autre, <a href="{{ request.current_signup.logout_url }}">cliquez ici</a>.
+        </p>
+        {% else %}
         <h3 class="text-center">J'appuie la candidature de<br>Jean-Luc Mélenchon</h3>
         {% form_for signup %}
         {% hidden_field_tag "page_id", site.signup_page.id %}
@@ -62,6 +72,7 @@
           </div>
           <p>Je recevrai des informations sur la campagne de Jean-Luc Mélenchon</p>
         {% endform_for %}
+        {% endif %}
       </div>
     </div>
   </div>
