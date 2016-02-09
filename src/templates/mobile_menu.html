@@ -39,7 +39,6 @@
 			      <span class="badge">{{ request.current_signup.membership_level_badge }}</span>
 			    {% endif %}
 			  {% endif %}
-			  <span class="label label-default">{{ request.current_signup.capital_amount_format }}</span>
 			  {% if request.current_signup.is_banned? %}
 			    <span class="">Banni</span>
 			  {% elsif request.current_signup.rule_violations_count == 1 %}

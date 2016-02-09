@@ -648,7 +648,7 @@
 
     <h4 class="excerpt-title"><a href="{{ post.url }}">{{ homepage_excerpt.headline }}</a></h4>
     <div class="byline">
-      Publié par {{ homepage_excerpt.author.published_name_linked }} <span class="label label-default">{{ homepage_excerpt.author.capital_amount_format }}</span> le {{ homepage_excerpt.published_at | date: '%B %d, %Y' }}
+      Publié par {{ homepage_excerpt.author.published_name_linked }} le {{ homepage_excerpt.published_at | date: '%B %d, %Y' }}
     </div>
 
     {% if homepage_excerpt.suggestion.content.size > 0 %}
