@@ -1,0 +1,113 @@
+{% if page %}
+<ol class="breadcrumb">
+  <li><a href="/">Accueil</a></li>
+  {% for ancestor in page.self_and_ancestors %}
+  <li><a href="{{ ancestor.url }}">{{ ancestor.name }}</a></li>
+  {% endfor %}
+</ol>
+
+<h2 class="headline">Publiez votre groupe d'appui</h2>
+{% else %}
+<ul class="breadcrumbs">
+  <li><a href="/">Accueil</a> <span class="divider">/</span></li>
+  <li><a href="/users/pages">Vos pages</a> <span class="divider">/</span></li>
+</ul>
+<div class="padbottom">
+  <h2>Publiez votre évènement</h2>
+</div>
+{% endif %}
+
+<div class="padbottommore">
+
+  {% form_for event_page %}
+
+  <div class="form-wrap">
+    <div class="form">
+
+      <div class="form-errors">{% error_messages_for event_page %}</div>
+
+      <div class="row">
+
+        <div class="col-md-12"><div class="form-group"><label for="event_page_name">Nom du groupe d'appui</label>{% text_field "page_headline", class:"text form-control", placeholder: "Ex: Châteauroux, Lille (Wazemmes), ou Marseille 3ème arrondissement" %}</div></div>
+
+      </div>
+
+      {% comment %}TODO: not hardcode this{% endcomment %}
+      <input id="event_page[start_at_chronic]" name="event_page[start_at_chronic]" type="hidden" value="December 31, 2022 at 12:00pm">
+      {% hidden_field_tag "event_page[duration_chronic]", "1d" %}
+      {% hidden_field_tag "event_page[time_zone]", "Paris" %}
+      {% hidden_field_tag "event_page[page_parent_id]", event_page.page_parent_id %}
+      {% hidden_field_tag "event_page[accept_rsvps]", "1" %}
+      {% hidden_field_tag "event_page[allow_guests]", "0" %}
+      {% hidden_field_tag "event_page[show_guests]", "1" %}
+
+      <h4 class="padtopmore padbottom">Informations de contact</h4>
+
+      <div class="row">
+        <div class="col-md-12"><div class="form-group"><label for="event_page_contact_name">Nom</label>{% text_field "contact_name", class:"text form-control" %}</div></div>
+
+      </div>
+      <div class="row">
+
+        <div class="col-md-6">
+          <div class="form-group"><label for="event_page_contact_email">Email</label>{% text_field "contact_email", class:"text form-control" %}</div>
+          <div class="checkbox"><label for="event_page_is_contact_email_private" class="checkbox">{% check_box "is_contact_email_private", class:"check_box" %} Ne pas rendre publique l'adresse email</label></div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group"><label for="event_page_contact_phone_number">Téléphone</label>{% text_field "contact_phone_number", class:"text form-control" %}</div>
+          <div class="checkbox"><label for="event_page_is_contact_phone_private" class="checkbox">{% check_box "is_contact_phone_private", class:"check_box" %} Ne pas rendre public le numéro de téléphone</label></div>
+        </div>
+
+      </div>
+
+      <div class="padtopmore">
+
+        <h4>Lieu de réunion habituel</h4>
+        <p>Si les réunions se déroulent chez vous et que vous ne souhaitez pas rendre publique cette adresse, vous pouvez indiquer un endroit à proximité.</p>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-12"><div class="form-group"><label for="event_page_venue_name">Nom du lieu</label>{% text_field "venue_name", class:"text form-control" %}</div></div>
+
+      </div>
+      <div class="row">
+
+        <div class="col-md-12"><div class="form-group"><label for="event_page_address1">Adresse</label>
+          {% text_field "venue_address.address1", class:"text form-control" %}
+          {% text_field "venue_address.address2", class:"text form-control" %}</div></div>
+
+      </div>
+      <div class="row">
+
+        <div class="col-md-4"><div class="form-group"><label for="event_page_zip">Code postal</label>{% text_field "venue_address.zip", class:"text form-control" %}</div></div>
+        <div class="col-md-4"><div class="form-group"><label for="event_page_city">Ville</label>{% text_field "venue_address.city", class:"text form-control" %}</div></div>
+
+      </div>
+      <div class="row">
+
+        <div class="col-md-12"><div class="form-group"><label for="event_page_country_code">Pays</label>{% collection_select "venue_address.country_code", event_page.countries, "code", "name", class:"select form-control" %}</div></div>
+
+      </div>
+
+      <h4 class="padbottom">Description, incluant un itinéraire</h4>
+
+      <div class="row">
+
+        <div class="col-md-12"><div class="so_ie_does_not_put_this_in_the_footer">{% text_area "content_editable", class:"textarea form-control textarea-tinymce" %}</div></div>
+
+      </div>
+
+      <div class="padtop">
+        {% submit_tag "Sauvegarder et publier", class:"submit-button btn btn-primary" %}
+        <div class="form-submit"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  {% endform_for %}
+
+</div>
