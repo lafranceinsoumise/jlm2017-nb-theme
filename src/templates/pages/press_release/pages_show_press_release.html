@@ -7,7 +7,7 @@
     <div class="header">
 
       <div class="released-at">
-        {{ page.published_at | date: '%B %d, %Y' }}
+        {{ page.published_at | date: '%d/%m/%Y %H:%M' }}
       </div>
 
       {% if page.has_author? %}

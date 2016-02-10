@@ -62,7 +62,7 @@
     <h4 class="excerpt-title"><a href="{{ post.url }}">{{ post.headline }}</a></h4>
 
     <div class="byline">
-      Publié par {{ post.author.published_name_linked }} &middot; {{ post.published_at | date: '%B %d, %Y %l:%M %p' }}
+      Publié par {{ post.author.published_name_linked }} &middot; {{ post.published_at | date: '%d/%m/%Y %H:%M' }}
       {% if post.show_stream? %}
       {% if post.public_activities_count > 0 %}
       &middot; <a href="{{ post.url }}#reactions">{{ post.public_activities_count }} réaction{% if post.public_activities_count > 1 %}s{% endif %}</a>
@@ -90,7 +90,7 @@
     <h4 class="excerpt-title"><a href="{{ post.url }}">{{ post.headline }}</a></h4>
 
     <div class="byline">
-      Publié par {{ post.author.published_name_linked }} &middot; {{ post.published_at | date: '%B %d, %Y %l:%M %p' }}
+      Publié par {{ post.author.published_name_linked }} &middot; {{ post.published_at | date: '%d/%m/%Y %H:%M' }}
       {% if post.show_stream? %}
       {% if post.public_activities_count > 0 %}
       &middot; <a href="{{ post.url }}#reactions">{{ post.public_activities_count }} réaction{% if post.public_activities_count > 1 %}s{% endif %}</a>
@@ -132,7 +132,7 @@
     <div class="event-block">
 
       <div class="event-info">
-      <strong>{{ event.event.local_start_at | date: '%A, %B %d, %Y at %I:%M %p' }}
+      <strong>{{ event.event.local_start_at | date: '%d/%m/%Y %H:%M' }}
       {% if event.event.is_multi_day? %}
       à {{ event.event.local_end_at | event_date }}
       {% endif %}
@@ -533,7 +533,7 @@
     <h4 class="excerpt-title"><a href="{{ post.url }}">{{ homepage_excerpt.headline }}</a></h4>
 
     <div class="released-at">
-      {{ homepage_excerpt.published_at | date: '%B %d, %Y' }}
+      {{ homepage_excerpt.published_at | date: '%d/%m/%Y %H:%M' }}
     </div>
 
     {% if homepage_excerpt.has_author? %}
@@ -648,7 +648,7 @@
 
     <h4 class="excerpt-title"><a href="{{ post.url }}">{{ homepage_excerpt.headline }}</a></h4>
     <div class="byline">
-      Publié par {{ homepage_excerpt.author.published_name_linked }} le {{ homepage_excerpt.published_at | date: '%B %d, %Y' }}
+      Publié par {{ homepage_excerpt.author.published_name_linked }} le {{ homepage_excerpt.published_at | date: '%d/%m/%Y %H:%M' }}
     </div>
 
     {% if homepage_excerpt.suggestion.content.size > 0 %}

@@ -1,5 +1,5 @@
 <div class="event-info">
-  <strong>{{ event.event.local_start_at | date: '%A, %B %d, %Y at %I:%M %p' }}
+  <strong>{{ event.event.local_start_at | date: '%d/%m/%Y %H:%M' }}
     {% if event.event.is_multi_day? %}
     through {{ event.event.local_end_at | event_date }}
     {% endif %}
