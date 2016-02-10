@@ -1,4 +1,4 @@
 <div class="byline">
   Publié par {{ page.author.published_name_linked }} le {{ page.published_at | date: '%d/%m/%Y %H:%M' }}
-  {% if site.has_rule_page? and request.logged_in? %}&middot; <a href="{{ page.flag_url }}" class="flag">Dreapeau</a>{% endif %}
+  {% if site.has_rule_page? and request.logged_in? %}&middot; <a href="{{ page.flag_url }}" class="flag">Signaler</a>{% endif %}
 </div>

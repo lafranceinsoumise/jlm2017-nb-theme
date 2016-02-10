@@ -10,7 +10,7 @@
 		{% endif %}
 		{{ activity.created_at | time_ago }}
 		{% if activity.type_name == 'Comment' and request.logged_in? and site.has_rule_page? and activity.data.has_rule_violation? == nil %}
-		  <span class="activity-links">&middot; <a href="{{ activity.flag_url }}" class="flag">Drapeau</a></span>
+		  <span class="activity-links">&middot; <a href="{{ activity.flag_url }}" class="flag">Signaler</a></span>
 		{% endif %}
 	</span>
 
