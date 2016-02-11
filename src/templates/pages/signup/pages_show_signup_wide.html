@@ -62,11 +62,16 @@
           </div>
           <div class="row">
             <div class="col-md-12"><p>
-              Si vous avez des engagements associatifs, syndicaux ou autres, merci de les indiquer ici :
+              Si vous avez des engagements associatifs, syndicaux, politiques ou autres, merci de les indiquer ici :
             </p></div>
-            <div class="col-md-6"><div class="form-group"><label for="signup_custom_values_associations_custom">Associations</label>{% text_field "custom_values.associations", class:"form-control" %}</div></div>
-            <div class="col-md-6"><div class="form-group"><label for="signup_custom_values_syndicat_custom">Syndicats</label>{% text_field "custom_values.syndicat", class:"form-control" %}</div></div>
-            <div class="col-md-6"><div class="form-group"><label for="signup_custom_values_autres_engagements_custom">Autres</label>{% text_field "custom_values.autres_engagements", class:"form-control" %}</div></div>
+            <div class="col-md-6"><div class="form-group"><label for="signup_custom_values_associations_custom">Engagements associatifs</label>{% text_field "custom_values.associations", class:"form-control" %}</div></div>
+            <div class="col-md-6"><div class="form-group"><label for="signup_custom_values_syndicat_custom">Engagements syndicaux</label>{% text_field "custom_values.syndicat", class:"form-control" %}</div></div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="signup_custom_values_parti_politique">Parti politique</label>{% text_field "custom_values.parti_politique", class:"form-control", placeholder:"Parti" %}{% text_field "custom_values.respo_politique", class:"form-control", placeholder:"Responsabilité (Ex: Secrétaire départemental.e)" %}
+              </div>
+            </div>
+            <div class="col-md-6"><div class="form-group"><label for="signup_custom_values_autres_engagements_custom">Autres engagements</label>{% text_field "custom_values.autres_engagements", class:"form-control" %}</div></div>
           </div>
         </div>
 
