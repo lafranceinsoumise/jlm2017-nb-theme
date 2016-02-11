@@ -2,7 +2,8 @@
   .one-column {
     @include make-row();
 
-    .intro {
+     .headline,
+     .intro {
       @include make-one-main-column();
     }
 

@@ -51,7 +51,7 @@
         {% if request.sorta_logged_in? %}
         <h1>Bonjour {{ request.current_signup.name_or_email }}, merci d'avoir apporté votre appui.</h1>
 
-        <p class="lead">Pour faire signer quelqu'un d'autre, <a href="{{ request.current_signup.logout_url }}">cliquez ici</a>.
+        <p class="lead">Pour faire signer quelqu'un d'autre sur cet ordinateur,  <a href="{{ request.current_signup.logout_url }}">cliquez ici</a>.
         </p>
         {% else %}
         <h3 class="text-center">J'appuie la candidature de<br>Jean-Luc Mélenchon</h3>
