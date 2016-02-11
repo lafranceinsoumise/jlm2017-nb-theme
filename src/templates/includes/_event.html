@@ -30,7 +30,7 @@
 
 {% if event.event.content.size > 0 %}
 <div class="truncate-200" data-truncate="200">
-  {{ event.event.content }}
+  {{ event.event.content | truncatechars: 200 }}
 </div>
 {% endif %}
 
