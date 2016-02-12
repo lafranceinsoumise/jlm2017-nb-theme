@@ -134,7 +134,7 @@
 
   {% if page.event.show_guests? and page.event.rsvps_count > 0 %}
   <div class="event-detail">
-  <h6 class="subhead">{{ page.event.rsvps_count | number_with_commas }} PARTACIPANT.E{% if page.event.rsvps_count > 1 %}.S{% endif %}</h6>
+  <h6 class="subhead">{{ page.event.rsvps_count | number_with_commas }} PARTICIPANT.E{% if page.event.rsvps_count > 1 %}.S{% endif %}</h6>
   <div class="subtext">
     {% for rsvp in page.event.rsvps %}
     {{ rsvp.signup.smaller_profile_image }}

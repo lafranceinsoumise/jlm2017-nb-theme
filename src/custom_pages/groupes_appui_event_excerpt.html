@@ -1,4 +1,4 @@
-<h4><a href="{{ event.url }}">{{ event.name }}</a></h4>
+<h4><a href="{{ event.url }}">{{ event.name }}</a> <small>Créé le {{ event.published_at | date: '%d/%m/%Y à %H:%M' }}</small></h4>
 <div class="event-info">
   <strong>
     {% if event.event.show_guests? and event.event.rsvps_count > 0 %}
