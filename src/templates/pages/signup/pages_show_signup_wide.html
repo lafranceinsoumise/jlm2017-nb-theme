@@ -73,6 +73,18 @@
             </div>
             <div class="col-md-6"><div class="form-group"><label for="signup_custom_values_autres_engagements_custom">Autres engagements</label>{% text_field "custom_values.autres_engagements", class:"form-control" %}</div></div>
           </div>
+          <div class="row padtopmore">
+            <div class="col-md-12">
+              <label for="signup_custom_values_500_signatures_custom">
+                &laquo;&nbsp;Je suis élu et je souhaite apporter ma signature à Jean-Luc Mélenchon pour parrainer sa candidature&nbsp;&raquo;
+              </label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+              {% collection_select "custom_values.500_signatures", custom_fields.signup["500_signatures"].multiple_choice_options, class: "select form-control" %}
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="col-sm-6">
