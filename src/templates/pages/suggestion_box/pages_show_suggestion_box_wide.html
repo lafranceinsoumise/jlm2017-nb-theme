@@ -31,7 +31,7 @@
 
           <div id="suggestion-page-form-expanded" class="suggestion-page-form-expanded padbottom">
             <div class="row">
-              <div class="col-md-12"><div class="form-group">{% text_area "content_editable", class:"form-control" %}</div></div>
+              <div class="col-md-12"><div class="form-group"><textarea class="form-control" id="suggestion_page_content_editable" name="suggestion_page[content_editable]" maxlength="2500"></textarea></div></div>
             </div>
 
             {% if page.suggestion_box.is_image? %}
@@ -117,13 +117,7 @@
       </div>
       {% endif %}
 
-      {% if post.public_activities_count > 0 %}
-      <a href="{{ post.url }}#addreaction" class="btn btn-default small-btn">{{ post.public_activities_count }} réaction{% if post.public_activities_count > 1 %}s{% endif %}</a>
-      {% else %}
-      <a href="{{ post.url }}#addreaction" class="btn btn-default small-btn">Ajouter votre réaction</a>
-      {% endif %}
-
-      {{ "Partager" | share_button page_id: post.id | replace:'button small-button','btn btn-default small-btn' }}
+      {{ "Partager" | share_button page_id: page.id | replace:'button small-button','btn btn-default small-btn' }}
 
     </div>
 
