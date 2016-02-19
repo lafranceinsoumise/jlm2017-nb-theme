@@ -295,7 +295,7 @@
                 {% endif %}
 
                 {% if page.donation.has_merchant_account? and page.donation.merchant_account.is_paypal_express? %}
-                <div class="padtop">{% submit_tag "Continuer vers Paypal", class:"success-btn btn btn-primary" %}</div>
+                <div class="padtop">{% submit_tag "Finaliser votre don", class:"success-btn btn btn-primary" %}</div>
                 <div class="padtopmore">{{ page.donation.merchant_account.accepted_card_icons }}</div>
                 {% else %}
                 <div class="padtop">{% submit_tag "Effectuer un don", class:"submit-button btn btn-primary" %}</div>
