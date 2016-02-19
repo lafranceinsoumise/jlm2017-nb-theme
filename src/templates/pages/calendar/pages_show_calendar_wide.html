@@ -80,7 +80,6 @@
       <div class="page-excerpt">
       {% include "event" %}
       </div>
-      <hr/>
       {% endfor %}
 
       {{ page.calendar.events_upcoming_nearby | paginate prev_label: "&laquo;" next_label: "&raquo;" | replace:'<div class="pagination">','<nav class="pagination-container">' | replace:'<ul>','<ul class="pagination">' | replace:'</div>','</nav>' }}
@@ -92,7 +91,6 @@
       {% include "event" %}
       {% endfor %}
       </div>
-      <hr/>
 
       {{ page.calendar.events_upcoming | paginate prev_label: "&laquo;" next_label: "&raquo;" | replace:'<div class="pagination">','<nav class="pagination-container">' | replace:'<ul>','<ul class="pagination">' | replace:'</div>','</nav>' }}
 

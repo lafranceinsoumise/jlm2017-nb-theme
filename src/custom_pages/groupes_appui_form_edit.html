@@ -23,7 +23,7 @@
 
       <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="event_page_name">Nom du groupe d'appui</label>{% text_field "page_headline", class:"text form-control", placeholder: "Ex: Châteauroux, Lille (Wazemmes), ou Marseille 3ème arrondissement" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="event_page_name">Nom du groupe d'appui</label>{% text_field "page_headline", class:"text form-control", placeholder: "Ex: Châteauroux, Lille (Wazemmes), ou Marseille 3ème arrondissement", value: event_page.page.headline %}</div></div>
 
       </div>
 
@@ -87,7 +87,7 @@
       </div>
 
       <div class="padtop">
-        {% submit_tag "Sauvegarder et mettre à jour la page", class:"submit-button btn btn-primary" %}
+        {% submit_tag "Sauvegarder et mettre à jour le groupe d'appui", class:"submit-button btn btn-primary" %}
         <div class="form-submit"></div>
       </div>
 
