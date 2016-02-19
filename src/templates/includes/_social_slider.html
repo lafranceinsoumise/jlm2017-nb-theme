@@ -1,31 +1,31 @@
 {% if page.type_name == "Donation" %}
-{% assign activity_type = "Donation" %}
-{% assign ignore_types = "Donation Cancel|Donation Deleted" | split: "|" %}
-{% assign activity_title = "Who's donating" %}
+{% assign activity_type = "Don" %}
+{% assign ignore_types = "Don annulé|Don supprimé" | split: "|" %}
+{% assign activity_title = "Qui donne" %}
 {% elsif page.type_name == "Endorsement" %}
-{% assign activity_type = "Endorsement" %}
+{% assign activity_type = "Soutien" %}
 {% assign ignore_types = "" %}
-{% assign activity_title = "Who's endorsing" %}
+{% assign activity_title = "Qui" %}
 {% elsif page.type_name == "Event" %}
-{% assign activity_type = "Event RSVP" %}
-{% assign ignore_types = "Event RSVP Cancel" %}
-{% assign activity_title = "Who's RSVPing" %}
+{% assign activity_type = "Inscription à un évènement" %}
+{% assign ignore_types = "Inscription à un évènement" %}
+{% assign activity_title = "Qui est inscrit" %}
 {% elsif page.type_name == "Moneybomb" %}
-{% assign activity_type = "Pledge" %}
-{% assign ignore_types = "Pledge Cancel" %}
-{% assign activity_title = "Who's pledging" %}
+{% assign activity_type = "Promesse de don" %}
+{% assign ignore_types = "Promesse annulée" %}
+{% assign activity_title = "Qui s'est engagé.e" %}
 {% elsif page.type_name == "Petition" %}
-{% assign activity_type = "Petition Signature" %}
+{% assign activity_type = "Qui a signé" %}
 {% assign ignore_types = "" %}
-{% assign activity_title = "Who's signing" %}
+{% assign activity_title = "Qui a appuyé" %}
 {% elsif page.type_name == "Signup" %}
-{% assign activity_type = "Signup" %}
+{% assign activity_type = "Appui" %}
 {% assign ignore_types = "" %}
-{% assign activity_title = "Who's joining" %}
+{% assign activity_title = "Qui a appuyé" %}
 {% elsif page.type_name == "Volunteer Signup" %}
-{% assign activity_type = "Volunteer Signup" %}
-{% assign ignore_types = "Volunteer Quit" %}
-{% assign activity_title = "Who's volunteering" %}
+{% assign activity_type = "Agir" %}
+{% assign ignore_types = "" %}
+{% assign activity_title = "Qui veut agir" %}
 {% elsif page.type_name == "Vote Pledge" %}
 {% assign activity_type = "Supporter Pledge Yes" %}
 {% assign ignore_types = "Supporter Pledge Yes Cancel" %}
