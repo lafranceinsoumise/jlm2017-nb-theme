@@ -2,7 +2,7 @@
   <li><a href="/">Accueil</a></li>
   <li><a href="/users/pages">Vos pages</a></li>
 </ol>
-aa
+
 <h2 class="headline">{{ event_page.page.headline }}</h2>
 
 <div class="one-column padbottommore">
@@ -14,17 +14,46 @@ aa
 
       <div class="form-errors">{% error_messages_for event_page %}</div>
 
+      {% hidden_field_tag "event_page[show_guests]", "1" %}
+
       <div class="row">
 
-        <div class="col-md-6"><div class="form-group"><label for="event_page_start_at_chronic">Quand</label>{% text_field "start_at_chronic", class:"text form-control" %}</div></div>
-        <div class="col-md-6"><div class="form-group"><label for="event_page_duration_chronic">Durée</label>{% text_field "duration_chronic", class:"text form-control" %}</div></div>
-
+        <div class="col-md-6"><div class="form-group"><label for="event_page_start_at_chronic">Quand</label>
+          <input class="text form-control" type="text" id="event_page_start_at_chronic_widget"></input>
+          {% hidden_field_tag "event_page[start_at_chronic]", class:"text form-control" %}
+        </div></div>
+        <script type="text/javascript">
+document.ready($(function () {
+  $('#event_page_start_at_chronic_widget').datetimepicker({
+    sideBySide: true,
+    format: 'LLL'
+  }).on('dp.change', function(event) {
+    document.getElementById('event_page[start_at_chronic]').value =
+      $('#event_page_start_at_chronic_widget').data('DateTimePicker').date().locale('en').format('LLL');
+  });
+}));
+        </script>
+        <div class="col-md-6"><div class="form-group"><label for="event_page_duration_chronic">Durée</label>
+          <input type="text" class="text form-control" id="event_page_duration_chronic_widget"></input>
+          {% hidden_field_tag "event_page[duration_chronic]", class:"text form-control" %}
+        </div></div>
+        <script type="text/javascript">
+document.ready($(function () {
+  $('#event_page_duration_chronic_widget').datetimepicker({
+    sideBySide: true,
+    format: 'H [heure(s)] m [minute(s)]'
+  }).on('dp.change', function(event) {
+    document.getElementById('event_page[duration_chronic]').value =
+      $('#event_page_duration_chronic_widget').data('DateTimePicker').date().locale('en').format('HH [hours] mm [minutes]');
+  });
+}));
+        </script>
       </div>
       <div class="row">
 
         <div class="col-md-6 notranslate"><div class="form-group">
           <label for="event_page_time_zone">Fuseau horaire</label>{% collection_select "time_zone", event_page.time_zones, class:"select form-control" %}</div></div>
-        <div class="col-md-6"><div class="form-group"><label for="event_page_capacity_count">Capacité maximum</label>{% text_field "capacity_count", class:"text form-control" %}</div></div>
+        <div class="col-md-6"><div class="form-group"><label for="event_page_capacity_count">Capacité maximum (facultatif)</label>{% text_field "capacity_count", class:"text form-control" %}</div></div>
 
       </div>
       <div class="row padtopmore">
@@ -52,7 +81,10 @@ aa
 
       <div class="row padtopmore">
 
-        <div class="col-md-12"><h4>Lieu</h4></div>
+        <div class="col-md-12">
+          <h4>Lieu</h4>
+          <p><b>Merci d'indiquer une adresse précise avec numéro de rue, sans quoi il n'appraîtra pas sur la carte.</b> Si les réunions se déroulent chez vous et que vous ne souhaitez pas rendre publique cette adresse, vous pouvez indiquer un endroit à proximité, comme un café, ou votre mairie.</p>
+        </div>
 
       </div>
       <div class="row">
@@ -69,33 +101,16 @@ aa
       </div>
       <div class="row">
 
-        <div class="col-md-4"><div class="form-group"><label for="event_page_city">Ville</label>{% text_field "venue_address.city", class:"text form-control" %}</div></div>
-        {% if settings.has_states? %}
-        <div class="col-md-4"><div class="form-group"><label for="event_page_state">Département</label>{% text_field "venue_address.state", class:"text form-control" %}</div></div>
-        {% endif %}
         <div class="col-md-4"><div class="form-group"><label for="event_page_zip">Code postal</label>{% text_field "venue_address.zip", class:"text form-control" %}</div></div>
-
-      </div>
-
-      <div class="row padtopmore">
-
-        <div class="col-md-12 padbottom">
-          <h4>Participation aux frais</h4>
-          <small>Si c'est gratuit, laissez simplement&nbsp;: 0.00.</small>
-        </div>
+        <div class="col-md-4"><div class="form-group"><label for="event_page_city">Ville</label>{% text_field "venue_address.city", class:"text form-control" %}</div></div>
 
       </div>
       <div class="row">
 
-        <div class="col-md-2"><div class="form-group"><label for="event_page_user_ticket_price">Montant</label>{% text_field "user_ticket_price", class:"text form-control" %}</div></div>
-        <div class="col-md-10"><div class="form-group"><label for="event_page_user_ticket_currency">Devise</label>{% collection_select "user_ticket_currency", event_page.currencies_available, class:"select form-control" %}</div></div>
+        <div class="col-md-12"><div class="form-group"><label for="event_page_country_code">Pays</label>{% collection_select "venue_address.country_code", event_page.countries, "code", "name", class:"select form-control" %}</div></div>
 
       </div>
-      <div class="row">
 
-        <div class="col-md-12"><div class="form-group"><label for="event_page_user_ticket_purchase_url">URL pour acheter un ticket d'entrée</label>{% text_field "user_ticket_purchase_url", class:"text form-control" %}</div></div>
-
-      </div>
       <div class="row padtopmore">
 
         <div class="col-md-12"><h4>Description, incluant un itinéraire</h4></div>
@@ -111,8 +126,6 @@ aa
         <div class="col-md-12">
           <div class="checkbox"><label for="event_page_accept_rsvps" class="checkbox">{% check_box "accept_rsvps", class:"check_box" %} Autoriser les gens à s'inscrire</label></div>
           <div class="checkbox"><label for="event_page_allow_guests" class="checkbox">{% check_box "allow_guests", class:"check_box" %}  Autoriser les gens à venir accompagnés (+1)</label></div>
-          <div class="checkbox"><label for="event_page_show_guests" class="checkbox">{% check_box "show_guests", class:"check_box" %} Montrer qui vient</label></div>
-          <div class="checkbox"><label for="event_page_is_private" class="checkbox">{% check_box "is_private", class:"check_box" %} Garder la page des inscrits cachée sur le reste du site</label></div>
         </div>
 
       </div>

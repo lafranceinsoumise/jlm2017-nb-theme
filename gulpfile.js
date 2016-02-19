@@ -44,7 +44,7 @@ gulp.task('custom_pages', function() {
 });
 
 gulp.task('fonts', function() {
-  gulp.src('src/fonts/**')
+  gulp.src(['src/fonts/**', 'bower_components/**/fonts/**'])
     .pipe(rename({dirname: ''}))
     .pipe(changed('dist/theme', {hasChanged: changed.compareSha1Digest}))
     .pipe(gulp.dest('dist/theme'));

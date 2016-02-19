@@ -73,6 +73,10 @@
           <p>Je recevrai des informations sur la campagne de Jean-Luc Mélenchon</p>
         {% endform_for %}
         {% endif %}
+        <p class="text-center">
+          <span class="lead">Nous sommes {{ settings.supporters_count }}.</span><br />
+          <small>Dernière mise à jour du compteur à {{ settings.stats_updated_at | date: '%H:%M' }}.</small>
+        </p>
       </div>
     </div>
   </div>

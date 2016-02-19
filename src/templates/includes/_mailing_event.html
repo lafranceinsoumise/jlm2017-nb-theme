@@ -1,9 +1,9 @@
 QUOI&nbsp;: {{ page.headline }}<br/>
 QUAND&nbsp;:
 {% if page.event.is_multi_day? %}
-  {{ page.event.local_start_at | event_time }} - {{ page.event.local_end_at | event_time }}
+{{ page.event.local_start_at | date: '%d/%m/%Y à %H:%M' }} - {{ page.event.local_end_at | date: '%d/%m/%Y à %H:%M' }}
 {% else %}
-  {{ page.event.local_start_at | event_time }}
+{{ page.event.local_start_at | date: '%d/%m/%Y de %H:%M' }} à {{ page.event.local_end_at | date: '%H:%M' }}
 {% endif %}<br/>
 
 {% if page.event.has_venue? %}

@@ -133,11 +133,10 @@
       {% include "event" %}
       {% endfor %}
       </div>
-      <hr/>
 
       {% if page.calendar.allow_user_submitted? %}
       <div class="padtopmore">
-        <a class="submit-link" href="{{ page.calendar.new_event_url }}">Créer un évènement {{ page.calendar.event_name | downcase }}</a>
+        <a class="submit-link" href="{{ page.calendar.new_event_url }}">Créer un {{ page.calendar.event_name | downcase }}</a>
       </div>
       {% endif %}
 
