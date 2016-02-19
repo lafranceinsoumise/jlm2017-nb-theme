@@ -42,16 +42,18 @@ html, body {
         @include make-xs-column(6);
         @include make-sm-column(3);
         .nav-stacked {
-          li {
+          & > li {
             a {
               font-family: $font-family-sans-serif;
               text-transform: lowercase;
               font-weight: bolder;
-              color: #fff;
               width: auto;
               margin: auto;
               display: inline-block;
               background: none;
+            }
+            & > a {
+              color: #fff;
               &:hover {
                 background-color: rgba($gray-lighter, 0.3);
               }
