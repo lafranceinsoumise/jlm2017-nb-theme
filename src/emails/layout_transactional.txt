@@ -3,6 +3,3 @@
 -=-=-
 Cet email a été envoyé à {{ recipient.email }}.{% if page %}  Pour arrêter de recevoir des notifications sur cette page : {{ page.unsubscribe_url }}{% endif %}
 {{ settings.official_name }}{% if settings.has_address? %} - {{ settings.address.one_line }} {% endif %}
--=-=-
-
-Créé avec NationBuilder - http://nationbuilder.com/

@@ -1,32 +1,142 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<html><head><title></title>
-<style type="text/css">
-body, td, font { font-size: 10pt; }
-td p { margin: 0em; }
-p { margin: 1em 0em; }
-td div p { margin: 1em 0em; }
-</style>
-</head><body marginheight=5 topmargin=5>
-<font face="Arial, Verdana, sans-serif" size=2>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width"/>
 
-{{ body }}
+    <link rel="stylesheet" href="ink.css"> <!-- For testing only -->
 
-<br/><br/>
--=-=-<br/>
-{{ settings.official_name }}{% if settings.has_address? %} &middot; {{ settings.address.one_line }} {% endif %}
-<br/>Cet email a été envoyé à {{ recipient.email }}.  Pour cesser de recevoir des emails, <a href="{{ settings.site.unsubscribe_url }}">cliquez ici</a>.
-{% if broadcaster.has_twitter? or broadcaster.has_facebook? %}
-<br/>Vous pouvez aussi garder contact avec {{ broadcaster.name }}
-  {% if broadcaster.has_twitter? and broadcaster.has_facebook_page? %}
-    sur <a href="{{ broadcaster.twitter_profile_url }}">Twitter</a> ou <a href="{{ broadcaster.facebook_page_profile_url }}">Facebook</a>.
-  {% elsif broadcaster.has_twitter? %}
-    sur <a href="{{ broadcaster.twitter_profile_url }}">Twitter</a>.
-  {% elsif broadcaster.has_facebook_page? %}
-  sur <a href="{{ broadcaster.facebook_page_profile_url }}">Facebook</a>.
-  {% endif %}
-{% endif %}
-<br/>
--=-=-<br/><br/>
-Créé avec <a href="http://nationbuilder.com/">NationBuilder</a>.
-</font>
-</body></html>
+    <style type="text/css">
+      /* Ink styles go here in production */
+
+    </style>
+    <style type="text/css">
+
+    .header {
+      background-color: #c9462c;
+      border: 0px;
+    }
+
+    .header img {
+      float: none;
+      height: 50px;
+      max-height: 50px;
+      width: auto;
+      margin-top: 15px;
+    }
+
+    .sub-columns center {
+      min-width: none !important;
+    }
+
+    </style>
+  </head>
+  <body>
+    <table class="body">
+      <tr>
+        <td class="center" align="center" valign="top">
+          <center>
+            <!-- mail content -->
+            <table class="container">
+              <tr>
+                <td>
+                  <!-- header -->
+                  <table class="row">
+                    <tr>
+                      <td class="wrapper last">
+                        <table class="twelve columns">
+                          <tr>
+                            <td class="header center">
+                              <center>
+                                <img src="logo-blanc.png" height="100"/>
+                              </center>
+                            </td>
+                            <td class="expander"></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- content -->
+                  <table class="row">
+                    <tr>
+                      <td class="wrapper last">
+                        <table class="twelve columns">
+                          <tr>
+                            <td class="text-pad">
+                              {{ body }}
+                              <hr />
+                            </td>
+                            <td class="expander"></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- social networks -->
+                  <table class="row">
+                    <tr>
+                      <td class="wrapper last">
+                        <table class="twelve columns">
+                          <tr>
+                            <td class="four sub-columns center">
+                              <center>
+                                <img src="logo-twitter.png" class="center" />
+                                <a href="https://twitter.com/JLMelenchon" target="_blank">
+                                  Twitter
+                                </a>
+                              </center>
+                            </td>
+                            <td class="four sub-columns center">
+                              <center>
+                                <img src="logo-facebook.png" class="center" />
+                                <a href="https://www.facebook.com/JLMelenchon" target="_blank">
+                                  Facebook
+                                </a>
+                              </center>
+                            </td>
+                            <td class="four sub-columns last center">
+                              <center>
+                                <img src="logo-youtube.png" class="center" />
+                                <a href="https://www.youtube.com/user/PlaceauPeuple" target="_blank">
+                                  Youtube
+                                </a>
+                              </center>
+                            </td>
+                            <td class="expander"></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- bottom -->
+                  <table class="row">
+                    <tr>
+                      <td class="wrapper last">
+                        <table class="twelve columns">
+                          <tr>
+                            <td class="text-pad">
+                              Cet email a été envoyé à {{ recipient.email }}.
+                              Pour choisir les emails que vous recevez, <a href="http://www.jlm2017.fr/agir">cliquez ici</a>.
+                              Pour arrêter complètemnt de recevoir des emails, <a href="{{ settings.site.unsubscribe_url }}">cliquez ici</a>.
+                              <br/>
+                              {{ settings.official_name }}
+                              {% if settings.has_address? %}
+                                &middot; {{ settings.address.one_line }}
+                              {% endif %}
+                            </td>
+                            <td class="expander"></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

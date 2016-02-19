@@ -63,7 +63,7 @@
                       <td class="wrapper last">
                         <table class="twelve columns">
                           <tr>
-                            <td>
+                            <td class="text-pad">
                               {% yield %}
                               <hr />
                             </td>
@@ -115,7 +115,7 @@
                       <td class="wrapper last">
                         <table class="twelve columns">
                           <tr>
-                            <td>
+                            <td class="text-pad">
                               Cet email a été envoyé à {{ recipient.email }}.
                               {% if page %}
                               	Pour ne plus recevoir de notifications sur cette page, <a href="{{ page.unsubscribe_url }}">cliquez ici</a>.
@@ -125,8 +125,6 @@
                               {% if settings.has_address? %}
                                 &middot; {{ settings.address.one_line }}
                               {% endif %}
-                              -
-                              Créé avec <a href="http://nationbuilder.com/">NationBuilder</a>.
                             </td>
                             <td class="expander"></td>
                           </tr>
