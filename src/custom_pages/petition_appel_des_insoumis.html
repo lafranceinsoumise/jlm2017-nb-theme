@@ -1,0 +1,174 @@
+{% include "breadcrumbs" %}
+
+{% if page.headline.size > 0 %}
+<h2 class="headline">{{ page.headline }}</h2>
+{% endif %}
+
+<div id="content">
+
+{% if page.petition.intro.size > 0 %}
+<div id="intro" class="intro">
+  {{ page.petition.intro }}
+</div>
+{% endif %}
+
+{% if page.petition.content.size > 0 %}
+<div id="petition-content">
+  {{ page.petition.content }}
+</div>
+{% endif %}
+
+{% if page.show_social_slider? and page.public_activities_count > 0 %}
+  {% include "social_slider" %}
+{% endif %}
+
+{% if page.petition.has_goal? %}
+{% assign thermo_width = 100 %}
+<div class="clearfix">
+  <div class="progress" style="width: {{ thermo_width }}%;">
+    <div class="bar progress-bar" role="progressbar" style="min-width:2em; width: {{ page.petition.percent_of_goal | times:100 }}%;">
+      {% if page.petition.signatures_count < 2 %}
+      <div class="bar-text">0%</div>
+      {% else %}
+      <div class="bar-text">{{ page.petition.signatures_count | number_with_commas }} {{ page.petition.signature_name | pluralize | upcase }}</div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="bar-goal">{{ page.petition.goal | number_with_commas }} {{ page.petition.signature_name | pluralize | downcase }}</div>
+</div>
+{% elsif page.petition.signatures_count > 4 %}
+<div class="bar-goal">{{ page.petition.signatures_count | number_with_commas }} {{ page.petition.signature_name | pluralize | downcase }}</div>
+{% endif %}
+
+{% if page.petition.is_signed? %}
+
+<div class="form-wrap">
+  <div class="form">
+
+    <h3>Merci d'avoir signé&nbsp;!</h3>
+
+  </div>
+</div>
+
+{% else %}
+
+{% form_for petition_signature %}
+
+<div class="form-wrap">
+  <div class="form">
+
+    <div class="form-errors">{% error_messages_for petition_signature %}</div>
+
+    <div class="row padtopmore">
+
+      <div class="col-md-6"><div class="form-group"><label for="petition_signature_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
+      <div class="col-md-6"><div class="form-group"><label for="petition_signature_last_name">Nom</label>{% text_field "last_name", class:"text form-control" %}</div></div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-6"><div class="form-group"><label for="petition_signature_email">Email</label>{% email_field "email", class:"text form-control", required:"required" %}</div></div>
+
+    </div>
+
+    <div class="row padtopmore">
+      <div class="col-md-6"><div class="form-group"><label for="petition_signature_signup_custom_values_syndicat_custom">Thématique de lutte / Secteur / Entreprise</label>{% text_field "signup.custom_values.metier", class:"form-control" %}</div></div>
+      <div class="col-md-6"><div class="form-group"><label for="petition_signature_signup_custom_values_syndicat_custom">Syndicat ou association (information non rendue publique)</label>{% text_field "signup.custom_values.syndicat", class:"form-control" %}</div></div>
+    </div>
+
+
+
+    {% if request.sorta_logged_in? == false %}
+    <div class="row">
+
+      <div class="col-md-6"><div class="checkbox"><label for="petition_signature_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Recevoir des informations par email</label></div>
+      </div>
+
+    </div>
+    {% endif %}
+
+    {% if page.petition.is_phone? %}
+    <div class="row">
+
+      <div class="col-md-12"><div class="form-group"><label for="petition_signature_phone_number">Téléphone</label>{% phone_field "phone_number", class:"text form-control" %}</div></div>
+
+    </div>
+    {% endif %}
+
+    {% if page.is_commentable? %}
+    <div class="row">
+
+      <div class="col-md-12"><div class="form-group"><label for="petition_signature_content">Commentaires (optionnel)</label>{% text_area "content", class:"textarea form-control autogrow" %}</div>
+      </div>
+
+    </div>
+    {% endif %}
+
+    {% if page.petition.is_image? %}
+    <div class="row">
+
+      <div class="col-md-12"><div class="form-group"><label for="petition_signature_image">Télécharger une image (140x140)</label>{% file_field "image", class:"file" %}
+      </div></div>
+
+    </div>
+    {% endif %}
+
+    {% hidden_field_tag "petition_signature[is_private]", "0" %}
+    {% if site.ask_to_publish_to_stream? %}
+    <div class="row">
+
+      <div class="col-md-12"><div class="checkbox"><label for="petition_signature_is_private">{% check_box "is_private", class:"checkbox" %} Ne pas rendre cela public sur le site</label></div>
+      </div>
+
+    </div>
+    {% endif %}
+
+    {% if page.petition.is_volunteer? and site.ask_for_volunteers? %}
+    {% if request.sorta_logged_in? == false or request.current_signup.is_volunteer == false %}
+    <div class="row">
+
+      <div class="col-md-12"><div class="checkbox"><label for="petition_signature_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} Je veux être bénévole</label></div>
+      </div>
+
+    </div>
+    {% endif %}
+    {% endif %}
+
+    {% capture signature_name %}Je signe{% endcapture %}
+    {% submit_tag signature_name, class:"submit-button btn btn-primary" %}
+    <div class="form-submit"></div>
+
+  </div>
+
+  {% endform_for %}
+
+  {% if page.text_keyword_instructions.size > 0 %}
+  <div class="padbottom padtopmore">
+    ou {{ page.text_keyword_instructions }}
+  </div>
+  {% endif %}
+
+</div>
+
+{% endif %}
+<div class="padtop">
+  <h2>{{ page.petition.signatures_count }} signataires</h2>
+  <p>20 derniers signataires&nbsp;:</p>
+  {% for signup in page.petition.recent_signers limit:20 %}
+    <strong>{{ signup.first_name }} {{ signup.last_name }}</strong>, {{ signup.custom_values_for_display['metier'] }}<br />
+  {% endfor %}
+</div>
+
+{% if page.tags_count > 0 %}
+<div id="page-tags" class="page-tags">
+  {% include "page_tags" with page %}
+</div>
+{% endif %}
+
+<div class="like-page">
+  <strong>Aimez cela pour diffuser le message&nbsp;:</strong>
+  {% include "like_page" %}
+</div>
+
+</div>

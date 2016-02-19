@@ -49,7 +49,7 @@
     </div>
     <!-- .main-container -->
 
-    {% unless request.logged_in? or request.sorta_logged_in? %}
+    {% unless request.logged_in? or request.sorta_logged_in? or page.type_name == 'Petition' %}
       <div class="container container-signup-footer hidden-print">
         <div class="row">
           <div class="col-md-8 col-md-offset-2 col-xs-12 card">
@@ -116,6 +116,8 @@
           <div class="col-sm-3">Groupes d’appui&nbsp;:<br />
             <a href="/groupes_appui">La carte des groupes</a><br />
             <a href="/creer_ou_rejoindre_un_groupe_d_appui">Créer ou rejoindre un groupe</a>
+            <hr />
+            <a href="/materiel">Matériel</a>
           </div>
 
           <div class="col-sm-3">Evènements&nbsp;:<br />
