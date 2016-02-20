@@ -19,7 +19,7 @@ You should use one of the synchronization tool to keep you website up to date wi
 First move to another directory, and clone the repository :
 
 ```bash
-git clone nationbuilding.git my_theme
+git clone https:// my_theme
 ```
 
 Install dependencies :
@@ -43,3 +43,9 @@ npm run build
 ```
 
 You can use `npm run watch` to watch for changes in the theme and update in real time.
+
+## Developers documentation
+
+The [official theme documentation of NationBuilder](http://nationbuilder.com/liquid) is very rich and a good source of information, even if it is incomplete and full of error.
+
+Another very good source of knowledge is the [default theme of NationBuilder](https://github.com/guilro/jlm2017-nb-theme/tree/36971a3125b4a73a139a38e76653615951fa39e4), which serves as basis for this theme, and use most of the features offered.
