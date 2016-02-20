@@ -1,7 +1,7 @@
 {
-  "name": "nationbuilding",
+  "name": "jlm2017",
   "version": "0.1.0",
-  "description": "Nation Builder theme boilerplate.",
+  "description": "Nation Builder theme for JLM 2017.",
   "dependencies": {},
   "devDependencies": {
     "bower": "^1.6.9",

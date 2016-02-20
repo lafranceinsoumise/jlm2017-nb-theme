@@ -19,7 +19,7 @@ You should use one of the synchronization tool to keep you website up to date wi
 First move to another directory, and clone the repository :
 
 ```bash
-git clone https:// my_theme
+git clone https://github.com/guilro/jlm2017-nb-theme.git my_theme
 ```
 
 Install dependencies :
