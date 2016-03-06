@@ -46,21 +46,25 @@
                   <a href="{{ request.current_user.settings_url }}">
                 {% endif %}
                   <h5>{{ request.current_user.published_name }}</h5>
+                  {% comment %}
                   {% if request.current_user.is_profile_published? %}
                     <small>Voir mon profil public</small>
                   {% endif %}
+                  {% endcomment %}
                 </a>
               </li>
               <li role="separator" class="divider"></li>
               <li>
                 <a href="{{ request.current_user.settings_url }}">Mon compte</a>
               </li>
+              {% comment %}
               <li>
                 <a href="/abonnements">Mes abonnements</a>
               </li>
               <li>
                 <a href="/abonnes">Mes abonné.e.s</a>
               </li>
+              {% endcomment %}
               <li><a href="{{ request.current_user.logout_url }}">Déconnexion</a></li>
               {% if request.current_user.is_intern? %}
                 <li role="separator" class="divider"></li>
