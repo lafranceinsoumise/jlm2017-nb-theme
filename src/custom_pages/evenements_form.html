@@ -40,7 +40,7 @@
           {% hidden_field_tag "event_page[start_at_chronic]", class:"text form-control" %}
         </div></div>
         <script type="text/javascript">
-document.ready($(function () {
+$(function () {
   $('#event_page_start_at_chronic_widget').datetimepicker({
     sideBySide: true,
     format: 'LLL'
@@ -48,14 +48,14 @@ document.ready($(function () {
     document.getElementById('event_page[start_at_chronic]').value =
       $('#event_page_start_at_chronic_widget').data('DateTimePicker').date().locale('en').format('LLL');
   });
-}));
+});
         </script>
         <div class="col-md-6"><div class="form-group"><label for="event_page_duration_chronic">Durée</label>
           <input type="text" class="text form-control" id="event_page_duration_chronic_widget"></input>
           {% hidden_field_tag "event_page[duration_chronic]", class:"text form-control" %}
         </div></div>
         <script type="text/javascript">
-document.ready($(function () {
+$(function () {
   $('#event_page_duration_chronic_widget').datetimepicker({
     sideBySide: true,
     format: 'H [heure(s)] m [minute(s)]'
@@ -63,7 +63,7 @@ document.ready($(function () {
     document.getElementById('event_page[duration_chronic]').value =
       $('#event_page_duration_chronic_widget').data('DateTimePicker').date().locale('en').format('HH [hours] mm [minutes]');
   });
-}));
+});
         </script>
       </div>
 
