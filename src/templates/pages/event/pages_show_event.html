@@ -1,4 +1,4 @@
-{% if page.self_and_ancestors[0].slug == "groupes_appui" or page.self_and_ancestors[1].slug == "groupes_appui" %}
+{% if page.ancestors[0].slug == "groupes_appui" or page.ancestors[1].slug == "groupes_appui" %}
   {% include "custom_groupes_appui" %}
 {% else %}
 

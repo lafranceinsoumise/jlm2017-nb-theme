@@ -1,4 +1,4 @@
-{% if event_page.page.self_and_ancestors[0].slug == "groupes_appui" or event_page.page.self_and_ancestors[1].slug == "groupes_appui" %}
+{% if event_page.page.ancestors[0].slug == "groupes_appui" or event_page.page.ancestors[1].slug == "groupes_appui" %}
   {% include "custom_groupes_appui_form_edit" %}
 {% else %}
   {% include "custom_evenements_form_edit" %}
