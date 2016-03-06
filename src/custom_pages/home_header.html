@@ -47,13 +47,17 @@
   </div>
   <div class="container container-signup">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 card">
-        {% if request.sorta_logged_in? %}
-        <h1>Bonjour {{ request.current_signup.name_or_email }}, merci d'avoir apporté votre appui.</h1>
+      {% if request.sorta_logged_in? %}
+      <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 card">
+        <h1>Bonjour {{ request.current_signup.name_or_email }}.</h1>
 
-        <p class="lead">Pour faire signer quelqu'un d'autre sur cet ordinateur,  <a href="{{ request.current_signup.logout_url }}">cliquez ici</a>.
+        <p class="lead">Nous sommes {{ settings.supporters_count }}. Pour faire signer quelqu'un d'autre sur cet ordinateur,  <a href="{{ request.current_signup.logout_url }}">cliquez ici</a>.
+        </p>
+        <p class="text-center">
+          <small>Dernière mise à jour du compteur à {{ settings.stats_updated_at | date: '%H:%M' }}.</small>
         </p>
         {% else %}
+      <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 card">
         <h3 class="text-center">J'appuie la candidature de<br>Jean-Luc Mélenchon</h3>
         {% form_for signup %}
         {% hidden_field_tag "page_id", site.signup_page.id %}
@@ -71,12 +75,12 @@
             </div>
           </div>
           <p>Je recevrai des informations sur la campagne de Jean-Luc Mélenchon</p>
+          <p class="text-center">
+            <span class="lead">Nous sommes {{ settings.supporters_count }}.</span><br />
+            <small>Dernière mise à jour du compteur à {{ settings.stats_updated_at | date: '%H:%M' }}.</small>
+          </p>
         {% endform_for %}
         {% endif %}
-        <p class="text-center">
-          <span class="lead">Nous sommes {{ settings.supporters_count }}.</span><br />
-          <small>Dernière mise à jour du compteur à {{ settings.stats_updated_at | date: '%H:%M' }}.</small>
-        </p>
       </div>
     </div>
   </div>

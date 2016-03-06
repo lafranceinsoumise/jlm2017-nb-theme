@@ -1,3 +1,51 @@
+{% if request.logged_in? or request.sorta_logged_in %}
+<div class="row custom-home-grid">
+  <div class="col-md-6 padbottommore">
+    <a href="/actualites">
+      <div class="custom-home-grid-background-block">
+        <h3>Actualités</h3>
+      </div>
+      <img src="actu.jpg" class="img-responsive">
+    </a>
+  </div>
+  <div class="col-md-6 padbottommore">
+    <a href="/actualites-groupes-appui">
+      <div class="custom-home-grid-background-block">
+        <h3>Actu des groupes d'appui</h3>
+      </div>
+      <img src="groupes_appui.jpg" class="img-responsive">
+    </a>
+  </div>
+</div>
+<div class="row custom-home-grid">
+  <div class="col-md-6 padbottommore">
+    <a href="/materiel">
+      <div class="custom-home-grid-background-block">
+        <h3>Matériel</h3>
+      </div>
+      <img src="materiel.jpg" class="img-responsive">
+    </a>
+  </div>
+  <div class="col-md-6 padbottommore">
+    <a href="/evenements_locaux">
+      <div class="custom-home-grid-background-block">
+        <h3>Evènements locaux</h3>
+      </div>
+      <img src="evenement_local.jpg" class="img-responsive">
+    </a>
+  </div>
+</div>
+<div class="row custom-home-grid">
+  <div class="col-md-6 col-md-offset-3 padbottommore">
+    <a href="/agenda">
+      <div class="custom-home-grid-background-block">
+        <h3>Agenda</h3>
+      </div>
+      <img src="agenda.jpg" class="img-responsive">
+    </a>
+  </div>
+</div>
+{% else %}
 <div class="col-md-8 col-md-offset-2">
   <div class="row hidden-print">
     <div class="col-md-12 bottom-margin">
@@ -28,3 +76,4 @@
     <img class="pull-right" src="signature-jlm.png">
   </div>
 </div>
+{% endif %}

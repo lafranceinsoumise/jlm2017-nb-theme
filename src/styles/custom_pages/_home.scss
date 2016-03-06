@@ -85,8 +85,56 @@ html, body {
 
     }
   }
+}
 
-  .container-signup > .row > .card {
-    min-height: 280px;
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.custom-home-grid {
+  a {
+    display:block;
+    position: relative;
+    @include aspect-ratio(16, 9);
+    & > .custom-home-grid-background-block {
+      position: absolute;
+      width:100%;
+      height:100%;
+      background-color: rgba(0,0,0,0.5);
+      text-align: center;
+      z-index: 20;
+      &:before {
+        content: '';
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -0.25em;
+        display: inline-block;
+      }
+      & > h3 {
+        vertical-align: middle;
+        display: inline-block;
+        color: #fff;
+        margin:auto;
+      }
+    }
+    &:hover > .custom-home-grid-background-block {
+      background-color: rgba(0,0,0,0.35);
+      & > h3 {
+        color: #fff;
+      }
+    }
   }
 }
