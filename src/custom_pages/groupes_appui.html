@@ -133,6 +133,17 @@
   {% endif %}
 
   {% if page.event.show_guests? and page.event.rsvps_count > 0 %}
+  {% if request.logged_in? and page.event.hosts[0].signup.id == request.current_signup.id %}
+  <h4>Contacter les participants&nbsp;:</h4>
+  <textarea readonly onclick="this.focus();this.select()" class="form-control">{% for rsvp in page.event.rsvps %}
+"{{ rsvp.signup.first_name }} {{ rsvp.signup.last_name }}" <{{ rsvp.signup.email }}>{% unless forloop.last %},{% endunless %}{% endfor %}</textarea>
+  {% else %}
+  {% unless request.logged_in? %}
+  <div class="alert alert-info">
+    Si vous êtes initiat.eur.rice de ce groupe d'appui, connectez-vous pour contacter les participant.e.s.
+  </div>
+  {% endunless %}
+  {% endif %}
   <div class="event-detail">
   <h6 class="subhead">{{ page.event.rsvps_count | number_with_commas }} PARTICIPANT.E{% if page.event.rsvps_count > 1 %}.S{% endif %}</h6>
   <div class="subtext">

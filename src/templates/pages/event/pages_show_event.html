@@ -148,8 +148,19 @@
   {% endif %}
 
   {% if page.event.show_guests? and page.event.rsvps_count > 0 %}
+  {% if request.logged_in? and page.event.hosts[0].signup.id == request.current_signup.id %}
+  <h4>Contacter les participants&nbsp;:</h4>
+  <textarea readonly onclick="this.focus();this.select()" class="form-control">{% for rsvp in page.event.rsvps %}
+"{{ rsvp.signup.first_name }} {{ rsvp.signup.last_name }}" <{{ rsvp.signup.email }}>{% unless forloop.last %},{% endunless %}{% endfor %}</textarea>
+  {% else %}
+  {% unless request.logged_in? %}
+  <div class="alert alert-info">
+    Si vous êtes initiat.eur.rice de cet événement, connectez-vous pour contacter les participant.e.s.
+  </div>
+  {% endunless %}
+  {% endif %}
   <div class="event-detail">
-  <h6 class="subhead">{{ page.event.rsvps_count | number_with_commas }} PARTACIPANT.E{% if page.event.rsvps_count > 1 %}.S{% endif %}</h6>
+  <h6 class="subhead">{{ page.event.rsvps_count | number_with_commas }} PARTICIPANT.E{% if page.event.rsvps_count > 1 %}.S{% endif %}</h6>
   <div class="subtext">
     {% for rsvp in page.event.rsvps %}
     {{ rsvp.signup.smaller_profile_image }}
@@ -338,7 +349,10 @@
         {% endif %}
 
         <div class="padtop">
-          {% submit_tag "Envoyer une invitation", class:"submit-button btn btn-primary" %}
+          <p>
+            Vous pouvez rejoindre cet événement. Vos informations de contact seront communiquées à l'organisat.eur.rice.
+          </p>
+          {% submit_tag "Participer à cet événement", class:"submit-button btn btn-primary" %}
           <div class="form-submit"></div>
         </div>
 
