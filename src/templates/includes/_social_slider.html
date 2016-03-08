@@ -32,7 +32,8 @@
 {% assign activity_title = "Who's pledging" %}
 {% endif %}
 
-{% if activity_type %}
+{% if activity_type and (page.activities | size) > 0 %}
+{{ (page.activities | size) }}
 {% assign ignore_list = "" %}
 <h4>{{ activity_title }}</h4>
 <div id="slider-cards">
