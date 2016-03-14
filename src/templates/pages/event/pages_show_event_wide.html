@@ -20,9 +20,9 @@
     <h6 class="subhead">QUAND</h6>
     <div class="subtext">
       {% if page.event.is_multi_day? %}
-      {{ page.event.local_start_at | event_time }} - {{ page.event.local_end_at | event_date }}
+      {{ page.event.local_start_at | date: '%d/%m/%Y à %H:%M' }} - {{ page.event.local_end_at | date: '%d/%m/%Y à %H:%M' }}
       {% else %}
-      {{ page.event.local_start_at | event_time }} - {{ page.event.local_end_at | event_just_time }}
+      {{ page.event.local_start_at | date: '%d/%m/%Y de %H:%M' }} à {{ page.event.local_end_at | date: '%H:%M' }}
       {% endif %}
     </div>
   </div>
@@ -359,7 +359,7 @@
         {% endif %}
 
         <div class="padtop">
-          {% submit_tag "Envoyer une invitation", class:"submit-button btn btn-primary" %}
+          {% submit_tag "Participer à l'événement", class:"submit-button btn btn-primary" %}
 
           {% if page.event.is_user_ticket_required? %}
           <div class="padtopmore">
