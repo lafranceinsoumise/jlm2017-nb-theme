@@ -44,6 +44,36 @@ npm run build
 
 You can use `npm run watch` to watch for changes in the theme and update in real time.
 
+## Using Vagrant development environment
+A Vagrant development environment is maintained to ease administration tasks.
+Take a look at [Vagrant website](https://www.vagrantup.com/) to get started and install apps. Then:
+
+```bash
+vagrant up
+```
+It will take some time to download clean image and install dependencies.
+
+Then connect to the machine:
+```bash
+vagrant ssh
+```
+
+Your development sources will stay in sync in /vagrant directory. You can now start to work:
+```bash
+vagrant ssh
+cd /vagrant/
+npm run build
+```
+
+Note: Nationsync package is installed. See [https://github.com/jlm2017/nationsync](https://github.com/jlm2017/nationsync)
+to configure. Then, you can:
+```bash
+vagrant ssh
+cd /vagrant/dist/theme
+nationsync watch
+```
+
+
 ## Developers documentation
 
 The [official theme documentation of NationBuilder](http://nationbuilder.com/liquid) is very rich and a good source of information, even if it is incomplete and full of error.
