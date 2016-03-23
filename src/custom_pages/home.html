@@ -1,9 +1,11 @@
 {% if request.logged_in? or request.sorta_logged_in %}
+{% if bage.basic.content.size > 0 %}
 <div class="row padbottommore">
   <div id="content" class="well">
     {{ page.basic.content }}
   </div>
 </div>
+{% endif %}
 <div class="row custom-home-grid">
   <div class="col-md-6 padbottommore">
     <a href="/actualites">
