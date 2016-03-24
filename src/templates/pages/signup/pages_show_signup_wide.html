@@ -30,6 +30,14 @@
 
           {% endif %}
 
+          <div class="form-errors">{% error_messages_for signup %}</div>
+
+          {% if request.sorta_logged_in? == false %}
+          <div class="row">
+            <div class="col-md-12"><div class="form-group"><label for="signup_email">Email</label>{% email_field "email", class:"text form-control" %}</div></div>
+          </div>
+          {% endif %}
+
           {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
           <div class="row">
             <div class="col-md-6"><div class="form-group"><label for="signup_first_name">Prénom</label>{% text_field "first_name", class:"text form-control" %}</div></div>
@@ -42,7 +50,7 @@
               <label for="signup_sex">Genre</label>
               {% comment %}TODO: find the correct way to do it{% endcomment %}
               <select id="signup_sex" class="form-control" name="signup[sex]">
-                <option disabled selected> -- Choisir -- </option>
+                <option disabled selected value=""> -- Choisir -- </option>
                 <option value="F">Femme</option>
                 <option value="H">Homme</option>
                 <option value="A">Autre / Non défini</option>
