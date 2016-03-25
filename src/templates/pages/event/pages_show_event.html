@@ -148,7 +148,7 @@
   {% endif %}
 
   {% if page.event.show_guests? and page.event.rsvps_count > 0 %}
-  {% if request.logged_in? and page.has_author? and page.author.id == request.current_signup.id %}
+  {% if request.logged_in? and page.has_author? and (page.author.id == request.current_signup.id or page.event.hosts[0].signup.id == request.current_signup.id) %}
   <h4>Contacter les participants&nbsp;:</h4>
   <textarea readonly onclick="this.focus();this.select()" class="form-control">{% for rsvp in page.event.rsvps %}
 "{{ rsvp.signup.first_name }} {{ rsvp.signup.last_name }}" <{{ rsvp.signup.email }}>{% unless forloop.last %},{% endunless %}{% endfor %}</textarea>
